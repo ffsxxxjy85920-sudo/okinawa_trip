@@ -373,6 +373,130 @@ body{
   font-size:10px;line-height:1.65;color:#6c5b3d;
 }
 
+
+/* ===== Clean Guide Layout v6 ===== */
+:root{
+  --page:#f2f5f4;
+  --paper:#ffffff;
+  --ink-strong:#18373c;
+  --ink-soft:#657a7e;
+  --hair:#e5ecea;
+}
+body{background:var(--page)}
+.app{background:var(--page)}
+.section{padding:28px 16px 0}
+.compact-section{padding-top:22px}
+.section-kicker{
+  font-size:9px;font-weight:1000;letter-spacing:.18em;color:#849698;margin-bottom:4px;
+}
+.clean-title{align-items:center;margin-bottom:14px}
+.clean-title h2{font-size:23px;letter-spacing:-.035em}
+.clean-title small{background:transparent;padding:0;color:#87989a}
+.hero{min-height:360px;border-radius:30px;padding:26px 21px 22px;margin-top:14px}
+.hero h1{font-size:39px}
+.hero-grid{gap:7px}
+.hero-stat{border:1px solid rgba(255,255,255,.12);border-radius:14px}
+.card{border-color:var(--hair);box-shadow:0 10px 30px rgba(26,64,69,.06)}
+.day-scroll{gap:8px;padding-bottom:12px}
+.day-chip{
+  min-width:100px;border-radius:15px;box-shadow:none;border:1px solid var(--hair);padding:11px 12px;
+}
+.day-chip.active{box-shadow:0 8px 20px rgba(8,127,140,.15)}
+.day-card{border-radius:24px;box-shadow:none}
+.day-head{padding:18px 18px 14px;background:#fff}
+.day-head h3{font-size:20px}
+.timeline{padding:16px 18px 7px}
+.item{padding-left:25px;padding-bottom:22px}
+.item:before{width:8px;height:8px;left:2px;top:7px;box-shadow:0 0 0 4px #edf6f4}
+.item:after{left:5.5px;background:#e1e9e8}
+.time{font-size:10px}
+.place{font-size:15px;line-height:1.45}
+.note{font-size:11px;line-height:1.55}
+.btnrow{margin-top:8px}
+.btn{background:#f2f7f6;border:1px solid #e2ecea;border-radius:10px;padding:6px 9px}
+.choices{padding:2px 18px 14px}
+.choices button{border-radius:12px;box-shadow:none}
+.alert{margin:0 18px 8px}
+.clean-quick .quick{box-shadow:none;border-radius:16px;padding:14px}
+.clean-quick .quick b{font-size:13px}
+.clean-quick .quick span{font-size:10px}
+
+.poi-more{
+  margin-top:9px;border:1px solid #e3ecea;border-radius:12px;background:#fafcfc;overflow:hidden;
+}
+.poi-more summary{
+  list-style:none;cursor:pointer;padding:8px 10px;font-size:10px;font-weight:900;color:#567074;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.poi-more summary::-webkit-details-marker{display:none}
+.poi-more summary:after{content:"＋";font-size:14px;color:#8a9a9c}
+.poi-more[open] summary:after{content:"−"}
+.poi-more-body{
+  border-top:1px solid #e7eeed;padding:9px 10px 10px;display:grid;gap:7px;
+}
+.mini-info{font-size:10.5px;line-height:1.6;color:#536a6e}
+.mini-info b{color:#24454a}
+.mini-parking{background:#eef6fb;border-radius:10px;padding:8px 9px}
+.mini-parking a{color:#1768a8;font-weight:900;white-space:nowrap}
+
+.spot-grid{display:grid;grid-template-columns:1fr;gap:14px}
+.spot-card{background:#fff;border:1px solid var(--hair);border-radius:22px;overflow:hidden}
+.spot-photo{height:205px;position:relative;background:#dce8e6}
+.spot-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.spot-photo:after{
+  content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.18));
+}
+.spot-day{
+  position:absolute;z-index:2;left:12px;top:12px;padding:5px 8px;background:rgba(255,255,255,.9);
+  color:#24464b;border-radius:999px;font-size:9px;font-weight:1000;backdrop-filter:blur(6px);
+}
+.spot-body{padding:16px}
+.spot-type{font-size:10px;color:#789094;font-weight:900;margin-bottom:3px}
+.spot-body h3{margin:0 0 7px;font-size:19px;letter-spacing:-.025em}
+.spot-body p{margin:0;color:#62777a;font-size:12px;line-height:1.8}
+.spot-focus{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.spot-focus b{font-size:10px;color:#36575c;margin-right:2px}
+.spot-focus span{
+  font-size:9px;padding:5px 8px;border-radius:999px;background:#f0f6f5;color:#567074;font-weight:800;
+}
+.spot-alert{
+  margin-top:11px;padding:9px 10px;border-radius:11px;background:#fff5e8;color:#76511f;
+  border:1px solid #f3dfbc;font-size:10.5px;line-height:1.6;
+}
+.spot-actions{display:flex;gap:7px;margin-top:13px}
+.spot-actions a{
+  flex:1;text-align:center;padding:8px 10px;border-radius:11px;background:#edf7f5;color:#08717a;
+  border:1px solid #dbeae8;font-size:10px;font-weight:900;
+}
+
+.map-card{padding:14px;border-radius:24px}
+#tripMap{height:440px;border-radius:17px}
+.type-legend{padding-top:9px}
+.parking-disclaimer,.map-caution,.unmapped-list{
+  margin-top:8px;padding:9px 10px;border-radius:11px;font-size:9.5px;
+}
+.parking-disclaimer{background:#f5f8f8;border-color:#e3ebea;color:#667b7e}
+.map-caution{background:#f5f8f8;border-color:#e3ebea}
+.unmapped-list{background:#fff9ef;border-color:#f1e1c2}
+#share .card{box-shadow:none}
+.travel-tip,.parking-info{display:none!important}
+.bottom{grid-template-columns:repeat(4,1fr);border-top-color:#e6edec}
+.footer{padding-top:30px}
+
+/* Old checklist presentation removed */
+.check-card,.check-row{display:none!important}
+
+@media(min-width:640px){
+  .spot-grid{grid-template-columns:1fr 1fr}
+  .spot-card:last-child{grid-column:1/-1}
+}
+@media(max-width:420px){
+  .hero{min-height:335px}
+  .hero h1{font-size:35px}
+  .spot-photo{height:185px}
+  #tripMap{height:390px}
+}
+
 </style>
 
 <link rel="manifest" href="./manifest.webmanifest">
@@ -405,31 +529,6 @@ body{
   </div>
 </section>
 
-<section class="section" id="highlights">
-  <div class="section-title"><h2>✨ 旅程亮點</h2><small>左右滑動看景點</small></div>
-  <div class="visual-strip">
-    <a class="visual-card" href="#days" onclick="setDay(2,document.querySelectorAll('.day-chip')[1])">
-      <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Okinawa%20Churaumi%20Aquarium%2020221229.jpg?width=1280" alt="沖繩美麗海水族館">
-      <div class="visual-label"><b>美麗海水族館</b><span>DAY 2 · 黑潮之海</span></div>
-    </a>
-    <a class="visual-card" href="#days" onclick="setDay(2,document.querySelectorAll('.day-chip')[1])">
-      <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/JP%20%E6%B2%96%E7%B9%A9%20Okinawa%20Nago%20Kouri%20Island%20n%20Road%20Bridge%20n%20Beach%20January%202026%20N13P%2010.jpg?width=1280" alt="沖繩古宇利島與古宇利大橋">
-      <div class="visual-label"><b>古宇利島</b><span>DAY 2 · 海上自駕</span></div>
-    </a>
-    <a class="visual-card" href="#days" onclick="setDay(3,document.querySelectorAll('.day-chip')[2])">
-      <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Gyokusendo%20Cave%20-%20panoramio.jpg?width=1280" alt="沖繩玉泉洞">
-      <div class="visual-label"><b>玉泉洞</b><span>DAY 3 · 地底奇景</span></div>
-    </a>
-    <a class="visual-card" href="#days" onclick="setDay(3,document.querySelectorAll('.day-chip')[2])">
-      <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/American%20Village%20in%20Okinawa.jpg?width=1280" alt="沖繩美國村">
-      <div class="visual-label"><b>美國村</b><span>DAY 3 · 海邊散步</span></div>
-    </a>
-    <a class="visual-card" href="#days" onclick="setDay(4,document.querySelectorAll('.day-chip')[3])">
-      <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Shuri%20castle.jpg?width=1280" alt="沖繩首里城">
-      <div class="visual-label"><b>首里城</b><span>DAY 4 · 琉球文化</span></div>
-    </a>
-  </div>
-</section>
 
 <section class="section" id="days">
   <div class="section-title"><h2>📅 每日行程</h2><small>點日期切換</small></div>
@@ -454,12 +553,7 @@ body{
   </div>
 
   <div id="d2" class="day-card card">
-
-    <div class="day-photo-grid">
-      <div class="day-photo"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Okinawa%20Churaumi%20Aquarium%2020221229.jpg?width=1280" alt="沖繩美麗海水族館"><span>🐋 美麗海水族館</span></div>
-      <div class="day-photo"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/JP%20%E6%B2%96%E7%B9%A9%20Okinawa%20Nago%20Kouri%20Island%20n%20Road%20Bridge%20n%20Beach%20January%202026%20N13P%2010.jpg?width=1280" alt="古宇利島"><span>🏝️ 古宇利島</span></div>
-    </div>
-    <div class="day-head"><div class="day-head-top"><h3>🐋 DAY 2</h3><span class="pill">北部一日</span></div><div class="day-sub">10/11（日）｜美麗海＋古宇利島</div><div class="progress"><i></i></div></div>
+<div class="day-head"><div class="day-head-top"><h3>🐋 DAY 2</h3><span class="pill">北部一日</span></div><div class="day-sub">10/11（日）｜美麗海＋古宇利島</div><div class="progress"><i></i></div></div>
     <div class="timeline">
       <div class="item"><div class="time">07:00</div><div class="place">🚗 出門</div><div class="note">早餐前一天買好，車上吃。</div></div>
       <div class="item"><div class="time">09:00–12:00</div><div class="place">🐠 沖繩美麗海水族館</div><div class="note">10 月一般期間 08:30–18:30，最後入館 17:30。</div><div class="btnrow"><a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=沖縄美ら海水族館">📍 導航</a><a class="btn" target="_blank" href="https://churaumi.okinawa/tc/guide/hour/">官方</a></div></div>
@@ -473,12 +567,7 @@ body{
   </div>
 
   <div id="d3" class="day-card card">
-
-    <div class="day-photo-grid">
-      <div class="day-photo"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Gyokusendo%20Cave%20-%20panoramio.jpg?width=1280" alt="玉泉洞"><span>🪨 玉泉洞</span></div>
-      <div class="day-photo"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/American%20Village%20in%20Okinawa.jpg?width=1280" alt="美國村"><span>🌊 美國村</span></div>
-    </div>
-    <div class="day-head"><div class="day-head-top"><h3>🌴 DAY 3</h3><span class="pill">兩套方案</span></div><div class="day-sub">10/12（一）｜玉泉洞・美國村・購物</div><div class="progress"><i></i></div></div>
+<div class="day-head"><div class="day-head-top"><h3>🌴 DAY 3</h3><span class="pill">兩套方案</span></div><div class="day-sub">10/12（一）｜玉泉洞・美國村・購物</div><div class="progress"><i></i></div></div>
     <div class="timeline">
       <div class="item"><div class="time">08:30</div><div class="place">🥐 早餐自行處理</div><div class="note">前一晚便利商店買好。</div></div>
       <div class="item"><div class="time">09:00</div><div class="place">🪨 玉泉洞</div><div class="btnrow"><a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=玉泉洞+おきなわワールド">📍 導航</a></div></div>
@@ -506,11 +595,7 @@ body{
   </div>
 
   <div id="d4" class="day-card card">
-
-    <div class="day-photo-grid single">
-      <div class="day-photo big"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Shuri%20castle.jpg?width=1280" alt="首里城"><span>🏯 首里城 · 琉球歷史</span></div>
-    </div>
-    <div class="day-head"><div class="day-head-top"><h3>⛩️ DAY 4</h3><span class="pill">那霸・南部</span></div><div class="day-sub">10/13（二）｜糸滿・瀨長島・波上宮</div><div class="progress"><i></i></div></div>
+<div class="day-head"><div class="day-head-top"><h3>⛩️ DAY 4</h3><span class="pill">那霸・南部</span></div><div class="day-sub">10/13（二）｜糸滿・瀨長島・波上宮</div><div class="progress"><i></i></div></div>
     <div class="alert">⚠️ 首里城正殿一般公開從 2026/11/23 開始；10/13 不安排正殿內部參觀。</div>
     <div class="timeline">
       <div class="item"><div class="time">10:40</div><div class="place">🚗 出門</div></div>
@@ -536,6 +621,136 @@ body{
 
 
 
+<section class="section" id="spots">
+  <div class="section-kicker">SPOT GUIDE</div>
+  <div class="section-title clean-title">
+    <h2>景點介紹</h2>
+    <small>先知道為什麼值得去</small>
+  </div>
+
+  <div class="spot-grid">
+    <article class="spot-card">
+      <div class="spot-photo">
+        <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Okinawa%20Churaumi%20Aquarium%2020221229.jpg?width=1280" alt="沖繩美麗海水族館">
+        <span class="spot-day">DAY 2</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-type">🐠 海洋景點</div>
+        <h3>沖繩美麗海水族館</h3>
+        <p>北部代表景點。最大看點是「黑潮之海」巨型水槽，可看到鯨鯊、鬼蝠魟與大型洄游魚群；整體動線也從珊瑚礁一路走到沖繩深海。</p>
+        <div class="spot-focus"><b>值得看</b><span>黑潮之海</span><span>海豚區</span><span>珊瑚之海</span></div>
+        <div class="spot-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=沖縄美ら海水族館" target="_blank" rel="noopener">📍 導航</a>
+          <a href="https://churaumi.okinawa/tc/" target="_blank" rel="noopener">官方網站</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="spot-card">
+      <div class="spot-photo">
+        <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/JP%20%E6%B2%96%E7%B9%A9%20Okinawa%20Nago%20Kouri%20Island%20n%20Road%20Bridge%20n%20Beach%20January%202026%20N13P%2010.jpg?width=1280" alt="古宇利島">
+        <span class="spot-day">DAY 2</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-type">🏝️ 海島景點</div>
+        <h3>古宇利島</h3>
+        <p>北部人氣離島，開車跨過古宇利大橋就是旅程本身。島不大，很適合用悠閒節奏看透明海水、白沙灘，再找一間咖啡店休息。</p>
+        <div class="spot-focus"><b>值得看</b><span>古宇利大橋</span><span>古宇利海灘</span><span>海景咖啡</span></div>
+        <div class="spot-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=古宇利島" target="_blank" rel="noopener">📍 導航</a>
+          <a href="https://visitokinawajapan.com/zh-hant/destinations/okinawa-main-island/northern-okinawa-main-island/kouri-island/" target="_blank" rel="noopener">官方介紹</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="spot-card">
+      <div class="spot-photo">
+        <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Gyokusendo%20Cave%20-%20panoramio.jpg?width=1280" alt="玉泉洞">
+        <span class="spot-day">DAY 3</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-type">🪨 自然景點</div>
+        <h3>玉泉洞</h3>
+        <p>約 30 萬年形成的巨大鐘乳洞，全長約 5 公里，目前開放約 890 公尺。密集鐘乳石、地下水與地底空間感，是與沖繩海景完全不同的體驗。</p>
+        <div class="spot-focus"><b>值得看</b><span>鐘乳石</span><span>地下河</span><span>青之泉</span></div>
+        <div class="spot-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=玉泉洞+おきなわワールド" target="_blank" rel="noopener">📍 導航</a>
+          <a href="https://www.gyokusendo.co.jp/okinawaworld/7recommendations/" target="_blank" rel="noopener">官方介紹</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="spot-card">
+      <div class="spot-photo">
+        <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/American%20Village%20in%20Okinawa.jpg?width=1280" alt="美濱美國村">
+        <span class="spot-day">DAY 3</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-type">🌊 街區景點</div>
+        <h3>美濱美國村</h3>
+        <p>集合購物、餐飲、海邊散步與娛樂的彩色度假街區，接近 200 間店鋪集中在海岸一帶。比起「打卡一個點」，更適合留時間慢慢走。</p>
+        <div class="spot-focus"><b>值得看</b><span>Depot Island</span><span>海岸散步</span><span>夕陽</span></div>
+        <div class="spot-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=美浜アメリカンビレッジ" target="_blank" rel="noopener">📍 導航</a>
+          <a href="https://www.okinawa-americanvillage.com/" target="_blank" rel="noopener">官方網站</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="spot-card">
+      <div class="spot-photo">
+        <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Umikaji%20Terrace%20Senagajima.jpg?width=1280" alt="瀨長島 Umikaji Terrace">
+        <span class="spot-day">DAY 4</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-type">✈️ 海景景點</div>
+        <h3>瀨長島 Umikaji Terrace</h3>
+        <p>位在那霸機場附近、沿著瀨長島西側坡地展開的白色商業聚落。海景、甜點與飛機起降畫面可以一次收進行程，是南部很適合放慢節奏的一站。</p>
+        <div class="spot-focus"><b>值得看</b><span>白色階梯</span><span>飛機起降</span><span>海景甜點</span></div>
+        <div class="spot-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=瀬長島ウミカジテラス" target="_blank" rel="noopener">📍 導航</a>
+          <a href="https://www.umikajiterrace.com/" target="_blank" rel="noopener">官方網站</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="spot-card">
+      <div class="spot-photo">
+        <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Naha%20Naminoue-gu%202.jpg?width=1280" alt="波上宮">
+        <span class="spot-day">DAY 4</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-type">⛩️ 文化景點</div>
+        <h3>波上宮</h3>
+        <p>那霸市區最有代表性的神社之一，朱紅色社殿位在臨海斷崖上，與一般日本內陸神社的氛圍很不一樣；參拜後也能順道走到波之上海灘。</p>
+        <div class="spot-focus"><b>值得看</b><span>朱紅社殿</span><span>臨海斷崖</span><span>波之上海灘</span></div>
+        <div class="spot-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=波上宮" target="_blank" rel="noopener">📍 導航</a>
+          <a href="https://www.naminouegu.jp/" target="_blank" rel="noopener">官方網站</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="spot-card">
+      <div class="spot-photo">
+        <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Shuri%20castle.jpg?width=1280" alt="首里城">
+        <span class="spot-day">DAY 4</span>
+      </div>
+      <div class="spot-body">
+        <div class="spot-type">🏯 歷史景點</div>
+        <h3>首里城公園</h3>
+        <p>理解琉球王國歷史最重要的一站。你的 10/13 行程仍處於正殿正式公開前，因此重點可放在守禮門、園區、有料區域與復元工程現場。</p>
+        <div class="spot-focus"><b>值得看</b><span>守禮門</span><span>琉球歷史</span><span>復元現場</span></div>
+        <div class="spot-alert">10/13 到訪時，正殿內部尚未開放；官方預定 2026/11/23 起一般公開。</div>
+        <div class="spot-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=首里城公園" target="_blank" rel="noopener">📍 導航</a>
+          <a href="https://oki-park.jp/shurijo/" target="_blank" rel="noopener">官方網站</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
 <section class="section" id="map">
   <div class="section-title"><h2>🗺️ 行程互動地圖</h2><small>點 Marker 看地點</small></div>
   <div class="card map-card">
@@ -546,6 +761,7 @@ body{
       <button class="map-filter" data-day="3">DAY 3</button>
       <button class="map-filter" data-day="4">DAY 4</button>
       <button class="map-filter" data-day="5">DAY 5</button>
+      <button class="map-filter parking-toggle" id="parkingToggle" type="button" aria-pressed="false">🅿️ 顯示停車</button>
     </div>
     <div id="tripMap" aria-label="沖繩五天四夜行程地圖"></div>
     <div class="type-legend"><span class="type-chip">📸 景點</span><span class="type-chip">🍴 餐廳</span><span class="type-chip">☕ 咖啡</span><span class="type-chip">🛍️ 購物</span><span class="type-chip">🚗 交通</span><span class="type-chip">🅿️ 停車</span></div>
@@ -556,11 +772,7 @@ body{
       <span><i class="map-dot" style="background:#e2566c"></i>DAY 4</span>
       <span><i class="map-dot" style="background:#5e7fa3"></i>DAY 5</span>
     </div>
-<div class="parking-disclaimer">🅿️ 藍色 P 為停車資訊。若是「附設停車場」，P 會貼在景點／餐廳 Marker 旁；若店家沒有專用停車場，請點停車資訊內的 Google Maps 按鈕查看推薦停車場的實際入口。費率與車位可能臨時調整，以現場標示為準。</div>
-<div class="map-caution">
-      📍 地圖用來快速掌握各點相對位置；實際開車請點 Marker 裡的「Google Maps 導航」，
-      以 Google Maps 當下路況、停車場入口與店家最新位置為準。
-    </div>
+<div class="parking-disclaimer">🅿️ 停車 Marker 預設隱藏，按「顯示停車」再打開；這樣地圖不會一次塞滿兩種標記。</div>
     <div class="unmapped-list">
       ⚠️ <b>分店尚未確認，因此暫不固定 Marker：</b>
       10/11 晚餐「琉球の牛／燒肉神社・宮崎牛專賣」以及 10/12「鶴亀合戦」。
@@ -577,27 +789,18 @@ body{
     <button class="btn" style="border:0;cursor:pointer;width:100%;padding:11px" onclick="shareTrip()">📤 分享這趟沖繩行程</button>
   </div>
 </section>
-<section class="section" id="quick">
-  <div class="section-title"><h2>⚡ 快速資訊</h2><small>旅行中最常用</small></div>
-  <div class="quick-grid">
-    <a class="quick" href="https://www.google.com/maps" target="_blank"><b>📍 Google Maps</b><span>景點／餐廳導航</span></a>
-    <a class="quick" href="https://churaumi.okinawa/tc/guide/hour/" target="_blank"><b>🐠 美麗海</b><span>官方時間與公告</span></a>
-    <a class="quick" href="https://oki-park.jp/shurijo/" target="_blank"><b>🏯 首里城</b><span>官方最新資訊</span></a>
-    <a class="quick" href="#check"><b>✅ 待辦清單</b><span>勾選後會記住</span></a>
+
+<section class="section compact-section" id="quick">
+  <div class="section-kicker">TRIP TOOLS</div>
+  <div class="section-title clean-title"><h2>旅行快速入口</h2><small>常用功能</small></div>
+  <div class="quick-grid clean-quick">
+    <a class="quick" href="#spots"><b>🌺 景點導覽</b><span>先看景點特色與停留重點</span></a>
+    <a class="quick" href="#map"><b>🗺️ 行程地圖</b><span>DAY 篩選・停車位置</span></a>
+    <a class="quick" href="https://churaumi.okinawa/tc/" target="_blank" rel="noopener"><b>🐠 美麗海官方</b><span>當日公告與展示資訊</span></a>
+    <a class="quick" href="https://oki-park.jp/shurijo/" target="_blank" rel="noopener"><b>🏯 首里城官方</b><span>復元與開放最新資訊</span></a>
   </div>
 </section>
 
-<section class="section" id="check">
-  <div class="section-title"><h2>✅ 出發前清單</h2><small>自動儲存</small></div>
-  <div class="card check-card">
-    <div class="check-row"><input id="c1" type="checkbox"><label for="c1">確認來回航班與報到時間</label></div>
-    <div class="check-row"><input id="c2" type="checkbox"><label for="c2">確認租車／還車資料</label></div>
-    <div class="check-row"><input id="c3" type="checkbox"><label for="c3">確認 10/11 晚餐預約</label></div>
-    <div class="check-row"><input id="c4" type="checkbox"><label for="c4">確認 10/13 晚餐預約</label></div>
-    <div class="check-row"><input id="c5" type="checkbox"><label for="c5">出發前確認沖繩天氣／颱風</label></div>
-    <div class="check-row"><input id="c6" type="checkbox"><label for="c6">下載／確認離線地圖</label></div>
-  </div>
-</section>
 
 <footer class="footer">
   <b>Okinawa Trip 2026</b><br>
@@ -611,6 +814,8 @@ body{
     玉泉洞：FoxyStranger Kawasaki / Wikimedia Commons（CC BY-SA 3.0）<br>
     美國村：Lee Geonju / Wikimedia Commons（CC BY-SA 4.0）<br>
     首里城：Martinbayo / Wikimedia Commons（CC BY-SA 4.0）<br>
+    瀨長島 Umikaji Terrace：Kugel~commonswiki / Wikimedia Commons（CC BY-SA 4.0）<br>
+    波上宮：Zairon / Wikimedia Commons（CC BY-SA）<br>
     <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">查看 Wikimedia Commons</a>
   </div>
 
@@ -619,8 +824,8 @@ body{
 <nav class="bottom">
   <a href="#home" class="active"><span class="ico">🏠</span>首頁</a>
   <a href="#days"><span class="ico">📅</span>行程</a>
+  <a href="#spots"><span class="ico">🌺</span>景點</a>
   <a href="#map"><span class="ico">🗺️</span>地圖</a>
-  <a href="#share"><span class="ico">🔗</span>分享</a>
 </nav>
 </div>
 
@@ -646,15 +851,6 @@ function updateCountdown(){
   el.textContent=days>0?`⏳ 距離出發 ${days} 天`:(days===0?'🌺 今天出發！':'🌺 沖繩之旅進行中');
 }
 updateCountdown();
-document.querySelectorAll('.check-row input').forEach(input=>{
-  const key='okinawa_'+input.id;
-  input.checked=localStorage.getItem(key)==='1';
-  input.closest('.check-row').classList.toggle('done',input.checked);
-  input.addEventListener('change',()=>{
-    localStorage.setItem(key,input.checked?'1':'0');
-    input.closest('.check-row').classList.toggle('done',input.checked);
-  });
-});
 
 function shareTrip(){
   const data={title:'沖繩 5 天 4 夜｜2026.10.10–10.14',text:'沖繩旅遊 App｜2026.10.10–10.14',url:location.href};
@@ -741,6 +937,38 @@ function addTravelTips(){
         break;
       }
     }
+  });
+}
+
+
+function addCompactDetails(){
+  document.querySelectorAll(".place").forEach(place=>{
+    const text=place.textContent||"";
+    const tip=placeTips.find(t=>text.includes(t.k));
+    const park=parkingInfo.find(p=>text.includes(p.k));
+    if(!tip && !park) return;
+
+    const details=document.createElement("details");
+    details.className="poi-more";
+
+    let inner='<summary>ℹ️ 推薦・注意・停車</summary><div class="poi-more-body">';
+    if(tip){
+      inner+='<div class="mini-info"><b>✨ 推薦</b><br>'+tip.reco.replace(/^推薦：/,'')+'</div>';
+      inner+='<div class="mini-info"><b>⚠️ 注意</b><br>'+tip.warn.replace(/^注意：/,'')+'</div>';
+    }
+    if(park){
+      const nav="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(park.q);
+      inner+='<div class="mini-info mini-parking"><b>🅿️ '+park.name+'</b><br>'+
+        '車位：'+park.spaces+' ｜ 費用：'+park.fee+'<br>'+
+        park.note+'<br><a target="_blank" rel="noopener" href="'+nav+'">停車導航 →</a></div>';
+    }
+    inner+='</div>';
+    details.innerHTML=inner;
+
+    const item=place.closest(".item");
+    const btnrow=item?.querySelector(".btnrow");
+    if(btnrow) btnrow.insertAdjacentElement("afterend",details);
+    else place.insertAdjacentElement("afterend",details);
   });
 }
 
@@ -849,7 +1077,7 @@ function initTripMap(){
       '<div class="popup-title">'+p.name+'</div>'+
       '<div class="popup-meta">'+p.parking+'</div>'+
       '<a class="popup-nav" target="_blank" rel="noopener" href="'+parkingNav+'">🧭 停車場入口導航</a>'
-    ).addTo(map);
+    );
 
     layers.push({marker,pMarker,day:p.day});
   });
@@ -860,9 +1088,30 @@ function initTripMap(){
   setTimeout(()=>map.invalidateSize(),250);
   window.addEventListener("resize",()=>map.invalidateSize());
 
-  document.querySelectorAll(".map-filter").forEach(btn=>{
+  let parkingVisible=false;
+  const parkingToggle=document.getElementById("parkingToggle");
+  if(parkingToggle){
+    parkingToggle.addEventListener("click",()=>{
+      parkingVisible=!parkingVisible;
+      parkingToggle.setAttribute("aria-pressed",String(parkingVisible));
+      parkingToggle.classList.toggle("active",parkingVisible);
+      parkingToggle.textContent=parkingVisible?"🅿️ 隱藏停車":"🅿️ 顯示停車";
+
+      const activeDay=document.querySelector(".map-filter[data-day].active")?.dataset.day || "all";
+      layers.forEach(x=>{
+        const show=activeDay==="all" || String(x.day)===activeDay;
+        if(parkingVisible && show){
+          if(!map.hasLayer(x.pMarker)) x.pMarker.addTo(map);
+        }else if(map.hasLayer(x.pMarker)){
+          map.removeLayer(x.pMarker);
+        }
+      });
+    });
+  }
+
+  document.querySelectorAll(".map-filter[data-day]").forEach(btn=>{
     btn.addEventListener("click",()=>{
-      document.querySelectorAll(".map-filter").forEach(b=>b.classList.remove("active"));
+      document.querySelectorAll(".map-filter[data-day]").forEach(b=>b.classList.remove("active"));
       btn.classList.add("active");
 
       const d=btn.dataset.day;
@@ -870,14 +1119,14 @@ function initTripMap(){
 
       layers.forEach(x=>{
         const show=d==="all" || String(x.day)===d;
-        [x.marker,x.pMarker].forEach(m=>{
-          if(show){
-            if(!map.hasLayer(m)) m.addTo(map);
-          }else if(map.hasLayer(m)){
-            map.removeLayer(m);
-          }
-        });
-        if(show) selected.push(x.marker.getLatLng());
+        if(show){
+          if(!map.hasLayer(x.marker)) x.marker.addTo(map);
+          if(parkingVisible && !map.hasLayer(x.pMarker)) x.pMarker.addTo(map);
+          selected.push(x.marker.getLatLng());
+        }else{
+          if(map.hasLayer(x.marker)) map.removeLayer(x.marker);
+          if(map.hasLayer(x.pMarker)) map.removeLayer(x.pMarker);
+        }
       });
 
       if(selected.length){
@@ -889,8 +1138,7 @@ function initTripMap(){
 }
 
 window.addEventListener("DOMContentLoaded",()=>{
-  addTravelTips();
-  addParkingInfo();
+  addCompactDetails();
   initTripMap();
 });
 </script>
