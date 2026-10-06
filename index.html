@@ -714,6 +714,112 @@ body{background:var(--page)}
   .voice-grid{grid-template-columns:1fr 1fr}
 }
 
+
+/* ===== Travel Desk v10: daily focus / restaurant guide / rain backup / reservation center ===== */
+.today-card{
+  background:#fff;border:1px solid var(--hair);border-radius:22px;padding:16px;
+  box-shadow:0 10px 30px rgba(26,64,69,.05);
+}
+.today-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.today-kicker{font-size:9px;font-weight:1000;letter-spacing:.16em;color:#819496}
+.today-title{font-size:21px;font-weight:1000;letter-spacing:-.035em;color:#203f44;margin-top:2px}
+.today-badge{
+  flex:0 0 auto;padding:6px 9px;border-radius:999px;background:#eaf6f4;color:#08717a;
+  font-size:9px;font-weight:1000;border:1px solid #d9ebe8;
+}
+.today-route{
+  margin-top:11px;padding:11px 12px;border-radius:14px;background:#f6f9f8;border:1px solid #e7eeed;
+  font-size:11px;line-height:1.7;color:#526b6f;
+}
+.today-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}
+.today-mini{padding:10px 11px;border-radius:13px;background:#fbfdfd;border:1px solid #e5edec}
+.today-mini span{display:block;font-size:8.5px;color:#829396;font-weight:900;margin-bottom:3px}
+.today-mini b{font-size:11px;line-height:1.45;color:#2a4a4f}
+.today-actions{display:flex;gap:7px;margin-top:10px}
+.today-actions a{
+  flex:1;text-align:center;padding:9px 10px;border-radius:11px;text-decoration:none;
+  font-size:10px;font-weight:1000;background:#edf7f5;color:#08717a;border:1px solid #d9eae8;
+}
+
+.guide-tabs{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding-bottom:8px}
+.guide-tabs::-webkit-scrollbar{display:none}
+.guide-tab{
+  white-space:nowrap;border:1px solid #dfe9e7;background:#fff;border-radius:999px;
+  padding:8px 11px;font-size:10px;font-weight:900;color:#60777b;
+}
+.guide-tab.active{background:#087f8c;color:#fff;border-color:#087f8c}
+
+.restaurant-grid{display:grid;grid-template-columns:1fr;gap:12px}
+.restaurant-card{
+  background:#fff;border:1px solid var(--hair);border-radius:20px;padding:15px;
+}
+.restaurant-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.restaurant-name{font-size:16px;font-weight:1000;color:#23454a;line-height:1.35}
+.restaurant-status{
+  flex:0 0 auto;padding:5px 8px;border-radius:999px;font-size:8.5px;font-weight:1000;
+  background:#edf7f5;color:#08717a;border:1px solid #dbeae8;
+}
+.restaurant-status.warn{background:#fff4e4;color:#8a5e23;border-color:#f0d9b1}
+.restaurant-meta{font-size:9.5px;color:#7a8c8f;margin-top:4px;line-height:1.55}
+.restaurant-desc{font-size:11px;color:#62777b;line-height:1.75;margin-top:10px}
+.restaurant-picks{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.restaurant-picks span{
+  padding:5px 8px;border-radius:999px;background:#f2f7f6;color:#5b7276;font-size:9px;font-weight:800;
+}
+.restaurant-facts{
+  display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:11px;
+}
+.restaurant-fact{padding:9px 10px;border-radius:11px;background:#f8fafa;border:1px solid #e8efee}
+.restaurant-fact span{display:block;font-size:8.5px;color:#849598;font-weight:900;margin-bottom:2px}
+.restaurant-fact b{font-size:10px;color:#35555a;line-height:1.45}
+.restaurant-alert{
+  margin-top:10px;padding:9px 10px;border-radius:11px;background:#fff5e8;border:1px solid #f0ddb7;
+  color:#71562f;font-size:10px;line-height:1.6;
+}
+.restaurant-actions{display:flex;gap:7px;margin-top:11px}
+.restaurant-actions a{
+  flex:1;text-align:center;padding:8px 9px;border-radius:10px;background:#edf7f5;color:#08717a;
+  border:1px solid #dbeae8;text-decoration:none;font-size:9.5px;font-weight:1000;
+}
+
+.backup-grid{display:grid;grid-template-columns:1fr;gap:9px}
+.backup-card{
+  background:#fff;border:1px solid var(--hair);border-radius:16px;padding:13px;
+}
+.backup-day{font-size:9px;font-weight:1000;color:#08717a;letter-spacing:.08em}
+.backup-title{font-size:13px;font-weight:1000;color:#29494e;margin:3px 0 5px}
+.backup-card p{font-size:10.5px;line-height:1.65;color:#667b7e;margin:0}
+.backup-arrow{margin-top:7px;font-size:10px;font-weight:900;color:#4f6d71}
+
+.reserve-list{display:grid;gap:8px}
+.reserve-row{
+  display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;
+  padding:11px 12px;border-radius:14px;background:#fff;border:1px solid var(--hair);
+}
+.reserve-name{font-size:11.5px;font-weight:1000;color:#2a4b50}
+.reserve-sub{font-size:9.5px;color:#829396;margin-top:3px;line-height:1.5}
+.reserve-right{text-align:right}
+.reserve-state{
+  display:inline-block;padding:5px 7px;border-radius:999px;font-size:8px;font-weight:1000;
+  background:#edf7f5;color:#08717a;border:1px solid #dbeae8;
+}
+.reserve-state.no{background:#f5f7f7;color:#728487;border-color:#e5ebea}
+.reserve-state.warn{background:#fff4e3;color:#865c23;border-color:#efd8ae}
+.reserve-link{display:block;margin-top:5px;font-size:9px;font-weight:1000;color:#08717a;text-decoration:none}
+
+.itinerary-conflict{
+  margin:0 18px 10px;padding:10px 11px;border-radius:12px;background:#fff0ef;
+  border:1px solid #efc7c3;color:#8a3e37;font-size:10.5px;line-height:1.65;font-weight:800;
+}
+.itinerary-alternative{
+  margin-top:7px;padding:8px 9px;border-radius:10px;background:#fff;color:#536c70;border:1px solid #eadfdd;
+  font-weight:700;
+}
+@media(min-width:640px){
+  .restaurant-grid{grid-template-columns:1fr 1fr}
+  .backup-grid{grid-template-columns:1fr 1fr}
+}
+
 </style>
 
 <link rel="manifest" href="./manifest.webmanifest">
@@ -746,6 +852,30 @@ body{background:var(--page)}
   </div>
 </section>
 
+
+
+<section class="section" id="today">
+  <div class="section-kicker">TODAY FOCUS</div>
+  <div class="section-title clean-title"><h2>今天先看這裡</h2><small>自動依日期切換</small></div>
+  <div class="today-card">
+    <div class="today-top">
+      <div>
+        <div class="today-kicker" id="todayKicker">NEXT TRIP DAY</div>
+        <div class="today-title" id="todayTitle">DAY 1｜抵達沖繩</div>
+      </div>
+      <div class="today-badge" id="todayBadge">10/10</div>
+    </div>
+    <div class="today-route" id="todayRoute">機場 → 取車 → Outlet → SPORTS DEPO → 一心 → San-A</div>
+    <div class="today-grid">
+      <div class="today-mini"><span>最重要時間</span><b id="todayTime">15:00 取車／16:00 晚餐</b></div>
+      <div class="today-mini"><span>今天注意</span><b id="todayAlert">抵達後時間較緊，Outlet 不要逛太久</b></div>
+    </div>
+    <div class="today-actions">
+      <a href="#days">看完整行程</a>
+      <a href="#map">開啟地圖</a>
+    </div>
+  </div>
+</section>
 
 <section class="section" id="days">
   <div class="section-title"><h2>📅 每日行程</h2><small>點日期切換</small></div>
@@ -814,9 +944,15 @@ body{background:var(--page)}
   <div id="d4" class="day-card card">
 <div class="day-head"><div class="day-head-top"><h3>⛩️ DAY 4</h3><span class="pill">那霸・南部</span></div><div class="day-sub">10/13（二）｜糸滿・瀨長島・波上宮</div><div class="progress"><i></i></div></div>
     <div class="alert">⚠️ 首里城正殿一般公開從 2026/11/23 開始；10/13 不安排正殿內部參觀。</div>
+    <div class="itinerary-conflict">
+  ⚠️ 重要：糸滿漁民食堂目前固定週二休息，而 2026/10/13 正好是週二，這站無法照原計畫用餐。
+  <div class="itinerary-alternative">替代建議：11:30 改去「道の駅いとまん・お魚センター」，同樣能吃沖繩近海生魚片、海鮮丼與熟食，且有免費停車。</div>
+</div>
     <div class="timeline">
       <div class="item"><div class="time">10:40</div><div class="place">🚗 出門</div></div>
-      <div class="item"><div class="time">11:30</div><div class="place">🐟 糸滿漁民食堂</div><div class="note">11:30 開門。</div></div>
+      <div class="item"><div class="time">11:30</div><div class="place">🐟 道の駅いとまん・お魚センター</div>
+    <div class="note">原本的糸滿漁民食堂週二定休，因此改成附近魚市場型午餐；平日約 09:00–18:00。</div>
+    <div class="btnrow"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=道の駅いとまん+お魚センター">📍 導航</a></div></div>
       <div class="item"><div class="time">午餐後</div><div class="place">🌅 瀨長島</div></div>
       <div class="item"><div class="time">下午</div><div class="place">⛩️ 波上宮</div></div>
       <div class="item"><div class="time">下午</div><div class="place">🏯 首里城公園</div><div class="note">安排公園／復興現場參觀，不安排正殿內部。</div><div class="btnrow"><a class="btn" target="_blank" href="https://oki-park.jp/shurijo/">官方</a></div></div>
@@ -968,6 +1104,159 @@ body{background:var(--page)}
   </div>
 </section>
 
+
+
+<section class="section" id="restaurants">
+  <div class="section-kicker">FOOD GUIDE</div>
+  <div class="section-title clean-title"><h2>餐廳攻略</h2><small>必點・價位・預約</small></div>
+  <div class="restaurant-grid">
+
+    <article class="restaurant-card">
+      <div class="restaurant-head">
+        <div><div class="restaurant-name">🍲 お肉の一心</div><div class="restaurant-meta">DAY 1・久茂地｜壽喜燒・涮涮鍋</div></div>
+        <span class="restaurant-status">建議預約</span>
+      </div>
+      <div class="restaurant-desc">1985 年創業，主打沖繩風壽喜燒與涮涮鍋，會在桌邊料理。你排 10/10 16:00，目前週六營業時段可銜接。</div>
+      <div class="restaurant-picks"><span>和牛壽喜燒</span><span>阿古豬</span><span>桌邊料理</span></div>
+      <div class="restaurant-facts">
+        <div class="restaurant-fact"><span>預算</span><b>約 ¥6,000 起／人</b></div>
+        <div class="restaurant-fact"><span>預約</span><b>官方線上限定</b></div>
+        <div class="restaurant-fact"><span>付款</span><b>主要信用卡可</b></div>
+        <div class="restaurant-fact"><span>停車</span><b>店家無專用</b></div>
+      </div>
+      <div class="restaurant-alert">官方說明最晚可在來店前 6 小時線上預約；不接受電話預約，也特別提醒 AutoReserve 不是官方合作服務。</div>
+      <div class="restaurant-actions">
+        <a href="https://www.isshin-okinawa.com/" target="_blank" rel="noopener">官方</a>
+        <a href="https://www.tablecheck.com/ja/isshin-okinawa" target="_blank" rel="noopener">預約</a>
+      </div>
+    </article>
+
+    <article class="restaurant-card">
+      <div class="restaurant-head">
+        <div><div class="restaurant-name">🍤 Kurumaebi Kitchen TAMAYA</div><div class="restaurant-meta">DAY 2・屋我地島｜車海老專門店</div></div>
+        <span class="restaurant-status no">不可預約</span>
+      </div>
+      <div class="restaurant-desc">養殖場直營，從古宇利大橋開車約 1 分鐘。很適合排在水族館→古宇利島之間，主打新鮮車海老刺身、天婦羅與炸蝦。</div>
+      <div class="restaurant-picks"><span>TAMAYA 套餐</span><span>天婦羅丼</span><span>活車海老</span></div>
+      <div class="restaurant-facts">
+        <div class="restaurant-fact"><span>價位</span><b>約 ¥2,000–2,999</b></div>
+        <div class="restaurant-fact"><span>營業</span><b>11:30–19:00</b></div>
+        <div class="restaurant-fact"><span>座位</span><b>22 席</b></div>
+        <div class="restaurant-fact"><span>預約</span><b>不接受預約</b></div>
+      </div>
+      <div class="restaurant-alert">熱門午餐時段可能排隊。你 12:00 才離開美麗海的話，建議直接先去吃，再上古宇利島。</div>
+      <div class="restaurant-actions">
+        <a href="https://tamayaab.com/" target="_blank" rel="noopener">官網</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Kurumaebi+Kitchen+TAMAYA" target="_blank" rel="noopener">導航</a>
+      </div>
+    </article>
+
+    <article class="restaurant-card">
+      <div class="restaurant-head">
+        <div><div class="restaurant-name">🥢 アグー豚しゃぶしゃぶ 翡翠</div><div class="restaurant-meta">DAY 2・本部町｜阿古豬涮涮鍋</div></div>
+        <span class="restaurant-status">可預約</span>
+      </div>
+      <div class="restaurant-desc">2026 年新開幕的阿古豬涮涮鍋店，可選阿古豬、Pineapple Pork 與多種高湯。若想把 DAY 2 午餐吃得完整、舒服，這間比快吃型餐廳更適合。</div>
+      <div class="restaurant-picks"><span>阿古豬</span><span>Pineapple Pork</span><span>三種高湯</span></div>
+      <div class="restaurant-facts">
+        <div class="restaurant-fact"><span>午餐</span><b>11:00–14:30</b></div>
+        <div class="restaurant-fact"><span>晚餐</span><b>17:00–22:00</b></div>
+        <div class="restaurant-fact"><span>套餐</span><b>約 ¥4,950 起</b></div>
+        <div class="restaurant-fact"><span>停車</span><b>有免費共用停車</b></div>
+      </div>
+      <div class="restaurant-alert">如果選這間，建議先訂位；完整涮涮鍋會比 TAMAYA 花更多時間，古宇利島停留要預留彈性。</div>
+      <div class="restaurant-actions">
+        <a href="https://shabushabu-hisui.com/" target="_blank" rel="noopener">官方</a>
+        <a href="https://www.tablecheck.com/ja/shabushabu-hisui" target="_blank" rel="noopener">預約</a>
+      </div>
+    </article>
+
+    <article class="restaurant-card">
+      <div class="restaurant-head">
+        <div><div class="restaurant-name">🐟 道の駅いとまん・お魚センター</div><div class="restaurant-meta">DAY 4 替代午餐｜鮮魚市場</div></div>
+        <span class="restaurant-status">免預約</span>
+      </div>
+      <div class="restaurant-desc">糸滿近海魚類、生魚片、海鮮丼、壽司與天婦羅集中在市場裡，可買好直接在共用區吃。因糸滿漁民食堂週二休息，這是 10/13 最順路的替代方案。</div>
+      <div class="restaurant-picks"><span>生魚片</span><span>海鮮丼</span><span>沖繩魚料理</span></div>
+      <div class="restaurant-facts">
+        <div class="restaurant-fact"><span>平日</span><b>約 09:00–18:00</b></div>
+        <div class="restaurant-fact"><span>停車</span><b>免費</b></div>
+        <div class="restaurant-fact"><span>形式</span><b>各攤自行點餐</b></div>
+        <div class="restaurant-fact"><span>優點</span><b>不用等固定桌位</b></div>
+      </div>
+      <div class="restaurant-actions">
+        <a href="https://www.city.itoman.lg.jp/site/kankou-navi/1814.html" target="_blank" rel="noopener">糸滿市介紹</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=道の駅いとまん+お魚センター" target="_blank" rel="noopener">導航</a>
+      </div>
+    </article>
+
+    <article class="restaurant-card">
+      <div class="restaurant-head">
+        <div><div class="restaurant-name">🥩 焼肉きんぐ 那覇新都心店</div><div class="restaurant-meta">DAY 4・那霸新都心｜100 分燒肉吃到飽</div></div>
+        <span class="restaurant-status">建議預約</span>
+      </div>
+      <div class="restaurant-desc">座位點餐、餐點送到桌邊，100 分鐘吃到飽，最後點餐在結束前 20 分鐘。你排 17:00–18:40，時間剛好完整對應 100 分鐘。</div>
+      <div class="restaurant-picks"><span>きんぐコース</span><span>五大名物</span><span>100 分鐘</span></div>
+      <div class="restaurant-facts">
+        <div class="restaurant-fact"><span>58 品</span><b>¥3,278 起</b></div>
+        <div class="restaurant-fact"><span>King Course</span><b>¥3,828 起</b></div>
+        <div class="restaurant-fact"><span>停車</span><b>30 台</b></div>
+        <div class="restaurant-fact"><span>座位</span><b>208 席</b></div>
+      </div>
+      <div class="restaurant-alert">官方標示那霸新都心店平日 17:00 開門；你 10/13 是週二，因此 17:00 訂位非常適合。</div>
+      <div class="restaurant-actions">
+        <a href="https://www.yakiniku-king.jp/shop/2107" target="_blank" rel="noopener">店舖／預約</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=焼肉きんぐ+那覇新都心店" target="_blank" rel="noopener">導航</a>
+      </div>
+    </article>
+
+    <article class="restaurant-card">
+      <div class="restaurant-head">
+        <div><div class="restaurant-name">🍰 Coral Days</div><div class="restaurant-meta">DAY 2・名護｜咖啡・甜點・刨冰</div></div>
+        <span class="restaurant-status no">休息站</span>
+      </div>
+      <div class="restaurant-desc">紅瓦屋改造的咖啡＋雜貨空間，適合 DAY 2 下午當作節奏緩衝。若午餐或古宇利島拖太久，這站最適合彈性取消。</div>
+      <div class="restaurant-picks"><span>刨冰</span><span>咖啡</span><span>雜貨</span></div>
+      <div class="restaurant-facts">
+        <div class="restaurant-fact"><span>營業</span><b>12:00–18:00</b></div>
+        <div class="restaurant-fact"><span>定休</span><b>週三</b></div>
+        <div class="restaurant-fact"><span>停車</span><b>有</b></div>
+        <div class="restaurant-fact"><span>價位</span><b>約 ¥1,000–1,999</b></div>
+      </div>
+      <div class="restaurant-actions">
+        <a href="https://www.google.com/maps/search/?api=1&query=Coral+Days+Cafe+Okinawa" target="_blank" rel="noopener">導航</a>
+        <a href="https://www.instagram.com/coraldays.okinawa" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+
+<section class="section" id="traveldesk">
+  <div class="section-kicker">PLAN B</div>
+  <div class="section-title clean-title"><h2>下雨備案</h2><small>不用整天重排行程</small></div>
+  <div class="backup-grid">
+    <article class="backup-card"><div class="backup-day">DAY 1</div><div class="backup-title">抵達日照原路線走</div><p>SPORTS DEPO、San-A 都很好處理；ASHIBINAA 戶外比例較高，雨太大就縮短 Outlet 時間，把採買留給後面的 AEON／PARCO。</p><div class="backup-arrow">建議：不要為了 Outlet 延誤 16:00 晚餐</div></article>
+    <article class="backup-card"><div class="backup-day">DAY 2</div><div class="backup-title">保留美麗海，縮短古宇利島</div><p>水族館本身仍適合雨天。若風雨明顯，古宇利大橋與海灘拍照體驗會大幅下降，可把時間留在水族館，或提早回程喝咖啡。</p><div class="backup-arrow">優先順序：美麗海 ＞ 午餐 ＞ 古宇利 ＞ 咖啡</div></article>
+    <article class="backup-card"><div class="backup-day">DAY 3</div><div class="backup-title">直接變成室內購物日</div><p>玉泉洞後若雨勢大，美國村戶外散步縮短，改把時間集中在 AEON Rycom 或 PARCO CITY，再去 Don Quijote。</p><div class="backup-arrow">雨天最穩的一天：大型商場都已在原路線</div></article>
+    <article class="backup-card"><div class="backup-day">DAY 4</div><div class="backup-title">瀨長島縮時，市區拉長</div><p>瀨長島最吃海景與戶外氣氛，雨天可縮短；午餐改お魚センター後，再視雨勢決定波上宮與首里城停留時間，提早往新都心。</p><div class="backup-arrow">17:00 焼肉きんぐ不要動，前面景點彈性調整</div></article>
+    <article class="backup-card"><div class="backup-day">DAY 5</div><div class="backup-title">雨天不影響主線</div><p>核心只有還車與機場。雨勢大時反而要多抓上下行李、加油與接駁時間，08:30 出發不要再往後延。</p><div class="backup-arrow">優先：準時還車 ＞ 機場報到 ＞ 免稅採買</div></article>
+  </div>
+
+  <div style="height:24px"></div>
+  <div class="section-kicker">RESERVATION DESK</div>
+  <div class="section-title clean-title"><h2>預約中心</h2><small>狀態一眼看懂</small></div>
+  <div class="reserve-list">
+    <div class="reserve-row"><div><div class="reserve-name">10/10 16:00｜お肉の一心</div><div class="reserve-sub">官方只收線上預約，最晚來店前 6 小時。</div></div><div class="reserve-right"><span class="reserve-state">建議先訂</span><a class="reserve-link" href="https://www.tablecheck.com/ja/isshin-okinawa" target="_blank" rel="noopener">開啟預約 ↗</a></div></div>
+    <div class="reserve-row"><div><div class="reserve-name">10/11 午餐｜TAMAYA</div><div class="reserve-sub">店家不接受預約，22 席；以現場候位為主。</div></div><div class="reserve-right"><span class="reserve-state no">不可預約</span></div></div>
+    <div class="reserve-row"><div><div class="reserve-name">10/11 午餐｜翡翠</div><div class="reserve-sub">若選阿古豬涮涮鍋，建議把午餐時間固定下來。</div></div><div class="reserve-right"><span class="reserve-state">可線上訂</span><a class="reserve-link" href="https://www.tablecheck.com/ja/shabushabu-hisui" target="_blank" rel="noopener">開啟預約 ↗</a></div></div>
+    <div class="reserve-row"><div><div class="reserve-name">10/11 19:00｜晚餐候選</div><div class="reserve-sub">琉球の牛／燒肉神社・宮崎牛：目前尚未鎖定店名與分店。</div></div><div class="reserve-right"><span class="reserve-state warn">分店未確認</span></div></div>
+    <div class="reserve-row"><div><div class="reserve-name">10/12 19:00｜鶴亀合戦</div><div class="reserve-sub">行程只有名稱，尚未確認正式店名／分店；地圖也因此沒有硬塞定位。</div></div><div class="reserve-right"><span class="reserve-state warn">定位未確認</span></div></div>
+    <div class="reserve-row"><div><div class="reserve-name">10/13 午餐｜糸滿漁民食堂</div><div class="reserve-sub">週二定休，10/13 無法用餐；已改推薦道の駅いとまん・お魚センター。</div></div><div class="reserve-right"><span class="reserve-state warn">當日休店</span></div></div>
+    <div class="reserve-row"><div><div class="reserve-name">10/13 17:00｜焼肉きんぐ 那覇新都心店</div><div class="reserve-sub">100 分鐘吃到飽；17:00 為平日開店時間。</div></div><div class="reserve-right"><span class="reserve-state">建議先訂</span><a class="reserve-link" href="https://www.yakiniku-king.jp/shop/2107" target="_blank" rel="noopener">店舖／預約 ↗</a></div></div>
+  </div>
+</section>
 
 <section class="section" id="savings">
   <div class="section-kicker">SAVE MORE</div>
@@ -1270,7 +1559,7 @@ body{background:var(--page)}
   <div class="section-title clean-title"><h2>旅行快速入口</h2><small>常用功能</small></div>
   <div class="quick-grid clean-quick">
     <a class="quick" href="#spots"><b>🌺 景點導覽</b><span>先看景點特色與停留重點</span></a>
-    <a class="quick" href="#translate"><b>🗣️ 中日翻譯</b><span>語音辨識・翻譯・朗讀</span></a>
+    <a class="quick" href="#restaurants"><b>🍽️ 餐廳攻略</b><span>必點・預約・價位</span></a>
     <a class="quick" href="https://churaumi.okinawa/tc/" target="_blank" rel="noopener"><b>🐠 美麗海官方</b><span>當日公告與展示資訊</span></a>
     <a class="quick" href="https://oki-park.jp/shurijo/" target="_blank" rel="noopener"><b>🏯 首里城官方</b><span>復元與開放最新資訊</span></a>
   </div>
@@ -2229,6 +2518,53 @@ window.addEventListener("DOMContentLoaded",()=>{
 
   if(!SpeechRecognitionCtor){
     setStatus("目前瀏覽器未提供網頁語音辨識；可使用文字翻譯＋朗讀。建議以 Safari/Chrome 實機測試。",false);
+  }
+})();
+</script>
+
+
+<script>
+(() => {
+  const days = {
+    1:{date:"10/10",title:"DAY 1｜抵達沖繩",route:"機場 → 取車 → ASHIBINAA → SPORTS DEPO → お肉の一心 → San-A",
+       time:"15:00 取車／16:00 晚餐",alert:"抵達後時間較緊，Outlet 不要逛太久"},
+    2:{date:"10/11",title:"DAY 2｜北部一日",route:"美麗海 → 午餐 → 古宇利島 → 咖啡 → 晚餐",
+       time:"07:00 出發／09:00 水族館",alert:"週日北部車流＋古宇利停車，午餐不要拖太晚"},
+    3:{date:"10/12",title:"DAY 3｜玉泉洞＋購物",route:"玉泉洞 → 泊いゆまち → A&W → 美國村 → Mall / Donki → 晚餐",
+       time:"09:00 玉泉洞／19:00 晚餐",alert:"AEON 與 PARCO 不需要兩個都硬逛，依體力二選一"},
+    4:{date:"10/13",title:"DAY 4｜南部＋那霸",route:"お魚センター → 瀨長島 → 波上宮 → 首里城 → 焼肉きんぐ",
+       time:"11:30 午餐／17:00 燒肉",alert:"糸滿漁民食堂週二休；已改お魚センター"},
+    5:{date:"10/14",title:"DAY 5｜還車回台",route:"住宿 → 加油／整理 → OTS 還車 → 那霸機場",
+       time:"08:30 出發／09:00 還車",alert:"還車後還有接駁＋報到＋安檢，早上不要加景點"}
+  };
+
+  const now = new Date();
+  const y=now.getFullYear(), m=now.getMonth()+1, d=now.getDate();
+  let active=1, kicker="NEXT TRIP DAY";
+
+  if(y===2026 && m===10 && d>=10 && d<=14){
+    active=d-9;
+    kicker="TODAY · "+days[active].date;
+  }else if(y===2026 && m===10 && d>14){
+    active=5;
+    kicker="TRIP ARCHIVE";
+  }else{
+    active=1;
+    kicker="NEXT TRIP DAY";
+  }
+
+  const info=days[active];
+  const set=(id,val)=>{const el=document.getElementById(id); if(el) el.textContent=val;};
+  set("todayKicker",kicker);
+  set("todayTitle",info.title);
+  set("todayBadge",info.date);
+  set("todayRoute",info.route);
+  set("todayTime",info.time);
+  set("todayAlert",info.alert);
+
+  if(y===2026 && m===10 && d>=10 && d<=14){
+    const btn=document.querySelectorAll(".day-chip")[active-1];
+    if(btn && typeof setDay==="function") setDay(active,btn);
   }
 })();
 </script>
