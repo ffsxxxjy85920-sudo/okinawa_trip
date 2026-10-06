@@ -607,6 +607,113 @@ body{background:var(--page)}
   .expense-field.full,.expense-add{grid-column:1}
 }
 
+
+/* ===== Split bill upgrade v8 ===== */
+.people-card{margin-top:14px;padding:14px;border:1px solid #e2eae9;border-radius:16px;background:#fafcfc}
+.people-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px}
+.people-head b{font-size:12px;color:#28484d}
+.people-add{display:flex;gap:7px}
+.people-add input{flex:1;min-width:0;border:1px solid #dce7e5;border-radius:11px;background:#fff;min-height:42px;padding:8px 10px;font-size:16px}
+.people-add button{min-width:70px;border:0;border-radius:11px;background:#087f8c;color:#fff;font-size:10px;font-weight:1000}
+.people-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.person-chip{display:inline-flex;align-items:center;gap:6px;padding:7px 9px;border-radius:999px;background:#edf6f5;border:1px solid #dce9e7;font-size:10px;font-weight:900;color:#49666a}
+.person-chip button{border:0;background:transparent;color:#9a6d6d;padding:0;font-size:11px}
+.split-box{grid-column:1/-1;border:1px solid #e2eae9;border-radius:14px;background:#fafcfc;padding:11px}
+.split-title{font-size:9px;font-weight:1000;color:#708488;margin-bottom:7px}
+.member-checks{display:flex;flex-wrap:wrap;gap:7px}
+.member-check{display:flex;align-items:center;gap:6px;padding:7px 9px;border-radius:999px;background:#fff;border:1px solid #dfe9e7;font-size:10px;font-weight:800;color:#4f686c}
+.member-check input{accent-color:#087f8c}
+.balance-card{margin-top:14px;border-top:1px solid #e8efee;padding-top:13px}
+.balance-card h3{margin:0 0 9px;font-size:13px;color:#294a4f}
+.balance-grid{display:grid;grid-template-columns:1fr;gap:7px}
+.balance-row{display:grid;grid-template-columns:1fr auto;gap:9px;align-items:center;padding:9px 10px;border-radius:11px;background:#f6f9f9;border:1px solid #e6edec}
+.balance-name{font-size:11px;font-weight:1000;color:#294a4f}
+.balance-sub{font-size:9px;color:#819295;margin-top:2px}
+.balance-net{font-size:11px;font-weight:1000}
+.balance-net.pos{color:#087f8c}
+.balance-net.neg{color:#a46464}
+.settle-list{display:grid;gap:7px;margin-top:10px}
+.settle-row{padding:9px 10px;border-radius:11px;background:#fff8ec;border:1px solid #f0dfbd;font-size:10px;line-height:1.6;color:#6d593a}
+.split-summary{margin-top:7px;font-size:9px;color:#819295;line-height:1.5}
+
+
+/* ===== Voice translator v9 ===== */
+.translate-card{
+  background:#fff;border:1px solid var(--hair);border-radius:22px;padding:16px;
+}
+.lang-toggle{
+  display:grid;grid-template-columns:1fr 44px 1fr;gap:8px;align-items:center;margin-bottom:13px;
+}
+.lang-side{
+  min-height:44px;border:1px solid #dfe9e7;border-radius:12px;background:#f7faf9;
+  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:1000;color:#35575c;
+}
+.lang-swap{
+  min-height:44px;border:1px solid #dfe9e7;border-radius:12px;background:#fff;
+  font-size:18px;color:#6c8589;font-weight:1000;cursor:pointer;
+}
+.voice-status{
+  margin:8px 0 12px;padding:9px 10px;border-radius:11px;background:#f5f8f8;
+  border:1px solid #e4eceb;font-size:10px;line-height:1.55;color:#62777b;
+}
+.voice-status.listening{
+  background:#edf8f5;border-color:#d3ebe5;color:#286257;
+}
+.voice-grid{display:grid;grid-template-columns:1fr;gap:10px}
+.voice-panel{
+  border:1px solid #e2eae9;border-radius:16px;background:#fbfdfd;padding:12px;
+}
+.voice-label{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:7px;
+  font-size:10px;font-weight:1000;color:#667d80;
+}
+.voice-text{
+  width:100%;box-sizing:border-box;min-height:108px;resize:vertical;
+  border:0;background:transparent;outline:none;color:#203f44;font-size:17px;line-height:1.6;
+  font-family:inherit;
+}
+.voice-result{
+  min-height:108px;font-size:18px;line-height:1.65;color:#183d43;white-space:pre-wrap;
+}
+.voice-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.voice-btn{
+  min-height:46px;border-radius:13px;border:1px solid #dce8e6;background:#f4f8f8;
+  color:#466469;font-size:11px;font-weight:1000;cursor:pointer;
+}
+.voice-btn.primary{
+  background:#087f8c;color:#fff;border-color:#087f8c;
+}
+.voice-btn.recording{
+  background:#b94f4f;border-color:#b94f4f;color:#fff;
+}
+.voice-btn:disabled{opacity:.5;cursor:not-allowed}
+.auto-speak{
+  display:flex;align-items:center;gap:8px;margin-top:10px;font-size:10px;color:#687e82;
+}
+.auto-speak input{accent-color:#087f8c}
+.phrase-title{
+  margin-top:16px;margin-bottom:8px;font-size:10px;font-weight:1000;color:#6f8487;
+}
+.phrase-scroll{
+  display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding-bottom:3px;
+}
+.phrase-scroll::-webkit-scrollbar{display:none}
+.phrase{
+  white-space:nowrap;padding:8px 10px;border-radius:999px;border:1px solid #dfe9e7;
+  background:#f7faf9;color:#4d686c;font-size:10px;font-weight:900;cursor:pointer;
+}
+.translate-note{
+  margin-top:12px;padding:10px 11px;border-radius:12px;background:#fff8ec;
+  border:1px solid #f0dfbd;font-size:9.5px;line-height:1.65;color:#6d5a3a;
+}
+.translation-fallback{
+  margin-top:8px;font-size:10px;color:#7a8d90;line-height:1.55;
+}
+.translation-fallback a{color:#08717a;font-weight:900}
+@media(min-width:640px){
+  .voice-grid{grid-template-columns:1fr 1fr}
+}
+
 </style>
 
 <link rel="manifest" href="./manifest.webmanifest">
@@ -946,14 +1053,88 @@ body{background:var(--page)}
 </section>
 
 
+
+<section class="section" id="translate">
+  <div class="section-kicker">LIVE TRANSLATOR</div>
+  <div class="section-title clean-title">
+    <h2>中日即時語音翻譯</h2>
+    <small>說話・翻譯・朗讀</small>
+  </div>
+
+  <div class="translate-card">
+    <div class="lang-toggle">
+      <div class="lang-side" id="sourceLangLabel">🇹🇼 中文</div>
+      <button class="lang-swap" id="swapLang" type="button" aria-label="交換語言">⇄</button>
+      <div class="lang-side" id="targetLangLabel">🇯🇵 日本語</div>
+    </div>
+
+    <div class="voice-status" id="voiceStatus">
+      點「開始說話」後講一句話；說完會自動辨識並翻譯。
+    </div>
+
+    <div class="voice-grid">
+      <div class="voice-panel">
+        <div class="voice-label">
+          <span id="sourceTitle">中文原文</span>
+          <span>🎙️</span>
+        </div>
+        <textarea class="voice-text" id="sourceText" placeholder="也可以直接打字，例如：請問有停車場嗎？"></textarea>
+      </div>
+
+      <div class="voice-panel">
+        <div class="voice-label">
+          <span id="targetTitle">日文翻譯</span>
+          <span>🔊</span>
+        </div>
+        <div class="voice-result" id="translatedText">翻譯結果會顯示在這裡。</div>
+      </div>
+    </div>
+
+    <div class="voice-actions">
+      <button class="voice-btn primary" id="micBtn" type="button">🎙️ 開始說話</button>
+      <button class="voice-btn" id="translateBtn" type="button">翻譯文字</button>
+      <button class="voice-btn" id="speakBtn" type="button">🔊 朗讀翻譯</button>
+      <button class="voice-btn" id="clearTranslate" type="button">清除</button>
+    </div>
+
+    <label class="auto-speak">
+      <input id="autoSpeak" type="checkbox" checked>
+      翻譯完成後自動朗讀
+    </label>
+
+    <div class="phrase-title">常用旅遊句</div>
+    <div class="phrase-scroll" id="phraseList"></div>
+
+    <div class="translation-fallback" id="translationFallback"></div>
+
+    <div class="translate-note">
+      💡 語音辨識需要瀏覽器允許麥克風權限；翻譯需要網路。若手機瀏覽器不支援語音辨識，
+      仍可直接輸入文字使用翻譯與朗讀。公共場所使用自動朗讀時請注意音量。
+    </div>
+  </div>
+</section>
+
 <section class="section" id="expenses">
   <div class="section-kicker">TRIP WALLET</div>
   <div class="section-title clean-title">
     <h2>旅行記帳</h2>
-    <small>只存在這台裝置</small>
+    <small>多人分帳・只存在這台裝置</small>
   </div>
 
   <div class="expense-card">
+    
+    <div class="people-card">
+      <div class="people-head">
+        <b>👥 分帳成員</b>
+        <span style="font-size:9px;color:#87989a">至少保留 1 人</span>
+      </div>
+      <div class="people-add">
+        <input id="newMemberName" maxlength="20" placeholder="輸入旅伴名字">
+        <button id="addMember" type="button">＋ 加入</button>
+      </div>
+      <div class="people-list" id="peopleList"></div>
+    </div>
+
     <div class="expense-summary">
       <div class="money-stat">
         <span>日圓支出</span>
@@ -1007,10 +1188,36 @@ body{background:var(--page)}
         <input class="expense-input" id="expenseAmount" inputmode="decimal" type="number" min="0" step="1" placeholder="0" required>
       </div>
 
+      
+      <div class="expense-field">
+        <label for="expensePayer">付款人</label>
+        <select class="expense-select" id="expensePayer"></select>
+      </div>
+
+      <div class="expense-field">
+        <label for="expenseSplitMode">分帳方式</label>
+        <select class="expense-select" id="expenseSplitMode">
+          <option value="equal">平均分攤</option>
+        </select>
+      </div>
+
+      <div class="split-box">
+        <div class="split-title">一起分這筆的人</div>
+        <div class="member-checks" id="splitMembers"></div>
+        <div class="split-summary" id="splitPreview"></div>
+      </div>
+
       <button class="expense-add" type="submit">＋ 加入這筆支出</button>
     </form>
 
     <div class="expense-list" id="expenseList"></div>
+
+    
+    <div class="balance-card">
+      <h3>分帳結果</h3>
+      <div class="balance-grid" id="balanceGrid"></div>
+      <div class="settle-list" id="settleList"></div>
+    </div>
 
     <div class="expense-actions">
       <button class="secondary-action" id="exportExpense" type="button">匯出 CSV</button>
@@ -1063,7 +1270,7 @@ body{background:var(--page)}
   <div class="section-title clean-title"><h2>旅行快速入口</h2><small>常用功能</small></div>
   <div class="quick-grid clean-quick">
     <a class="quick" href="#spots"><b>🌺 景點導覽</b><span>先看景點特色與停留重點</span></a>
-    <a class="quick" href="#savings"><b>💴 優惠與匯率</b><span>Coupon・JPY→TWD</span></a>
+    <a class="quick" href="#translate"><b>🗣️ 中日翻譯</b><span>語音辨識・翻譯・朗讀</span></a>
     <a class="quick" href="https://churaumi.okinawa/tc/" target="_blank" rel="noopener"><b>🐠 美麗海官方</b><span>當日公告與展示資訊</span></a>
     <a class="quick" href="https://oki-park.jp/shurijo/" target="_blank" rel="noopener"><b>🏯 首里城官方</b><span>復元與開放最新資訊</span></a>
   </div>
@@ -1091,8 +1298,8 @@ body{background:var(--page)}
 
 <nav class="bottom" style="grid-template-columns:repeat(5,1fr)">
   <a href="#days"><span class="ico">📅</span>行程</a>
-  <a href="#spots"><span class="ico">🌺</span>景點</a>
   <a href="#savings"><span class="ico">🏷️</span>優惠</a>
+  <a href="#translate"><span class="ico">🗣️</span>翻譯</a>
   <a href="#expenses"><span class="ico">💰</span>記帳</a>
   <a href="#map"><span class="ico">🗺️</span>地圖</a>
 </nav>
@@ -1417,13 +1624,45 @@ window.addEventListener("DOMContentLoaded",()=>{
 (() => {
   const FX_URL = "https://open.er-api.com/v6/latest/JPY";
   const FX_CACHE_KEY = "okinawa2026_fx_jpy_twd";
-  const EXPENSE_KEY = "okinawa2026_expenses_v1";
+  const EXPENSE_KEY = "okinawa2026_expenses_v2";
+  const MEMBER_KEY = "okinawa2026_members_v1";
 
   let fxRate = 0;
   let fxUpdatedText = "";
 
   const moneyJPY = n => "¥" + Math.round(Number(n || 0)).toLocaleString("ja-JP");
   const moneyTWD = n => "NT$" + Math.round(Number(n || 0)).toLocaleString("zh-TW");
+
+  function escapeHtml(value){
+    return String(value ?? "").replace(/[&<>"']/g, ch=>({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+    }[ch]));
+  }
+
+  function getMembers(){
+    try{
+      const data = JSON.parse(localStorage.getItem(MEMBER_KEY) || "[]");
+      if(Array.isArray(data) && data.length) return data;
+    }catch(e){}
+    const defaults=[{id:"me",name:"我"}];
+    localStorage.setItem(MEMBER_KEY, JSON.stringify(defaults));
+    return defaults;
+  }
+
+  function saveMembers(items){
+    localStorage.setItem(MEMBER_KEY, JSON.stringify(items));
+  }
+
+  function getExpenses(){
+    try{
+      const data = JSON.parse(localStorage.getItem(EXPENSE_KEY) || "[]");
+      return Array.isArray(data) ? data : [];
+    }catch(e){ return []; }
+  }
+
+  function saveExpenses(items){
+    localStorage.setItem(EXPENSE_KEY, JSON.stringify(items));
+  }
 
   function updateConverter(){
     const yen = Math.max(0, Number(document.getElementById("yenInput")?.value || 0));
@@ -1436,9 +1675,7 @@ window.addEventListener("DOMContentLoaded",()=>{
     fxUpdatedText = updated || "";
     const rateText = document.getElementById("fxRateText");
     const updatedText = document.getElementById("fxUpdated");
-    if(rateText){
-      rateText.textContent = fxRate ? `¥1 ≈ NT$${fxRate.toFixed(4)}` : "匯率暫時無法取得";
-    }
+    if(rateText) rateText.textContent = fxRate ? `¥1 ≈ NT$${fxRate.toFixed(4)}` : "匯率暫時無法取得";
     if(updatedText){
       updatedText.innerHTML = fxRate
         ? `資料更新：${fxUpdatedText || "最新可用資料"} ${cached ? '<span class="offline-pill">使用上次匯率</span>' : ""}`
@@ -1453,27 +1690,22 @@ window.addEventListener("DOMContentLoaded",()=>{
     let cached = null;
     try{ cached = cachedRaw ? JSON.parse(cachedRaw) : null; }catch(e){}
 
-    if(!force && cached && cached.rate && cached.savedAt && (Date.now()-cached.savedAt)<6*60*60*1000){
+    if(!force && cached?.rate && cached?.savedAt && (Date.now()-cached.savedAt)<6*60*60*1000){
       setFxUI(cached.rate, cached.updated || "上次下載", true);
     }
 
     const btn = document.getElementById("fxRefresh");
     if(btn) btn.disabled = true;
-
     try{
       const response = await fetch(FX_URL, {cache:"no-store"});
       if(!response.ok) throw new Error("rate request failed");
       const data = await response.json();
       const rate = Number(data?.rates?.TWD);
       if(!rate) throw new Error("TWD rate missing");
-
       const updated = data.time_last_update_utc
         ? new Date(data.time_last_update_utc).toLocaleString("zh-TW", {timeZone:"Asia/Taipei"})
         : "最新可用資料";
-
-      localStorage.setItem(FX_CACHE_KEY, JSON.stringify({
-        rate, updated, savedAt:Date.now()
-      }));
+      localStorage.setItem(FX_CACHE_KEY, JSON.stringify({rate, updated, savedAt:Date.now()}));
       setFxUI(rate, updated, false);
     }catch(err){
       if(cached?.rate) setFxUI(cached.rate, cached.updated || "上次下載", true);
@@ -1483,31 +1715,140 @@ window.addEventListener("DOMContentLoaded",()=>{
     }
   }
 
-  function getExpenses(){
-    try{
-      const data = JSON.parse(localStorage.getItem(EXPENSE_KEY) || "[]");
-      return Array.isArray(data) ? data : [];
-    }catch(e){ return []; }
-  }
-
-  function saveExpenses(items){
-    localStorage.setItem(EXPENSE_KEY, JSON.stringify(items));
-  }
-
   function toTWD(item){
     if(item.currency === "TWD") return Number(item.amount || 0);
     const rate = Number(item.rate || fxRate || 0);
     return Number(item.amount || 0) * rate;
   }
 
+  function renderMembers(){
+    const members=getMembers();
+    const list=document.getElementById("peopleList");
+    const payer=document.getElementById("expensePayer");
+    const split=document.getElementById("splitMembers");
+
+    if(list){
+      list.innerHTML=members.map(m=>`
+        <span class="person-chip">${escapeHtml(m.name)}
+        ${members.length>1 ? `<button type="button" data-remove-member="${m.id}" aria-label="移除 ${escapeHtml(m.name)}">×</button>` : ""}
+        </span>`).join("");
+      list.querySelectorAll("[data-remove-member]").forEach(btn=>{
+        btn.addEventListener("click",()=>{
+          const id=btn.dataset.removeMember;
+          const next=getMembers().filter(m=>m.id!==id);
+          saveMembers(next.length?next:[{id:"me",name:"我"}]);
+          renderMembers();
+          renderExpenses();
+        });
+      });
+    }
+
+    if(payer){
+      const current=payer.value;
+      payer.innerHTML=members.map(m=>`<option value="${m.id}">${escapeHtml(m.name)}</option>`).join("");
+      if(members.some(m=>m.id===current)) payer.value=current;
+    }
+
+    if(split){
+      split.innerHTML=members.map(m=>`
+        <label class="member-check">
+          <input type="checkbox" value="${m.id}" checked>
+          ${escapeHtml(m.name)}
+        </label>`).join("");
+      split.querySelectorAll("input").forEach(x=>x.addEventListener("change",updateSplitPreview));
+    }
+    updateSplitPreview();
+  }
+
+  function updateSplitPreview(){
+    const amount=Number(document.getElementById("expenseAmount")?.value || 0);
+    const checked=[...document.querySelectorAll("#splitMembers input:checked")];
+    const preview=document.getElementById("splitPreview");
+    if(!preview) return;
+    if(!checked.length){
+      preview.textContent="請至少選 1 位分帳成員";
+      return;
+    }
+    if(!amount){
+      preview.textContent=`目前 ${checked.length} 人一起分`;
+      return;
+    }
+    const each=amount/checked.length;
+    const currency=document.getElementById("expenseCurrency")?.value || "JPY";
+    preview.textContent=`${checked.length} 人平均，每人約 ${currency==="JPY" ? moneyJPY(each) : moneyTWD(each)}`;
+  }
+
+  function computeBalances(items){
+    const members=getMembers();
+    const result={};
+    members.forEach(m=>result[m.id]={name:m.name,paid:0,owed:0,net:0});
+
+    items.forEach(item=>{
+      const amountTwd=toTWD(item);
+      if(!result[item.payerId]) return;
+      const splitIds=(item.splitIds||[]).filter(id=>result[id]);
+      if(!splitIds.length) return;
+      result[item.payerId].paid += amountTwd;
+      const each=amountTwd/splitIds.length;
+      splitIds.forEach(id=>result[id].owed += each);
+    });
+
+    Object.values(result).forEach(x=>x.net=x.paid-x.owed);
+    return result;
+  }
+
+  function computeSettlements(balanceObj){
+    const creditors=[], debtors=[];
+    Object.entries(balanceObj).forEach(([id,b])=>{
+      if(b.net>0.5) creditors.push({id,name:b.name,amt:b.net});
+      else if(b.net<-0.5) debtors.push({id,name:b.name,amt:-b.net});
+    });
+    creditors.sort((a,b)=>b.amt-a.amt);
+    debtors.sort((a,b)=>b.amt-a.amt);
+
+    const result=[];
+    let i=0,j=0;
+    while(i<debtors.length && j<creditors.length){
+      const amount=Math.min(debtors[i].amt,creditors[j].amt);
+      if(amount>0.5) result.push({from:debtors[i].name,to:creditors[j].name,amount});
+      debtors[i].amt-=amount;
+      creditors[j].amt-=amount;
+      if(debtors[i].amt<=0.5) i++;
+      if(creditors[j].amt<=0.5) j++;
+    }
+    return result;
+  }
+
+  function renderBalances(items){
+    const grid=document.getElementById("balanceGrid");
+    const settle=document.getElementById("settleList");
+    if(!grid || !settle) return;
+    const balances=computeBalances(items);
+    const rows=Object.values(balances);
+
+    grid.innerHTML=rows.map(b=>`
+      <div class="balance-row">
+        <div>
+          <div class="balance-name">${escapeHtml(b.name)}</div>
+          <div class="balance-sub">已付 ${moneyTWD(b.paid)} · 應付 ${moneyTWD(b.owed)}</div>
+        </div>
+        <div class="balance-net ${b.net>=0?'pos':'neg'}">${b.net>=0?'+':''}${moneyTWD(b.net)}</div>
+      </div>`).join("");
+
+    const settlements=computeSettlements(balances);
+    settle.innerHTML=settlements.length
+      ? settlements.map(s=>`<div class="settle-row"><b>${escapeHtml(s.from)}</b> → <b>${escapeHtml(s.to)}</b>：${moneyTWD(s.amount)}</div>`).join("")
+      : '<div class="empty-expense">目前沒有需要互相補款的差額。</div>';
+  }
+
   function renderExpenses(){
     const list = document.getElementById("expenseList");
     if(!list) return;
-
+    const members=getMembers();
+    const memberMap=Object.fromEntries(members.map(m=>[m.id,m.name]));
     const items = getExpenses();
-    const totalJPY = items
-      .filter(x=>x.currency==="JPY")
-      .reduce((s,x)=>s+Number(x.amount||0),0);
+
+    const totalJPY = items.filter(x=>x.currency==="JPY").reduce((s,x)=>s+Number(x.amount||0),0);
     const totalTWD = items.reduce((s,x)=>s+toTWD(x),0);
 
     const sumJPY = document.getElementById("sumJPY");
@@ -1516,18 +1857,22 @@ window.addEventListener("DOMContentLoaded",()=>{
     if(sumTWD) sumTWD.textContent = moneyTWD(totalTWD);
 
     if(!items.length){
-      list.innerHTML = '<div class="empty-expense">還沒有支出紀錄。第一筆從餐飲、購物或交通開始記吧。</div>';
+      list.innerHTML = '<div class="empty-expense">還沒有支出紀錄。新增第一筆後，下面會自動計算分帳結果。</div>';
+      renderBalances(items);
       return;
     }
 
     list.innerHTML = items.slice().reverse().map(item=>{
       const original = item.currency==="JPY" ? moneyJPY(item.amount) : moneyTWD(item.amount);
       const twd = moneyTWD(toTWD(item));
+      const payerName=memberMap[item.payerId] || "未設定";
+      const splitNames=(item.splitIds||[]).map(id=>memberMap[id]).filter(Boolean);
       return `
         <div class="expense-row">
           <div class="expense-main">
             <div class="expense-title">${escapeHtml(item.name || item.category)}</div>
             <div class="expense-meta">${escapeHtml(item.day)} · ${escapeHtml(item.category)} · ${escapeHtml(item.currency)}</div>
+            <div class="expense-meta">付款：${escapeHtml(payerName)} · 分帳：${escapeHtml(splitNames.join("、") || "未設定")}</div>
           </div>
           <div class="expense-amount">
             <b>${original}</b>
@@ -1544,21 +1889,21 @@ window.addEventListener("DOMContentLoaded",()=>{
         renderExpenses();
       });
     });
-  }
 
-  function escapeHtml(value){
-    return String(value ?? "").replace(/[&<>"']/g, ch=>({
-      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
-    }[ch]));
+    renderBalances(items);
   }
 
   function exportCSV(){
     const items = getExpenses();
     if(!items.length) return;
+    const members=getMembers();
+    const memberMap=Object.fromEntries(members.map(m=>[m.id,m.name]));
     const rows = [
-      ["Day","Category","Name","Currency","Amount","JPY_to_TWD_Rate","Estimated_TWD"],
+      ["Day","Category","Name","Currency","Amount","Payer","Split_With","JPY_to_TWD_Rate","Estimated_TWD"],
       ...items.map(x=>[
         x.day,x.category,x.name,x.currency,x.amount,
+        memberMap[x.payerId]||"",
+        (x.splitIds||[]).map(id=>memberMap[id]).filter(Boolean).join("|"),
         x.currency==="JPY" ? (x.rate || "") : "",
         Math.round(toTWD(x))
       ])
@@ -1572,15 +1917,36 @@ window.addEventListener("DOMContentLoaded",()=>{
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href=url;
-    a.download="okinawa-trip-expenses.csv";
+    a.download="okinawa-trip-expenses-split.csv";
     document.body.appendChild(a);
     a.click();
     a.remove();
     setTimeout(()=>URL.revokeObjectURL(url),500);
   }
 
+  document.getElementById("addMember")?.addEventListener("click",()=>{
+    const input=document.getElementById("newMemberName");
+    const name=(input?.value||"").trim();
+    if(!name) return;
+    const members=getMembers();
+    members.push({id:"m"+Date.now(),name});
+    saveMembers(members);
+    if(input) input.value="";
+    renderMembers();
+    renderExpenses();
+  });
+
+  document.getElementById("newMemberName")?.addEventListener("keydown",e=>{
+    if(e.key==="Enter"){
+      e.preventDefault();
+      document.getElementById("addMember")?.click();
+    }
+  });
+
   document.getElementById("yenInput")?.addEventListener("input", updateConverter);
   document.getElementById("fxRefresh")?.addEventListener("click",()=>loadFx(true));
+  document.getElementById("expenseAmount")?.addEventListener("input",updateSplitPreview);
+  document.getElementById("expenseCurrency")?.addEventListener("change",updateSplitPreview);
 
   document.getElementById("expenseForm")?.addEventListener("submit",e=>{
     e.preventDefault();
@@ -1589,8 +1955,10 @@ window.addEventListener("DOMContentLoaded",()=>{
     const name=(document.getElementById("expenseName").value || "").trim();
     const currency=document.getElementById("expenseCurrency").value;
     const amount=Number(document.getElementById("expenseAmount").value);
+    const payerId=document.getElementById("expensePayer").value;
+    const splitIds=[...document.querySelectorAll("#splitMembers input:checked")].map(x=>x.value);
 
-    if(!Number.isFinite(amount) || amount<=0) return;
+    if(!Number.isFinite(amount) || amount<=0 || !payerId || !splitIds.length) return;
 
     const items=getExpenses();
     items.push({
@@ -1598,6 +1966,9 @@ window.addEventListener("DOMContentLoaded",()=>{
       day,category,
       name:name || category,
       currency,amount,
+      payerId,
+      splitIds,
+      splitMode:"equal",
       rate:currency==="JPY" ? (fxRate || 0) : null,
       createdAt:new Date().toISOString()
     });
@@ -1605,6 +1976,7 @@ window.addEventListener("DOMContentLoaded",()=>{
     document.getElementById("expenseName").value="";
     document.getElementById("expenseAmount").value="";
     renderExpenses();
+    updateSplitPreview();
   });
 
   document.getElementById("exportExpense")?.addEventListener("click",exportCSV);
@@ -1617,8 +1989,247 @@ window.addEventListener("DOMContentLoaded",()=>{
     }
   });
 
+  renderMembers();
   renderExpenses();
   loadFx(false);
+})();
+</script>
+
+
+<script>
+(() => {
+  const SpeechRecognitionCtor = window.SpeechRecognition || window.webkitSpeechRecognition;
+  let source = "zh-TW";
+  let target = "ja";
+  let recognition = null;
+  let listening = false;
+
+  const labels = {
+    "zh-TW": {short:"🇹🇼 中文", title:"中文原文", voice:"zh-TW"},
+    "ja": {short:"🇯🇵 日本語", title:"日文原文", voice:"ja-JP"}
+  };
+
+  const phrasesZH = [
+    "請問有停車場嗎？",
+    "停車一小時多少錢？",
+    "可以刷信用卡嗎？",
+    "請問可以免稅嗎？",
+    "兩位，請問現在有位子嗎？",
+    "請不要加蔥，謝謝。",
+    "這個可以帶回台灣嗎？",
+    "請問廁所在哪裡？",
+    "可以幫我拍照嗎？",
+    "請問這班車到那霸機場嗎？"
+  ];
+
+  const phrasesJA = [
+    "駐車場はありますか？",
+    "駐車料金は1時間いくらですか？",
+    "クレジットカードは使えますか？",
+    "免税できますか？",
+    "二人ですが、今入れますか？",
+    "ネギ抜きでお願いします。",
+    "これは台湾に持ち帰れますか？",
+    "トイレはどこですか？",
+    "写真を撮ってもらえますか？",
+    "このバスは那覇空港に行きますか？"
+  ];
+
+  const $ = id => document.getElementById(id);
+
+  function escapeHtml(value){
+    return String(value ?? "").replace(/[&<>"']/g, ch=>({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+    }[ch]));
+  }
+
+  function updateLanguageUI(){
+    $("sourceLangLabel").textContent = labels[source].short;
+    $("targetLangLabel").textContent = labels[target].short;
+    $("sourceTitle").textContent = labels[source].title;
+    $("targetTitle").textContent = labels[target].title.replace("原文","翻譯");
+    $("sourceText").placeholder = source==="zh-TW"
+      ? "也可以直接打字，例如：請問有停車場嗎？"
+      : "文字入力もできます。例：駐車場はありますか？";
+    renderPhrases();
+  }
+
+  function renderPhrases(){
+    const phrases = source==="zh-TW" ? phrasesZH : phrasesJA;
+    $("phraseList").innerHTML = phrases.map(p =>
+      `<button class="phrase" type="button" data-phrase="${escapeHtml(p)}">${escapeHtml(p)}</button>`
+    ).join("");
+    $("phraseList").querySelectorAll("[data-phrase]").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        $("sourceText").value = btn.dataset.phrase || "";
+        translateText();
+      });
+    });
+  }
+
+  function setStatus(text, active=false){
+    const el=$("voiceStatus");
+    el.textContent=text;
+    el.classList.toggle("listening",active);
+  }
+
+  function stopRecognition(){
+    if(recognition && listening){
+      try{ recognition.stop(); }catch(e){}
+    }
+    listening=false;
+    $("micBtn").classList.remove("recording");
+    $("micBtn").textContent="🎙️ 開始說話";
+  }
+
+  function makeRecognition(){
+    if(!SpeechRecognitionCtor) return null;
+    const r = new SpeechRecognitionCtor();
+    r.lang = source==="zh-TW" ? "zh-TW" : "ja-JP";
+    r.interimResults = true;
+    r.continuous = false;
+    r.maxAlternatives = 1;
+
+    let finalText="";
+    r.onstart=()=>{
+      listening=true;
+      $("micBtn").classList.add("recording");
+      $("micBtn").textContent="■ 停止";
+      setStatus("正在聽… 說完一句後會自動翻譯。",true);
+    };
+    r.onresult=e=>{
+      let interim="";
+      for(let i=e.resultIndex;i<e.results.length;i++){
+        const text=e.results[i][0].transcript;
+        if(e.results[i].isFinal) finalText += text;
+        else interim += text;
+      }
+      $("sourceText").value=(finalText || interim).trim();
+    };
+    r.onerror=e=>{
+      listening=false;
+      $("micBtn").classList.remove("recording");
+      $("micBtn").textContent="🎙️ 開始說話";
+      const msg = e.error==="not-allowed"
+        ? "麥克風權限未開啟，請允許瀏覽器使用麥克風。"
+        : "語音辨識暫時失敗，可直接輸入文字翻譯。";
+      setStatus(msg,false);
+    };
+    r.onend=()=>{
+      listening=false;
+      $("micBtn").classList.remove("recording");
+      $("micBtn").textContent="🎙️ 開始說話";
+      const text=$("sourceText").value.trim();
+      if(text){
+        setStatus("已辨識，正在翻譯…",false);
+        translateText();
+      }else{
+        setStatus("沒有聽清楚，請再試一次。",false);
+      }
+    };
+    return r;
+  }
+
+  async function translateText(){
+    const text=$("sourceText").value.trim();
+    if(!text){
+      setStatus("請先說話或輸入文字。",false);
+      return;
+    }
+
+    stopRecognition();
+    $("translateBtn").disabled=true;
+    $("translatedText").textContent="翻譯中…";
+    $("translationFallback").innerHTML="";
+
+    const pair = source==="zh-TW" ? "zh-TW|ja" : "ja|zh-TW";
+    const endpoint = "https://api.mymemory.translated.net/get?q=" +
+      encodeURIComponent(text) + "&langpair=" + encodeURIComponent(pair);
+
+    try{
+      const res=await fetch(endpoint,{cache:"no-store"});
+      if(!res.ok) throw new Error("translation service error");
+      const data=await res.json();
+      const translated=data?.responseData?.translatedText;
+      if(!translated) throw new Error("empty translation");
+      $("translatedText").textContent=translated;
+      setStatus("翻譯完成。",false);
+      if($("autoSpeak").checked) speakTranslation();
+    }catch(err){
+      $("translatedText").textContent="翻譯服務暫時無法連線。";
+      const googleLang = source==="zh-TW" ? ["zh-TW","ja"] : ["ja","zh-TW"];
+      const url="https://translate.google.com/?sl="+googleLang[0]+"&tl="+googleLang[1]+"&text="+encodeURIComponent(text)+"&op=translate";
+      $("translationFallback").innerHTML='可改用 <a target="_blank" rel="noopener" href="'+url+'">Google 翻譯開啟這句話 ↗</a>';
+      setStatus("語音辨識可用，但翻譯服務目前連線失敗。",false);
+    }finally{
+      $("translateBtn").disabled=false;
+    }
+  }
+
+  function speakTranslation(){
+    const text=$("translatedText").textContent.trim();
+    if(!text || text==="翻譯結果會顯示在這裡。" || text==="翻譯中…") return;
+    stopRecognition();
+    if(!("speechSynthesis" in window)){
+      setStatus("這個瀏覽器不支援語音朗讀。",false);
+      return;
+    }
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = labels[target].voice;
+    utter.rate = 0.95;
+    utter.pitch = 1;
+    utter.onstart=()=>setStatus("正在朗讀翻譯…",false);
+    utter.onend=()=>setStatus("朗讀完成。",false);
+    utter.onerror=()=>setStatus("語音朗讀失敗，可直接把畫面給對方看。",false);
+    window.speechSynthesis.speak(utter);
+  }
+
+  $("swapLang").addEventListener("click",()=>{
+    stopRecognition();
+    window.speechSynthesis?.cancel?.();
+    [source,target]=[target,source];
+    const oldSource=$("sourceText").value.trim();
+    const oldTarget=$("translatedText").textContent.trim();
+    if(oldTarget && oldTarget!=="翻譯結果會顯示在這裡。" && oldTarget!=="翻譯中…" && !oldTarget.includes("無法連線")){
+      $("sourceText").value=oldTarget;
+      $("translatedText").textContent=oldSource || "翻譯結果會顯示在這裡。";
+    }
+    updateLanguageUI();
+    setStatus("語言方向已交換。",false);
+  });
+
+  $("micBtn").addEventListener("click",()=>{
+    if(listening){
+      stopRecognition();
+      return;
+    }
+    if(!SpeechRecognitionCtor){
+      setStatus("這個瀏覽器不支援網頁語音辨識；請直接輸入文字，仍可翻譯與朗讀。",false);
+      return;
+    }
+    window.speechSynthesis?.cancel?.();
+    recognition=makeRecognition();
+    try{ recognition.start(); }
+    catch(e){ setStatus("目前無法啟動麥克風，請稍後再試。",false); }
+  });
+
+  $("translateBtn").addEventListener("click",translateText);
+  $("speakBtn").addEventListener("click",speakTranslation);
+  $("clearTranslate").addEventListener("click",()=>{
+    stopRecognition();
+    window.speechSynthesis?.cancel?.();
+    $("sourceText").value="";
+    $("translatedText").textContent="翻譯結果會顯示在這裡。";
+    $("translationFallback").innerHTML="";
+    setStatus("點「開始說話」後講一句話；說完會自動辨識並翻譯。",false);
+  });
+
+  updateLanguageUI();
+
+  if(!SpeechRecognitionCtor){
+    setStatus("目前瀏覽器未提供網頁語音辨識；可使用文字翻譯＋朗讀。建議以 Safari/Chrome 實機測試。",false);
+  }
 })();
 </script>
 
