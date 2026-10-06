@@ -497,6 +497,116 @@ body{background:var(--page)}
   #tripMap{height:390px}
 }
 
+
+/* ===== Smart shopping + FX + expense tracker v7 ===== */
+.saver-grid{display:grid;grid-template-columns:1fr;gap:11px}
+.coupon-card{
+  background:#fff;border:1px solid var(--hair);border-radius:18px;padding:15px;
+  display:grid;gap:9px;
+}
+.coupon-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.coupon-brand{font-size:15px;font-weight:1000;color:#203f44}
+.coupon-badge{
+  flex:0 0 auto;padding:5px 8px;border-radius:999px;font-size:9px;font-weight:1000;
+  background:#edf7f5;color:#08717a;border:1px solid #d7ebe8;
+}
+.coupon-card p{margin:0;font-size:11px;line-height:1.65;color:#65797d}
+.coupon-note{
+  padding:8px 9px;border-radius:10px;background:#fff8eb;border:1px solid #f1dfb9;
+  font-size:10px;line-height:1.55;color:#6c5938;
+}
+.coupon-link{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:9px 10px;border-radius:11px;background:#f1f7f6;border:1px solid #dfebe9;
+  color:#08717a;font-size:10.5px;font-weight:1000;text-decoration:none;
+}
+.tax-note{
+  margin-top:12px;padding:11px 12px;border-radius:14px;background:#f5f8f8;
+  border:1px solid #e2eae9;font-size:10.5px;line-height:1.7;color:#5f7478;
+}
+.fx-card,.expense-card{
+  background:#fff;border:1px solid var(--hair);border-radius:22px;padding:16px;
+}
+.fx-head{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:13px;
+}
+.fx-rate{font-size:24px;font-weight:1000;letter-spacing:-.04em;color:#183e43}
+.fx-sub{font-size:9.5px;color:#7a8d90;margin-top:3px;line-height:1.45}
+.refresh-rate{
+  border:1px solid #dce8e6;background:#f4f8f8;color:#567074;border-radius:11px;
+  min-height:40px;padding:0 10px;font-weight:900;font-size:10px;cursor:pointer;
+}
+.converter{
+  display:grid;grid-template-columns:1fr 34px 1fr;gap:8px;align-items:end;
+}
+.money-field label,.expense-form label{
+  display:block;font-size:9px;font-weight:900;color:#718588;margin:0 0 5px;
+}
+.money-input,.expense-input,.expense-select{
+  width:100%;box-sizing:border-box;border:1px solid #dce7e5;border-radius:12px;
+  background:#fbfdfd;color:#1e3e43;min-height:44px;padding:9px 10px;font-size:16px;outline:none;
+}
+.money-input:focus,.expense-input:focus,.expense-select:focus{
+  border-color:#63aaa9;box-shadow:0 0 0 3px rgba(8,127,140,.08);
+}
+.swap-arrow{
+  height:44px;display:flex;align-items:center;justify-content:center;font-size:17px;color:#8aa0a2;
+}
+.fx-foot{
+  margin-top:9px;font-size:9.5px;line-height:1.55;color:#829396;
+}
+.expense-summary{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:13px;
+}
+.money-stat{
+  padding:12px;border-radius:14px;background:#f5f8f8;border:1px solid #e5edec;
+}
+.money-stat span{display:block;font-size:9px;color:#778b8e;font-weight:800;margin-bottom:3px}
+.money-stat b{font-size:18px;color:#24464b;letter-spacing:-.025em}
+.expense-form{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.expense-field.full{grid-column:1/-1}
+.expense-add{
+  grid-column:1/-1;min-height:44px;border:0;border-radius:12px;
+  background:#087f8c;color:#fff;font-weight:1000;font-size:12px;cursor:pointer;
+}
+.expense-list{margin-top:14px;border-top:1px solid #e8efee}
+.expense-row{
+  display:grid;grid-template-columns:1fr auto;gap:9px;padding:11px 0;border-bottom:1px solid #edf2f1;
+}
+.expense-main{min-width:0}
+.expense-title{
+  font-size:12px;font-weight:900;color:#26464b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.expense-meta{font-size:9.5px;color:#7d8f92;margin-top:3px;line-height:1.5}
+.expense-amount{text-align:right}
+.expense-amount b{display:block;font-size:12px;color:#24464b}
+.expense-amount span{font-size:9px;color:#87989a}
+.expense-delete{
+  border:0;background:transparent;color:#9c7777;font-size:9px;padding:3px 0 0;cursor:pointer;
+}
+.empty-expense{
+  padding:16px 0 4px;text-align:center;color:#8a999b;font-size:10.5px;
+}
+.expense-actions{display:flex;gap:8px;margin-top:12px}
+.secondary-action{
+  flex:1;min-height:40px;border:1px solid #dfe9e7;border-radius:11px;
+  background:#f7faf9;color:#587074;font-size:10px;font-weight:900;cursor:pointer;
+}
+.secondary-action.danger{color:#8e6262}
+.offline-pill{
+  display:inline-block;margin-top:4px;padding:3px 6px;border-radius:999px;
+  background:#fff3e2;color:#8b6427;font-size:8px;font-weight:900;
+}
+@media(min-width:640px){
+  .saver-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:390px){
+  .converter{grid-template-columns:1fr}
+  .swap-arrow{height:auto;transform:rotate(90deg)}
+  .expense-form{grid-template-columns:1fr}
+  .expense-field.full,.expense-add{grid-column:1}
+}
+
 </style>
 
 <link rel="manifest" href="./manifest.webmanifest">
@@ -751,6 +861,164 @@ body{background:var(--page)}
   </div>
 </section>
 
+
+<section class="section" id="savings">
+  <div class="section-kicker">SAVE MORE</div>
+  <div class="section-title clean-title">
+    <h2>購物優惠與匯率</h2>
+    <small>出示前先看使用條件</small>
+  </div>
+
+  <div class="saver-grid">
+    <article class="coupon-card">
+      <div class="coupon-top">
+        <div class="coupon-brand">🛍️ ASHIBINAA Outlet</div>
+        <div class="coupon-badge">Coupon Sheet</div>
+      </div>
+      <p>到 Information Center 出示優惠頁面，可換領館內適用店家的 Coupon Sheet。</p>
+      <div class="coupon-note">有效期間目前標示至 2030/03/31；每次出發前仍建議重新確認頁面。</div>
+      <a class="coupon-link" href="https://japanshopping.org/ja/search/coupons/detail/%E6%B2%96%E7%B8%84%E3%82%A2%E3%82%A6%E3%83%88%E3%83%AC%E3%83%83%E3%83%88%E3%83%A2%E3%83%BC%E3%83%AB-%E3%81%82%E3%81%97%E3%81%B3%E3%81%AA%E3%83%BC-%E3%82%AF%E3%83%BC%E3%83%9D%E3%83%B3%E3%82%B7%E3%83%BC%E3%83%88%E3%83%97%E3%83%AC%E3%82%BC%E3%83%B3%E3%83%88-%E3%82%A4%E3%83%B3%E3%83%95%E3%82%A9%E3%83%A1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%E3%81%AB%E3%81%A6%E5%BC%95%E6%8F%9B" target="_blank" rel="noopener">開啟優惠頁 <span>↗</span></a>
+    </article>
+
+    <article class="coupon-card">
+      <div class="coupon-top">
+        <div class="coupon-brand">🏬 AEON Mall Rycom</div>
+        <div class="coupon-badge">Foreign Visitor</div>
+      </div>
+      <p>AEON Mall 官方提供訪日外國旅客專用優惠券，各品牌折扣不同，可直接在官方 Coupon 頁查看。</p>
+      <div class="coupon-note">部分優惠需要現場用手機顯示，可能不能列印；使用期限依個別店舖頁面。</div>
+      <a class="coupon-link" href="https://en.aeonmall.global/mall/okinawarycom/coupons" target="_blank" rel="noopener">查看 Rycom 優惠券 <span>↗</span></a>
+    </article>
+
+    <article class="coupon-card">
+      <div class="coupon-top">
+        <div class="coupon-brand">🐧 Don Quijote</div>
+        <div class="coupon-badge">Visa 5% OFF</div>
+      </div>
+      <p>目前 Visa 優惠為符合免稅條件、未稅消費滿 ¥10,000，可在免稅之外再享額外 5% 折扣。</p>
+      <div class="coupon-note">結帳前出示 Coupon 並使用 Visa；部分商品排除，不能與其他折扣併用。</div>
+      <a class="coupon-link" href="https://www.visa.co.jp/pay-with-visa/donquijote-discounts-and-offers.html" target="_blank" rel="noopener">開啟 Donki Visa Coupon <span>↗</span></a>
+    </article>
+
+    <article class="coupon-card">
+      <div class="coupon-top">
+        <div class="coupon-brand">🌊 PARCO CITY</div>
+        <div class="coupon-badge">Rental Car Coupon</div>
+      </div>
+      <p>租車旅客可查看 PARCO CITY 的 Rental Car Coupon，部分餐飲與店舖提供 5–10% OFF 或贈品。</p>
+      <div class="coupon-note">優惠可能變更或提前結束；需依頁面／現場 Coupon Card 的使用條件為準。</div>
+      <a class="coupon-link" href="https://www.parcocity.jp/feature/?cd=000140" target="_blank" rel="noopener">查看租車優惠 <span>↗</span></a>
+    </article>
+  </div>
+
+  <div class="tax-note">
+    🧾 <b>你這趟旅行的免稅制度：</b>2026/10/10–10/14 還在日本新制上路前。
+    2026/11/1 才改成出境確認後退款的新制度；這趟仍依目前免稅店流程辦理。購物時記得攜帶護照。
+  </div>
+
+  <div style="height:14px"></div>
+
+  <div class="fx-card">
+    <div class="fx-head">
+      <div>
+        <div class="section-kicker">JPY → TWD</div>
+        <div class="fx-rate" id="fxRateText">讀取匯率中…</div>
+        <div class="fx-sub" id="fxUpdated">連線取得最新參考匯率</div>
+      </div>
+      <button class="refresh-rate" id="fxRefresh" type="button">↻ 更新</button>
+    </div>
+
+    <div class="converter">
+      <div class="money-field">
+        <label for="yenInput">日圓 JPY</label>
+        <input class="money-input" id="yenInput" inputmode="decimal" type="number" min="0" step="1" value="1000">
+      </div>
+      <div class="swap-arrow">→</div>
+      <div class="money-field">
+        <label for="twdOutput">台幣 TWD</label>
+        <input class="money-input" id="twdOutput" type="text" readonly>
+      </div>
+    </div>
+    <div class="fx-foot">
+      匯率由 ExchangeRate-API 最新公開資料取得；屬參考匯率，不等於信用卡、銀行或現金換匯的實際成交價。
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="expenses">
+  <div class="section-kicker">TRIP WALLET</div>
+  <div class="section-title clean-title">
+    <h2>旅行記帳</h2>
+    <small>只存在這台裝置</small>
+  </div>
+
+  <div class="expense-card">
+    <div class="expense-summary">
+      <div class="money-stat">
+        <span>日圓支出</span>
+        <b id="sumJPY">¥0</b>
+      </div>
+      <div class="money-stat">
+        <span>估算台幣總支出</span>
+        <b id="sumTWD">NT$0</b>
+      </div>
+    </div>
+
+    <form class="expense-form" id="expenseForm">
+      <div class="expense-field">
+        <label for="expenseDay">行程日</label>
+        <select class="expense-select" id="expenseDay">
+          <option value="DAY 1">DAY 1・10/10</option>
+          <option value="DAY 2">DAY 2・10/11</option>
+          <option value="DAY 3">DAY 3・10/12</option>
+          <option value="DAY 4">DAY 4・10/13</option>
+          <option value="DAY 5">DAY 5・10/14</option>
+        </select>
+      </div>
+
+      <div class="expense-field">
+        <label for="expenseCategory">分類</label>
+        <select class="expense-select" id="expenseCategory">
+          <option>餐飲</option>
+          <option>購物</option>
+          <option>交通</option>
+          <option>景點</option>
+          <option>住宿</option>
+          <option>其他</option>
+        </select>
+      </div>
+
+      <div class="expense-field full">
+        <label for="expenseName">內容</label>
+        <input class="expense-input" id="expenseName" maxlength="40" placeholder="例如：美麗海門票 / Donki">
+      </div>
+
+      <div class="expense-field">
+        <label for="expenseCurrency">幣別</label>
+        <select class="expense-select" id="expenseCurrency">
+          <option value="JPY">JPY 日圓</option>
+          <option value="TWD">TWD 台幣</option>
+        </select>
+      </div>
+
+      <div class="expense-field">
+        <label for="expenseAmount">金額</label>
+        <input class="expense-input" id="expenseAmount" inputmode="decimal" type="number" min="0" step="1" placeholder="0" required>
+      </div>
+
+      <button class="expense-add" type="submit">＋ 加入這筆支出</button>
+    </form>
+
+    <div class="expense-list" id="expenseList"></div>
+
+    <div class="expense-actions">
+      <button class="secondary-action" id="exportExpense" type="button">匯出 CSV</button>
+      <button class="secondary-action danger" id="clearExpense" type="button">清除全部</button>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="map">
   <div class="section-title"><h2>🗺️ 行程互動地圖</h2><small>點 Marker 看地點</small></div>
   <div class="card map-card">
@@ -795,7 +1063,7 @@ body{background:var(--page)}
   <div class="section-title clean-title"><h2>旅行快速入口</h2><small>常用功能</small></div>
   <div class="quick-grid clean-quick">
     <a class="quick" href="#spots"><b>🌺 景點導覽</b><span>先看景點特色與停留重點</span></a>
-    <a class="quick" href="#map"><b>🗺️ 行程地圖</b><span>DAY 篩選・停車位置</span></a>
+    <a class="quick" href="#savings"><b>💴 優惠與匯率</b><span>Coupon・JPY→TWD</span></a>
     <a class="quick" href="https://churaumi.okinawa/tc/" target="_blank" rel="noopener"><b>🐠 美麗海官方</b><span>當日公告與展示資訊</span></a>
     <a class="quick" href="https://oki-park.jp/shurijo/" target="_blank" rel="noopener"><b>🏯 首里城官方</b><span>復元與開放最新資訊</span></a>
   </div>
@@ -821,10 +1089,11 @@ body{background:var(--page)}
 
 </footer>
 
-<nav class="bottom">
-  <a href="#home" class="active"><span class="ico">🏠</span>首頁</a>
+<nav class="bottom" style="grid-template-columns:repeat(5,1fr)">
   <a href="#days"><span class="ico">📅</span>行程</a>
   <a href="#spots"><span class="ico">🌺</span>景點</a>
+  <a href="#savings"><span class="ico">🏷️</span>優惠</a>
+  <a href="#expenses"><span class="ico">💰</span>記帳</a>
   <a href="#map"><span class="ico">🗺️</span>地圖</a>
 </nav>
 </div>
@@ -1141,6 +1410,216 @@ window.addEventListener("DOMContentLoaded",()=>{
   addCompactDetails();
   initTripMap();
 });
+</script>
+
+
+<script>
+(() => {
+  const FX_URL = "https://open.er-api.com/v6/latest/JPY";
+  const FX_CACHE_KEY = "okinawa2026_fx_jpy_twd";
+  const EXPENSE_KEY = "okinawa2026_expenses_v1";
+
+  let fxRate = 0;
+  let fxUpdatedText = "";
+
+  const moneyJPY = n => "¥" + Math.round(Number(n || 0)).toLocaleString("ja-JP");
+  const moneyTWD = n => "NT$" + Math.round(Number(n || 0)).toLocaleString("zh-TW");
+
+  function updateConverter(){
+    const yen = Math.max(0, Number(document.getElementById("yenInput")?.value || 0));
+    const output = document.getElementById("twdOutput");
+    if(output) output.value = fxRate ? moneyTWD(yen * fxRate) : "—";
+  }
+
+  function setFxUI(rate, updated, cached=false){
+    fxRate = Number(rate) || 0;
+    fxUpdatedText = updated || "";
+    const rateText = document.getElementById("fxRateText");
+    const updatedText = document.getElementById("fxUpdated");
+    if(rateText){
+      rateText.textContent = fxRate ? `¥1 ≈ NT$${fxRate.toFixed(4)}` : "匯率暫時無法取得";
+    }
+    if(updatedText){
+      updatedText.innerHTML = fxRate
+        ? `資料更新：${fxUpdatedText || "最新可用資料"} ${cached ? '<span class="offline-pill">使用上次匯率</span>' : ""}`
+        : "請稍後再按更新；記帳仍可輸入 TWD。";
+    }
+    updateConverter();
+    renderExpenses();
+  }
+
+  async function loadFx(force=false){
+    const cachedRaw = localStorage.getItem(FX_CACHE_KEY);
+    let cached = null;
+    try{ cached = cachedRaw ? JSON.parse(cachedRaw) : null; }catch(e){}
+
+    if(!force && cached && cached.rate && cached.savedAt && (Date.now()-cached.savedAt)<6*60*60*1000){
+      setFxUI(cached.rate, cached.updated || "上次下載", true);
+    }
+
+    const btn = document.getElementById("fxRefresh");
+    if(btn) btn.disabled = true;
+
+    try{
+      const response = await fetch(FX_URL, {cache:"no-store"});
+      if(!response.ok) throw new Error("rate request failed");
+      const data = await response.json();
+      const rate = Number(data?.rates?.TWD);
+      if(!rate) throw new Error("TWD rate missing");
+
+      const updated = data.time_last_update_utc
+        ? new Date(data.time_last_update_utc).toLocaleString("zh-TW", {timeZone:"Asia/Taipei"})
+        : "最新可用資料";
+
+      localStorage.setItem(FX_CACHE_KEY, JSON.stringify({
+        rate, updated, savedAt:Date.now()
+      }));
+      setFxUI(rate, updated, false);
+    }catch(err){
+      if(cached?.rate) setFxUI(cached.rate, cached.updated || "上次下載", true);
+      else setFxUI(0, "", false);
+    }finally{
+      if(btn) btn.disabled = false;
+    }
+  }
+
+  function getExpenses(){
+    try{
+      const data = JSON.parse(localStorage.getItem(EXPENSE_KEY) || "[]");
+      return Array.isArray(data) ? data : [];
+    }catch(e){ return []; }
+  }
+
+  function saveExpenses(items){
+    localStorage.setItem(EXPENSE_KEY, JSON.stringify(items));
+  }
+
+  function toTWD(item){
+    if(item.currency === "TWD") return Number(item.amount || 0);
+    const rate = Number(item.rate || fxRate || 0);
+    return Number(item.amount || 0) * rate;
+  }
+
+  function renderExpenses(){
+    const list = document.getElementById("expenseList");
+    if(!list) return;
+
+    const items = getExpenses();
+    const totalJPY = items
+      .filter(x=>x.currency==="JPY")
+      .reduce((s,x)=>s+Number(x.amount||0),0);
+    const totalTWD = items.reduce((s,x)=>s+toTWD(x),0);
+
+    const sumJPY = document.getElementById("sumJPY");
+    const sumTWD = document.getElementById("sumTWD");
+    if(sumJPY) sumJPY.textContent = moneyJPY(totalJPY);
+    if(sumTWD) sumTWD.textContent = moneyTWD(totalTWD);
+
+    if(!items.length){
+      list.innerHTML = '<div class="empty-expense">還沒有支出紀錄。第一筆從餐飲、購物或交通開始記吧。</div>';
+      return;
+    }
+
+    list.innerHTML = items.slice().reverse().map(item=>{
+      const original = item.currency==="JPY" ? moneyJPY(item.amount) : moneyTWD(item.amount);
+      const twd = moneyTWD(toTWD(item));
+      return `
+        <div class="expense-row">
+          <div class="expense-main">
+            <div class="expense-title">${escapeHtml(item.name || item.category)}</div>
+            <div class="expense-meta">${escapeHtml(item.day)} · ${escapeHtml(item.category)} · ${escapeHtml(item.currency)}</div>
+          </div>
+          <div class="expense-amount">
+            <b>${original}</b>
+            <span>${item.currency==="JPY" ? `≈ ${twd}` : twd}</span>
+            <button class="expense-delete" type="button" data-expense-id="${item.id}">刪除</button>
+          </div>
+        </div>`;
+    }).join("");
+
+    list.querySelectorAll("[data-expense-id]").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        const id = btn.dataset.expenseId;
+        saveExpenses(getExpenses().filter(x=>String(x.id)!==String(id)));
+        renderExpenses();
+      });
+    });
+  }
+
+  function escapeHtml(value){
+    return String(value ?? "").replace(/[&<>"']/g, ch=>({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+    }[ch]));
+  }
+
+  function exportCSV(){
+    const items = getExpenses();
+    if(!items.length) return;
+    const rows = [
+      ["Day","Category","Name","Currency","Amount","JPY_to_TWD_Rate","Estimated_TWD"],
+      ...items.map(x=>[
+        x.day,x.category,x.name,x.currency,x.amount,
+        x.currency==="JPY" ? (x.rate || "") : "",
+        Math.round(toTWD(x))
+      ])
+    ];
+    const csv = "\ufeff" + rows.map(row=>row.map(v=>{
+      const s=String(v??"").replace(/"/g,'""');
+      return `"${s}"`;
+    }).join(",")).join("\n");
+
+    const blob = new Blob([csv],{type:"text/csv;charset=utf-8"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href=url;
+    a.download="okinawa-trip-expenses.csv";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),500);
+  }
+
+  document.getElementById("yenInput")?.addEventListener("input", updateConverter);
+  document.getElementById("fxRefresh")?.addEventListener("click",()=>loadFx(true));
+
+  document.getElementById("expenseForm")?.addEventListener("submit",e=>{
+    e.preventDefault();
+    const day=document.getElementById("expenseDay").value;
+    const category=document.getElementById("expenseCategory").value;
+    const name=(document.getElementById("expenseName").value || "").trim();
+    const currency=document.getElementById("expenseCurrency").value;
+    const amount=Number(document.getElementById("expenseAmount").value);
+
+    if(!Number.isFinite(amount) || amount<=0) return;
+
+    const items=getExpenses();
+    items.push({
+      id:Date.now(),
+      day,category,
+      name:name || category,
+      currency,amount,
+      rate:currency==="JPY" ? (fxRate || 0) : null,
+      createdAt:new Date().toISOString()
+    });
+    saveExpenses(items);
+    document.getElementById("expenseName").value="";
+    document.getElementById("expenseAmount").value="";
+    renderExpenses();
+  });
+
+  document.getElementById("exportExpense")?.addEventListener("click",exportCSV);
+
+  document.getElementById("clearExpense")?.addEventListener("click",()=>{
+    if(!getExpenses().length) return;
+    if(confirm("確定要清除全部旅行記帳資料嗎？")){
+      localStorage.removeItem(EXPENSE_KEY);
+      renderExpenses();
+    }
+  });
+
+  renderExpenses();
+  loadFx(false);
+})();
 </script>
 
 </body>
