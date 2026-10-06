@@ -820,6 +820,64 @@ body{background:var(--page)}
   .backup-grid{grid-template-columns:1fr 1fr}
 }
 
+
+/* ===== Route sequence marker v11 ===== */
+.poi-marker{
+  position:relative;
+  width:44px;height:44px;
+  border-radius:50%;
+  border:3px solid #fff;
+  box-shadow:0 5px 15px rgba(0,0,0,.28);
+  display:flex;align-items:center;justify-content:center;
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+.poi-marker .route-order{
+  color:#fff;
+  font-size:15px;
+  line-height:1;
+  font-weight:1000;
+  letter-spacing:-.04em;
+  text-shadow:0 1px 2px rgba(0,0,0,.18);
+}
+.poi-marker .type-badge{
+  position:absolute;
+  right:-8px;bottom:-6px;
+  width:24px;height:24px;
+  border-radius:50%;
+  background:#fff;
+  display:flex;align-items:center;justify-content:center;
+  border:2px solid #fff;
+  box-shadow:0 2px 7px rgba(0,0,0,.2);
+  font-size:12px;line-height:1;
+}
+.poi-marker .day-tag{
+  position:absolute;
+  left:-9px;top:-8px;
+  min-width:24px;height:19px;padding:0 4px;
+  border-radius:999px;
+  background:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:7.5px;font-weight:1000;
+  box-shadow:0 2px 7px rgba(0,0,0,.17);
+}
+.route-legend{
+  margin-top:10px;
+  padding:10px 11px;
+  border-radius:12px;
+  background:#f6f9f8;
+  border:1px solid #e4eceb;
+  font-size:9.5px;
+  line-height:1.65;
+  color:#60777b;
+}
+.route-legend b{color:#274b50}
+.popup-order{
+  font-size:11px;
+  font-weight:1000;
+  color:#183f45;
+  margin-bottom:5px;
+}
+
 </style>
 
 <link rel="manifest" href="./manifest.webmanifest">
@@ -1536,7 +1594,13 @@ body{background:var(--page)}
       <span><i class="map-dot" style="background:#e2566c"></i>DAY 4</span>
       <span><i class="map-dot" style="background:#5e7fa3"></i>DAY 5</span>
     </div>
-<div class="parking-disclaimer">🅿️ 停車 Marker 預設隱藏，按「顯示停車」再打開；這樣地圖不會一次塞滿兩種標記。</div>
+
+    <div class="route-legend">
+      <b>Marker 看法：</b>中間數字＝當天第幾站；左上角＝DAY；右下角＝類型。
+      <br>例如 <b>2A／2B</b> 代表同一時段二選一；<b>A5／B5</b> 代表 DAY 3 不同方案的分支點。
+    </div>
+
+    <div class="parking-disclaimer">🅿️ 停車 Marker 預設隱藏，按「顯示停車」再打開；這樣地圖不會一次塞滿兩種標記。</div>
     <div class="unmapped-list">
       ⚠️ <b>分店尚未確認，因此暫不固定 Marker：</b>
       10/11 晚餐「琉球の牛／燒肉神社・宮崎牛專賣」以及 10/12「鶴亀合戦」。
@@ -1738,34 +1802,34 @@ function addCompactDetails(){
 }
 
 const tripPoints = [
-  {day:1,type:"shopping",name:"ASHIBINAA Outlet",lat:26.15876,lng:127.65697,q:"沖縄アウトレットモールあしびなー",parking:"約1,000台・免費",parkingQ:"沖縄アウトレットモールあしびなー 駐車場"},
-  {day:1,type:"shopping",name:"SPORTS DEPO Toyosaki",lat:26.1577,lng:127.6605,q:"SPORTS DEPO Toyosaki",parking:"附設停車場・台數/費率未公布",parkingQ:"スポーツデポ 豊崎店 駐車場"},
-  {day:1,type:"restaurant",name:"お肉の一心",lat:26.2148,lng:127.6787,q:"お肉の一心 那覇",parking:"店家無專用停車場；附近 Palette Kumoji 付費停車",parkingQ:"NPC24H パレットくもじ地下駐車場"},
-  {day:1,type:"shopping",name:"San-A Yaese City",lat:26.1505,lng:127.7208,q:"サンエー 八重瀬シティ",parking:"附設停車場・台數/費率未公布",parkingQ:"サンエー 八重瀬シティ 駐車場"},
+  {day:1,order:"1",type:"shopping",name:"ASHIBINAA Outlet",lat:26.15876,lng:127.65697,q:"沖縄アウトレットモールあしびなー",parking:"約1,000台・免費",parkingQ:"沖縄アウトレットモールあしびなー 駐車場"},
+  {day:1,order:"2",type:"shopping",name:"SPORTS DEPO Toyosaki",lat:26.1577,lng:127.6605,q:"SPORTS DEPO Toyosaki",parking:"附設停車場・台數/費率未公布",parkingQ:"スポーツデポ 豊崎店 駐車場"},
+  {day:1,order:"3",type:"restaurant",name:"お肉の一心",lat:26.2148,lng:127.6787,q:"お肉の一心 那覇",parking:"店家無專用停車場；附近 Palette Kumoji 付費停車",parkingQ:"NPC24H パレットくもじ地下駐車場"},
+  {day:1,order:"4",type:"shopping",name:"San-A Yaese City",lat:26.1505,lng:127.7208,q:"サンエー 八重瀬シティ",parking:"附設停車場・台數/費率未公布",parkingQ:"サンエー 八重瀬シティ 駐車場"},
 
-  {day:2,type:"attraction",name:"沖繩美麗海水族館",lat:26.69436,lng:127.87793,q:"沖縄美ら海水族館",parking:"P7 1,083台／P6 71台・免費",parkingQ:"海洋博公園 P7 駐車場"},
-  {day:2,type:"restaurant",name:"Kurumaebi Kitchen TAMAYA",lat:26.6690,lng:128.0010,q:"車海老食堂たまや",parking:"30台以上・費率未明示",parkingQ:"車海老食堂たまや 駐車場"},
-  {day:2,type:"restaurant",name:"阿古豬涮涮鍋 翡翠",lat:26.6570,lng:127.9205,q:"アグー豚しゃぶしゃぶ 翡翠 本部町",parking:"20台・費率未明示",parkingQ:"アグー豚しゃぶしゃぶ翡翠 駐車場"},
-  {day:2,type:"attraction",name:"古宇利島",lat:26.70611,lng:128.01778,q:"古宇利島",parking:"古宇利海灘/ふれあい広場 約150台",parkingQ:"古宇利ふれあい広場 駐車場"},
-  {day:2,type:"cafe",name:"Starbucks 沖繩本部町店",lat:26.6811,lng:127.8890,q:"スターバックス 沖縄本部町店",parking:"附設・台數/費率未公布",parkingQ:"スターバックス 沖縄本部町店 駐車場"},
-  {day:2,type:"cafe",name:"Coral Days Cafe",lat:26.5585,lng:127.9475,q:"Coral Days Cafe Okinawa",parking:"有停車場・台數/費率未公布",parkingQ:"Coral Days Cafe 駐車場"},
+  {day:2,order:"1",type:"attraction",name:"沖繩美麗海水族館",lat:26.69436,lng:127.87793,q:"沖縄美ら海水族館",parking:"P7 1,083台／P6 71台・免費",parkingQ:"海洋博公園 P7 駐車場"},
+  {day:2,order:"2A",branch:"午餐 A",type:"restaurant",name:"Kurumaebi Kitchen TAMAYA",lat:26.6690,lng:128.0010,q:"車海老食堂たまや",parking:"30台以上・費率未明示",parkingQ:"車海老食堂たまや 駐車場"},
+  {day:2,order:"2B",branch:"午餐 B",type:"restaurant",name:"阿古豬涮涮鍋 翡翠",lat:26.6570,lng:127.9205,q:"アグー豚しゃぶしゃぶ 翡翠 本部町",parking:"20台・費率未明示",parkingQ:"アグー豚しゃぶしゃぶ翡翠 駐車場"},
+  {day:2,order:"3",type:"attraction",name:"古宇利島",lat:26.70611,lng:128.01778,q:"古宇利島",parking:"古宇利海灘/ふれあい広場 約150台",parkingQ:"古宇利ふれあい広場 駐車場"},
+  {day:2,order:"4",type:"cafe",name:"Starbucks 沖繩本部町店",lat:26.6811,lng:127.8890,q:"スターバックス 沖縄本部町店",parking:"附設・台數/費率未公布",parkingQ:"スターバックス 沖縄本部町店 駐車場"},
+  {day:2,order:"5",type:"cafe",name:"Coral Days Cafe",lat:26.5585,lng:127.9475,q:"Coral Days Cafe Okinawa",parking:"有停車場・台數/費率未公布",parkingQ:"Coral Days Cafe 駐車場"},
 
-  {day:3,type:"attraction",name:"玉泉洞／沖繩世界",lat:26.1411,lng:127.7488,q:"玉泉洞 おきなわワールド",parking:"400台・免費",parkingQ:"おきなわワールド 駐車場"},
-  {day:3,type:"foodmarket",name:"泊いゆまち",lat:26.2298,lng:127.6816,q:"泊いゆまち",parking:"公開資料約100–200台・費率現場確認",parkingQ:"泊いゆまち 駐車場"},
-  {day:3,type:"restaurant",name:"A&W Makiminato",lat:26.2667,lng:127.72837,q:"A&W Makiminato",parking:"100台・費率未明示",parkingQ:"A&W 牧港店 駐車場"},
-  {day:3,type:"attraction",name:"美國村",lat:26.31652,lng:127.75736,q:"美浜アメリカンビレッジ",parking:"約1,500台・免費",parkingQ:"美浜公共駐車場 アメリカンビレッジ"},
-  {day:3,type:"shopping",name:"AEON MALL Okinawa Rycom",lat:26.31404,lng:127.79586,q:"イオンモール沖縄ライカム",parking:"約4,000台・免費",parkingQ:"イオンモール沖縄ライカム 駐車場"},
-  {day:3,type:"shopping",name:"MEGA Don Quijote 宜野灣",lat:26.2810,lng:127.7420,q:"MEGAドン・キホーテ 宜野湾店",parking:"289台・費率未明示",parkingQ:"MEGAドン・キホーテ 宜野湾店 駐車場"},
-  {day:3,type:"shopping",name:"PARCO CITY",lat:26.2624,lng:127.7148,q:"サンエー浦添西海岸 PARCO CITY",parking:"約4,000台・免費",parkingQ:"サンエー浦添西海岸 PARCO CITY 駐車場"},
+  {day:3,order:"1",type:"attraction",name:"玉泉洞／沖繩世界",lat:26.1411,lng:127.7488,q:"玉泉洞 おきなわワールド",parking:"400台・免費",parkingQ:"おきなわワールド 駐車場"},
+  {day:3,order:"2",type:"foodmarket",name:"泊いゆまち",lat:26.2298,lng:127.6816,q:"泊いゆまち",parking:"公開資料約100–200台・費率現場確認",parkingQ:"泊いゆまち 駐車場"},
+  {day:3,order:"A3",branch:"方案 A",type:"restaurant",name:"A&W Makiminato",lat:26.2667,lng:127.72837,q:"A&W Makiminato",parking:"100台・費率未明示",parkingQ:"A&W 牧港店 駐車場"},
+  {day:3,order:"3",type:"attraction",name:"美國村",lat:26.31652,lng:127.75736,q:"美浜アメリカンビレッジ",parking:"約1,500台・免費",parkingQ:"美浜公共駐車場 アメリカンビレッジ"},
+  {day:3,order:"A4",branch:"方案 A",type:"shopping",name:"AEON MALL Okinawa Rycom",lat:26.31404,lng:127.79586,q:"イオンモール沖縄ライカム",parking:"約4,000台・免費",parkingQ:"イオンモール沖縄ライカム 駐車場"},
+  {day:3,order:"4",type:"shopping",name:"MEGA Don Quijote 宜野灣",lat:26.2810,lng:127.7420,q:"MEGAドン・キホーテ 宜野湾店",parking:"289台・費率未明示",parkingQ:"MEGAドン・キホーテ 宜野湾店 駐車場"},
+  {day:3,order:"B5",branch:"方案 B",type:"shopping",name:"PARCO CITY",lat:26.2624,lng:127.7148,q:"サンエー浦添西海岸 PARCO CITY",parking:"約4,000台・免費",parkingQ:"サンエー浦添西海岸 PARCO CITY 駐車場"},
 
-  {day:4,type:"restaurant",name:"糸滿漁民食堂",lat:26.1237,lng:127.6657,q:"糸満漁民食堂",parking:"店旁10台・費率未明示",parkingQ:"糸満漁民食堂 駐車場"},
-  {day:4,type:"attraction",name:"瀨長島 Umikaji Terrace",lat:26.17697,lng:127.64129,q:"瀬長島ウミカジテラス",parking:"免費・台數未公布",parkingQ:"瀬長島ウミカジテラス 駐車場"},
-  {day:4,type:"attraction",name:"波上宮",lat:26.2174,lng:127.6711,q:"波上宮",parking:"20台・免費",parkingQ:"波上宮 駐車場"},
-  {day:4,type:"attraction",name:"首里城公園",lat:26.2170,lng:127.7195,q:"首里城公園",parking:"P1/P2 一般車各最多58台・有料",parkingQ:"首里城公園 駐車場 P1"},
-  {day:4,type:"restaurant",name:"焼肉きんぐ 那覇新都心店",lat:26.2295,lng:127.6875,q:"焼肉きんぐ 那覇新都心店",parking:"30台・費率未明示",parkingQ:"焼肉きんぐ 那覇新都心店 駐車場"},
+  {day:4,order:"1",type:"foodmarket",name:"道の駅いとまん・お魚センター",lat:26.1237,lng:127.6657,q:"道の駅いとまん お魚センター",parking:"免費停車",parkingQ:"道の駅いとまん 駐車場"},
+  {day:4,order:"2",type:"attraction",name:"瀨長島 Umikaji Terrace",lat:26.17697,lng:127.64129,q:"瀬長島ウミカジテラス",parking:"免費・台數未公布",parkingQ:"瀬長島ウミカジテラス 駐車場"},
+  {day:4,order:"3",type:"attraction",name:"波上宮",lat:26.2174,lng:127.6711,q:"波上宮",parking:"20台・免費",parkingQ:"波上宮 駐車場"},
+  {day:4,order:"4",type:"attraction",name:"首里城公園",lat:26.2170,lng:127.7195,q:"首里城公園",parking:"P1/P2 一般車各最多58台・有料",parkingQ:"首里城公園 駐車場 P1"},
+  {day:4,order:"5",type:"restaurant",name:"焼肉きんぐ 那覇新都心店",lat:26.2295,lng:127.6875,q:"焼肉きんぐ 那覇新都心店",parking:"30台・費率未明示",parkingQ:"焼肉きんぐ 那覇新都心店 駐車場"},
 
-  {day:5,type:"transport",name:"OTS 臨空豐崎營業所",lat:26.1586,lng:127.6640,q:"OTSレンタカー 臨空豊崎営業所",parking:"還車用",parkingQ:"OTSレンタカー 臨空豊崎営業所"},
-  {day:5,type:"transport",name:"那霸機場",lat:26.2064,lng:127.6469,q:"那覇空港",parking:"機場停車場",parkingQ:"那覇空港 駐車場"}
+  {day:5,order:"1",type:"transport",name:"OTS 臨空豐崎營業所",lat:26.1586,lng:127.6640,q:"OTSレンタカー 臨空豊崎営業所",parking:"還車用",parkingQ:"OTSレンタカー 臨空豊崎営業所"},
+  {day:5,order:"2",type:"transport",name:"那霸機場",lat:26.2064,lng:127.6469,q:"那覇空港",parking:"機場停車場",parkingQ:"那覇空港 駐車場"}
 ];
 
 function initTripMap(){
@@ -1803,12 +1867,13 @@ function initTripMap(){
       className:"trip-number-marker",
       html:
         '<div class="poi-marker" style="background:'+colors[p.day]+'">'+
-          '<span class="poi-emoji">'+tm.emoji+'</span>'+
-          '<span class="day-badge" style="color:'+colors[p.day]+'">D'+p.day+'</span>'+
+          '<span class="route-order">'+p.order+'</span>'+
+          '<span class="day-tag" style="color:'+colors[p.day]+'">D'+p.day+'</span>'+
+          '<span class="type-badge">'+tm.emoji+'</span>'+
         '</div>',
-      iconSize:[42,42],
-      iconAnchor:[21,21],
-      popupAnchor:[0,-22]
+      iconSize:[44,44],
+      iconAnchor:[22,22],
+      popupAnchor:[0,-23]
     });
 
     const nav="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(p.q);
@@ -1818,6 +1883,7 @@ function initTripMap(){
       icon,title:p.name,keyboard:true,riseOnHover:true,zIndexOffset:400
     }).bindPopup(
       '<div class="popup-type">'+tm.emoji+' '+tm.label+' · DAY '+p.day+'</div>'+
+      '<div class="popup-order">第 '+p.order+' 站'+(p.branch?' · '+p.branch:'')+'</div>'+
       '<div class="popup-title">'+p.name+'</div>'+
       '<div class="popup-meta">點下方按鈕交給 Google Maps 做實際導航</div>'+
       '<div class="popup-parking"><b>🅿️ 停車：</b>'+p.parking+'</div>'+
@@ -1839,6 +1905,7 @@ function initTripMap(){
       icon:pIcon,title:p.name+" 停車資訊",keyboard:true,zIndexOffset:650
     }).bindPopup(
       '<div class="popup-type">🅿️ 停車資訊</div>'+
+      '<div class="popup-order">DAY '+p.day+' · 第 '+p.order+' 站</div>'+
       '<div class="popup-title">'+p.name+'</div>'+
       '<div class="popup-meta">'+p.parking+'</div>'+
       '<a class="popup-nav" target="_blank" rel="noopener" href="'+parkingNav+'">🧭 停車場入口導航</a>'
