@@ -1,0 +1,19 @@
+{
+  "name": "沖繩 5 天 4 夜｜2026.10.10–10.14",
+  "short_name": "沖繩旅遊 App",
+  "description": "沖繩 5 天 4 夜自駕旅行行程、導航、分享與出發前清單。",
+  "lang": "zh-Hant",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f8f8",
+  "theme_color": "#087f8c",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
