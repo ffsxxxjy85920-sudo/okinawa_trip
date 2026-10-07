@@ -976,6 +976,174 @@ html[data-font-size="large"] .hero-stat{
   }
 }
 
+
+/* ===== Hero redesign v16 ===== */
+.hero{
+  min-height:unset !important;
+  padding:20px 20px 22px !important;
+  display:flex !important;
+  flex-direction:column;
+  justify-content:flex-end;
+  gap:0;
+  background:
+    linear-gradient(180deg,rgba(4,35,47,.12) 0%,rgba(4,35,47,.26) 34%,rgba(4,35,47,.82) 72%,rgba(4,35,47,.94) 100%),
+    url('https://commons.wikimedia.org/wiki/Special:FilePath/JP%20%E6%B2%96%E7%B9%A9%20Okinawa%20Nago%20Kouri%20Island%20n%20Road%20Bridge%20n%20Beach%20January%202026%20N13P%2010.jpg?width=1280') center/cover no-repeat !important;
+  aspect-ratio:4/5;
+}
+
+/* Remove the old absolutely-positioned badge completely. */
+.hero:before{content:none !important;display:none !important}
+.hero:after{
+  content:"";
+  position:absolute;
+  inset:auto -70px -90px auto;
+  width:240px;height:240px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.10),transparent 70%) !important;
+  pointer-events:none;
+}
+
+.hero-meta{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:auto;
+}
+.hero-tag,.hero-date{
+  display:inline-flex;
+  align-items:center;
+  min-height:32px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.24);
+  backdrop-filter:blur(10px);
+  font-weight:900;
+  line-height:1.15;
+}
+.hero-tag{
+  font-size:clamp(10px,2.8vw,12px) !important;
+  letter-spacing:.12em;
+}
+.hero-date{
+  font-size:clamp(10px,2.8vw,12px) !important;
+  letter-spacing:.06em;
+}
+
+.hero-copy{
+  position:relative;
+  z-index:2;
+  margin-top:100px;
+}
+.hero .eyebrow{
+  font-size:clamp(10px,3vw,12px) !important;
+  line-height:1.45 !important;
+  letter-spacing:.15em;
+  opacity:.82;
+  margin-bottom:8px;
+  overflow-wrap:anywhere;
+}
+.hero h1{
+  margin:0 !important;
+  font-size:clamp(38px,10vw,50px) !important;
+  line-height:1.02 !important;
+  letter-spacing:-.055em !important;
+  text-wrap:balance;
+}
+.hero p{
+  margin:12px 0 0 !important;
+  max-width:430px;
+  font-size:clamp(14px,4vw,17px) !important;
+  line-height:1.62 !important;
+  opacity:.94;
+  text-shadow:0 2px 12px rgba(0,0,0,.24);
+}
+
+.hero .count{
+  position:relative;
+  z-index:2;
+  align-self:flex-start;
+  margin-top:16px !important;
+  padding:9px 12px;
+  font-size:clamp(12px,3.4vw,14px) !important;
+  line-height:1.2 !important;
+  font-weight:900;
+  white-space:normal;
+}
+
+.hero-grid{
+  position:relative;
+  z-index:2;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  margin-top:12px !important;
+  gap:8px !important;
+}
+.hero-stat{
+  min-width:0;
+  padding:10px 9px !important;
+}
+.hero-stat b{
+  font-size:clamp(17px,5vw,22px) !important;
+  line-height:1.05 !important;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.hero-stat span{
+  display:block;
+  margin-top:6px;
+  font-size:clamp(10px,3vw,13px) !important;
+  line-height:1.3 !important;
+}
+
+/* Font-size selector should enlarge reading text, but not break the cover. */
+html[data-font-size="large"] .hero,
+html[data-font-size="medium"] .hero{
+  min-height:unset !important;
+}
+html[data-font-size="large"] .hero{
+  padding:20px 18px 22px !important;
+}
+html[data-font-size="large"] .hero-copy{
+  margin-top:82px;
+}
+html[data-font-size="large"] .hero h1{
+  font-size:clamp(36px,9.2vw,46px) !important;
+  line-height:1.06 !important;
+}
+html[data-font-size="large"] .hero p{
+  font-size:clamp(15px,4.1vw,18px) !important;
+}
+html[data-font-size="large"] .hero-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+}
+
+/* Narrow iPhones: keep three stats usable and never overlap. */
+@media(max-width:390px){
+  .hero{
+    aspect-ratio:auto;
+    min-height:520px !important;
+    padding:18px 16px 20px !important;
+  }
+  .hero-copy{margin-top:78px}
+  .hero h1{font-size:36px !important}
+  .hero p{font-size:15px !important}
+  .hero-grid{gap:6px !important}
+  .hero-stat{padding:9px 7px !important}
+  .hero-stat b{font-size:17px !important}
+  .hero-stat span{font-size:10px !important}
+  html[data-font-size="large"] .hero{
+    min-height:560px !important;
+  }
+  html[data-font-size="large"] .hero-copy{
+    margin-top:72px;
+  }
+}
+
 </style>
 
 <link rel="manifest" href="./manifest.webmanifest">
@@ -1005,14 +1173,23 @@ html[data-font-size="large"] .hero-stat{
 </header>
 
 <section class="hero">
-  <div class="eyebrow">5 DAYS · 4 NIGHTS · OKINAWA ROAD TRIP</div>
-  <h1>沖繩，出發。🌺</h1>
-  <p>海、咖啡、購物與美食，全部收進這趟五天四夜自駕旅行。</p>
+  <div class="hero-meta">
+    <span class="hero-tag">OKINAWA 2026</span>
+    <span class="hero-date">10.10 — 10.14</span>
+  </div>
+
+  <div class="hero-copy">
+    <div class="eyebrow">5 DAYS · 4 NIGHTS · SELF DRIVE</div>
+    <h1>沖繩，自駕去。🌺</h1>
+    <p>從古宇利的海，到那霸的夜。五天四夜，把想吃、想逛、想看的，排成剛剛好的節奏。</p>
+  </div>
+
   <div class="count" id="countdown">計算出發倒數中…</div>
+
   <div class="hero-grid">
-    <div class="hero-stat"><b>5D</b><span>自駕旅行</span></div>
-    <div class="hero-stat"><b>4N</b><span>沖繩住宿</span></div>
-    <div class="hero-stat"><b>2</b><span>10/12 方案</span></div>
+    <div class="hero-stat"><b>5D4N</b><span>五天四夜</span></div>
+    <div class="hero-stat"><b>DRIVE</b><span>沖繩自駕</span></div>
+    <div class="hero-stat"><b>10/10</b><span>週六出發</span></div>
   </div>
 </section>
 
@@ -1047,7 +1224,7 @@ html[data-font-size="large"] .hero-stat{
     <button class="day-chip active" onclick="setDay(1,this)"><b>10/10</b><span>抵達・南部</span></button>
     <button class="day-chip" onclick="setDay(2,this)"><b>10/11</b><span>美麗海・古宇利</span></button>
     <button class="day-chip" onclick="setDay(3,this)"><b>10/12</b><span>玉泉洞・美國村</span></button>
-    <button class="day-chip" onclick="setDay(4,this)"><b>10/13</b><span>糸滿・那霸</span></button>
+    <button class="day-chip" onclick="setDay(4,this)"><b>10/13</b><span>LITOR・首里城</span></button>
     <button class="day-chip" onclick="setDay(5,this)"><b>10/14</b><span>還車・回台</span></button>
   </div>
 
@@ -1112,7 +1289,7 @@ html[data-font-size="large"] .hero-stat{
   </div>
 
   <div id="d4" class="day-card card">
-<div class="day-head"><div class="day-head-top"><h3>⛩️ DAY 4</h3><span class="pill">那霸・南部</span></div><div class="day-sub">10/13（二）｜糸滿・瀨長島・波上宮</div><div class="progress"><i></i></div></div>
+<div class="day-head"><div class="day-head-top"><h3>⛩️ DAY 4</h3><span class="pill">那霸・南部</span></div><div class="day-sub">10/13（二）｜LITOR・瀨長島・首里城</div><div class="progress"><i></i></div></div>
     <div class="alert">⚠️ 首里城正殿一般公開從 2026/11/23 開始；10/13 不安排正殿內部參觀。</div>
     
     <div class="timeline">
@@ -1866,7 +2043,7 @@ function updateCountdown(){
   const trip=new Date('2026-10-10T00:00:00+08:00'), now=new Date();
   const days=Math.ceil((trip-now)/86400000);
   const el=document.getElementById('countdown');
-  el.textContent=days>0?`⏳ 距離出發 ${days} 天`:(days===0?'🌺 今天出發！':'🌺 沖繩之旅進行中');
+  el.textContent=days>0?`⏳ ${days} 天後出發`:(days===0?'🌺 今天出發！':'🌺 沖繩旅行中');
 }
 updateCountdown();
 
