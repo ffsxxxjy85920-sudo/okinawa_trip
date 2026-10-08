@@ -1195,6 +1195,212 @@ html[data-font-size="large"] .hero-grid{
   display:block;
 }
 
+
+/* ===== v26: card-tab layout, same functions ===== */
+.deck-nav{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin:10px 0 18px;
+}
+.deck-card{
+  border:1px solid #deebe9;
+  border-radius:18px;
+  background:#fff;
+  padding:13px 12px;
+  text-align:left;
+  box-shadow:0 10px 24px rgba(7,54,61,.05);
+  cursor:pointer;
+  min-height:84px;
+  color:#264b50;
+}
+.deck-card.active{
+  border-color:#87d1c9;
+  background:linear-gradient(180deg,#ffffff 0%,#f4fbfa 100%);
+  box-shadow:0 12px 28px rgba(8,127,140,.10);
+}
+.deck-card .emoji{
+  font-size:18px;
+  line-height:1;
+  display:block;
+  margin-bottom:8px;
+}
+.deck-card .title{
+  font-size:12px;
+  font-weight:1000;
+  line-height:1.35;
+}
+.deck-card .sub{
+  margin-top:4px;
+  font-size:9px;
+  line-height:1.45;
+  color:#7a9093;
+}
+.deck-wrap{
+  position:relative;
+}
+.deck-section{
+  display:none;
+  animation:fadeDeck .18s ease;
+}
+.deck-section.active{
+  display:block;
+}
+@keyframes fadeDeck{
+  from{opacity:.3;transform:translateY(4px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.deck-helper{
+  margin:0 0 8px;
+  font-size:10px;
+  line-height:1.55;
+  color:#73888b;
+}
+@media(min-width:700px){
+  .deck-nav{
+    grid-template-columns:repeat(4,minmax(0,1fr));
+  }
+}
+
+
+/* ===== v27 App-style home ===== */
+#deckhub{
+  padding-top:8px;
+}
+.app-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+.app-tile{
+  position:relative;
+  min-height:112px;
+  padding:15px;
+  border-radius:22px;
+  border:1px solid #dfebe9;
+  background:linear-gradient(180deg,#fff 0%,#f8fbfa 100%);
+  box-shadow:0 12px 28px rgba(9,55,63,.06);
+  text-align:left;
+  color:#284c51;
+  cursor:pointer;
+  overflow:hidden;
+}
+.app-tile:after{
+  content:"";
+  position:absolute;
+  width:74px;
+  height:74px;
+  border-radius:50%;
+  right:-26px;
+  bottom:-28px;
+  background:rgba(8,127,140,.06);
+}
+.app-tile.active{
+  border-color:#84cfc6;
+  box-shadow:0 14px 32px rgba(8,127,140,.13);
+  transform:translateY(-1px);
+}
+.app-icon{
+  font-size:25px;
+  line-height:1;
+  margin-bottom:14px;
+  display:block;
+}
+.app-title{
+  font-size:14px;
+  font-weight:1000;
+  line-height:1.25;
+}
+.app-sub{
+  margin-top:5px;
+  max-width:90%;
+  font-size:9.5px;
+  line-height:1.45;
+  color:#819295;
+}
+.app-arrow{
+  position:absolute;
+  right:13px;
+  top:13px;
+  width:25px;
+  height:25px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#eef6f5;
+  color:#668185;
+  font-size:12px;
+  font-weight:1000;
+}
+.app-section-shell{
+  margin-top:4px;
+}
+.app-section-shell .section{
+  margin-top:0;
+}
+.mobile-tabbar{
+  position:sticky;
+  bottom:10px;
+  z-index:999;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:6px;
+  margin:18px 10px 10px;
+  padding:7px;
+  border:1px solid rgba(219,232,230,.95);
+  border-radius:18px;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(14px);
+  box-shadow:0 12px 30px rgba(20,63,68,.13);
+}
+.mobile-tab{
+  border:0;
+  background:transparent;
+  color:#71888b;
+  border-radius:12px;
+  min-height:46px;
+  font-size:8.5px;
+  font-weight:1000;
+  cursor:pointer;
+}
+.mobile-tab .micon{
+  display:block;
+  font-size:16px;
+  margin-bottom:3px;
+}
+.mobile-tab.active{
+  background:#edf8f6;
+  color:#1e777f;
+}
+.quick-status{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin:4px 0 14px;
+}
+.quick-pill{
+  padding:10px 8px;
+  border-radius:14px;
+  background:#f7faf9;
+  border:1px solid #e5edec;
+  text-align:center;
+}
+.quick-pill b{
+  display:block;
+  font-size:12px;
+  color:#31575c;
+}
+.quick-pill span{
+  display:block;
+  margin-top:3px;
+  font-size:8.5px;
+  color:#87979a;
+}
+@media(min-width:700px){
+  .app-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .mobile-tabbar{max-width:640px;margin-left:auto;margin-right:auto}
+}
+
 </style>
 
 <link rel="manifest" href="./manifest.webmanifest">
@@ -1267,9 +1473,61 @@ html[data-font-size="large"] .hero-grid{
       <a href="#map">開啟地圖</a>
     </div>
   </div>
+
 </section>
 
-<section class="section" id="days">
+
+<section class="section" id="deckhub">
+  <div class="section-kicker">TRIP DESK</div>
+  <div class="section-title clean-title">
+    <h2>旅行工具箱</h2>
+    <small>需要什麼就點什麼</small>
+  </div>
+
+  <div class="quick-status">
+    <div class="quick-pill"><b>5D4N</b><span>五天四夜</span></div>
+    <div class="quick-pill"><b>SELF DRIVE</b><span>自駕旅行</span></div>
+    <div class="quick-pill"><b>LIVE</b><span>雲端分帳</span></div>
+  </div>
+
+  <div class="app-grid">
+    <button class="app-tile active" type="button" data-target="days">
+      <span class="app-arrow">→</span><span class="app-icon">📅</span>
+      <div class="app-title">每日行程</div><div class="app-sub">五天時間軸與每日重點</div>
+    </button>
+    <button class="app-tile" type="button" data-target="map">
+      <span class="app-arrow">→</span><span class="app-icon">🗺️</span>
+      <div class="app-title">互動地圖</div><div class="app-sub">路線、停車與導航入口</div>
+    </button>
+    <button class="app-tile" type="button" data-target="restaurants">
+      <span class="app-arrow">→</span><span class="app-icon">🍽️</span>
+      <div class="app-title">餐廳攻略</div><div class="app-sub">預約、價位、停車一次看</div>
+    </button>
+    <button class="app-tile" type="button" data-target="spots">
+      <span class="app-arrow">→</span><span class="app-icon">📍</span>
+      <div class="app-title">景點介紹</div><div class="app-sub">快速掌握值得去的原因</div>
+    </button>
+    <button class="app-tile" type="button" data-target="expenses">
+      <span class="app-arrow">→</span><span class="app-icon">🧾</span>
+      <div class="app-title">旅行記帳</div><div class="app-sub">多人分帳與雲端同步</div>
+    </button>
+    <button class="app-tile" type="button" data-target="savings">
+      <span class="app-arrow">→</span><span class="app-icon">💴</span>
+      <div class="app-title">優惠與匯率</div><div class="app-sub">Coupon、免稅與即時換算</div>
+    </button>
+    <button class="app-tile" type="button" data-target="translate">
+      <span class="app-arrow">→</span><span class="app-icon">🎙️</span>
+      <div class="app-title">即時翻譯</div><div class="app-sub">中日語音翻譯與朗讀</div>
+    </button>
+    <button class="app-tile" type="button" data-target="traveldesk">
+      <span class="app-arrow">→</span><span class="app-icon">☔</span>
+      <div class="app-title">備案與分享</div><div class="app-sub">雨天 Plan B 與同行分享</div>
+    </button>
+  </div>
+</section>
+
+
+<section class="section app-section-shell deck-section active" id="days">
   <div class="section-title"><h2>📅 每日行程</h2><small>點日期切換</small></div>
   <div class="day-scroll">
     <button class="day-chip active" onclick="setDay(1,this)"><b>10/10</b><span>抵達・南部</span></button>
@@ -1403,7 +1661,7 @@ html[data-font-size="large"] .hero-grid{
 
 
 
-<section class="section" id="spots">
+<section class="section app-section-shell deck-section" id="spots">
   <div class="section-kicker">SPOT GUIDE</div>
   <div class="section-title clean-title">
     <h2>景點介紹</h2>
@@ -1535,7 +1793,7 @@ html[data-font-size="large"] .hero-grid{
 
 
 
-<section class="section" id="restaurants">
+<section class="section app-section-shell deck-section" id="restaurants">
   <div class="section-kicker">FOOD GUIDE</div>
   <div class="section-title clean-title"><h2>餐廳攻略</h2><small>必點・價位・預約</small></div>
   <div class="restaurant-grid">
@@ -1704,7 +1962,7 @@ html[data-font-size="large"] .hero-grid{
 </section>
 
 
-<section class="section" id="traveldesk">
+<section class="section app-section-shell deck-section" id="traveldesk">
   <div class="section-kicker">PLAN B</div>
   <div class="section-title clean-title"><h2>下雨備案</h2><small>不用整天重排行程</small></div>
   <div class="backup-grid">
@@ -1733,9 +1991,17 @@ html[data-font-size="large"] .hero-grid{
     <div class="reserve-right"><span class="reserve-state">可預約</span><a class="reserve-link" href="https://www.google.com/maps/search/?api=1&query=LITOR+沖縄県那覇市久茂地3-25-20" target="_blank" rel="noopener">Google Maps ↗</a></div></div><div class="reserve-right"><span class="reserve-state warn">當日休店</span></div></div>
     <div class="reserve-row"><div><div class="reserve-name">10/13 17:00｜焼肉きんぐ 那覇新都心店</div><div class="reserve-sub">100 分鐘吃到飽；17:00 為平日開店時間。</div></div><div class="reserve-right"><span class="reserve-state">建議先訂</span><a class="reserve-link" href="https://www.yakiniku-king.jp/shop/2107" target="_blank" rel="noopener">店舖／預約 ↗</a></div></div>
   </div>
+
+<div style="margin-top:16px"></div>
+<div class="card" style="padding:16px">
+    <div style="font-size:13px;font-weight:800">這個網站可以直接分享</div>
+    <div class="note" style="margin:5px 0 11px">上線後把網址貼到 LINE 群組即可。手機開啟後會像旅遊 App 一樣使用。</div>
+    <button class="btn" style="border:0;cursor:pointer;width:100%;padding:11px" onclick="shareTrip()">📤 分享這趟沖繩行程</button>
+  </div>
+
 </section>
 
-<section class="section" id="savings">
+<section class="section app-section-shell deck-section" id="savings">
   <div class="section-kicker">SAVE MORE</div>
   <div class="section-title clean-title">
     <h2>購物優惠與匯率</h2>
@@ -1854,7 +2120,7 @@ html[data-font-size="large"] .hero-grid{
 
 
 
-<section class="section" id="translate">
+<section class="section app-section-shell deck-section" id="translate">
   <div class="section-kicker">LIVE TRANSLATOR</div>
   <div class="section-title clean-title">
     <h2>中日即時語音翻譯</h2>
@@ -1914,7 +2180,7 @@ html[data-font-size="large"] .hero-grid{
   </div>
 </section>
 
-<section class="section" id="expenses">
+<section class="section app-section-shell deck-section" id="expenses">
   <div class="section-kicker">TRIP WALLET</div>
   <div class="section-title clean-title">
     <h2>旅行記帳</h2>
@@ -2058,7 +2324,7 @@ html[data-font-size="large"] .hero-grid{
   </div>
 </section>
 
-<section class="section" id="map">
+<section class="section app-section-shell deck-section" id="map">
   <div class="section-title"><h2>🗺️ 行程互動地圖</h2><small>點 Marker 看地點</small></div>
   <div class="card map-card">
     <div class="map-toolbar">
@@ -2080,20 +2346,7 @@ html[data-font-size="large"] .hero-grid{
       <span><i class="map-dot" style="background:#5e7fa3"></i>DAY 5</span>
     </div>
 
-    <div class="route-legend">
-      <b>Marker 看法：</b>中間數字＝當天第幾站；左上角＝DAY；右下角＝類型。
-      <br>例如 <b>2A／2B</b> 代表午餐二選一；DAY 3 的 <b>A5、A6/B5、B6</b> 代表兩個購物方案的不同順序。
-    </div>
-
-    <div class="parking-disclaimer">🅿️ 停車 Marker 預設隱藏，按「顯示停車」再打開；這樣地圖不會一次塞滿兩種標記。</div>
-    <div class="unmapped-list">
-      ✅ <b>晚餐定位已確認：</b>DAY 2「焼肉神社 うしいち」與 DAY 3「鶴亀合戦」已加入正式 Marker 與時間軸編號。
-    </div>
-  </div>
-</section>
-
-<section class="section" id="share">
-  <div class="section-title"><h2>🔗 分享旅行</h2><small>給同行者</small></div>
+    <div class="route-lege<small>下雨備案與分享</small></div>
   <div class="card" style="padding:16px">
     <div style="font-size:13px;font-weight:800">這個網站可以直接分享</div>
     <div class="note" style="margin:5px 0 11px">上線後把網址貼到 LINE 群組即可。手機開啟後會像旅遊 App 一樣使用。</div>
@@ -3315,6 +3568,44 @@ window.addEventListener("DOMContentLoaded",()=>{
   applyFontSize(saved);
 })();
 </script>
+
+
+<script>
+(() => {
+  const targets=["days","map","spots","restaurants","savings","translate","expenses","traveldesk"];
+  const launchers=[...document.querySelectorAll("[data-target]")].filter(el=>targets.includes(el.dataset.target));
+  const sections=targets.map(id=>document.getElementById(id)).filter(Boolean);
+
+  function openDeck(id){
+    launchers.forEach(el=>el.classList.toggle("active", el.dataset.target===id));
+    sections.forEach(sec=>sec.classList.toggle("active", sec.id===id));
+
+    if(id==="map" && window.tripMapInstance){
+      setTimeout(()=>window.tripMapInstance.invalidateSize(),180);
+    }
+
+    const target=document.getElementById(id);
+    if(target){
+      const y=target.getBoundingClientRect().top + window.scrollY - 12;
+      window.scrollTo({top:y,behavior:"smooth"});
+    }
+  }
+
+  launchers.forEach(el=>{
+    el.addEventListener("click",()=>openDeck(el.dataset.target));
+  });
+
+  openDeck("days");
+})();
+</script>
+
+
+<div class="mobile-tabbar" id="mobileTabbar">
+  <button class="mobile-tab active" type="button" data-target="days"><span class="micon">📅</span>行程</button>
+  <button class="mobile-tab" type="button" data-target="map"><span class="micon">🗺️</span>地圖</button>
+  <button class="mobile-tab" type="button" data-target="expenses"><span class="micon">🧾</span>記帳</button>
+  <button class="mobile-tab" type="button" data-target="restaurants"><span class="micon">🍽️</span>餐廳</button>
+</div>
 
 </body>
 </html>
