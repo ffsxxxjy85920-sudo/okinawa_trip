@@ -1338,40 +1338,7 @@ html[data-font-size="large"] .hero-grid{
 .app-section-shell .section{
   margin-top:0;
 }
-.mobile-tabbar{
-  position:sticky;
-  bottom:10px;
-  z-index:999;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:6px;
-  margin:18px 10px 10px;
-  padding:7px;
-  border:1px solid rgba(219,232,230,.95);
-  border-radius:18px;
-  background:rgba(255,255,255,.94);
-  backdrop-filter:blur(14px);
-  box-shadow:0 12px 30px rgba(20,63,68,.13);
-}
-.mobile-tab{
-  border:0;
-  background:transparent;
-  color:#71888b;
-  border-radius:12px;
-  min-height:46px;
-  font-size:8.5px;
-  font-weight:1000;
-  cursor:pointer;
-}
-.mobile-tab .micon{
-  display:block;
-  font-size:16px;
-  margin-bottom:3px;
-}
-.mobile-tab.active{
-  background:#edf8f6;
-  color:#1e777f;
-}
+
 .quick-status{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -1398,30 +1365,11 @@ html[data-font-size="large"] .hero-grid{
 }
 @media(min-width:700px){
   .app-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
-  .mobile-tabbar{max-width:640px;margin-left:auto;margin-right:auto}
+  
 }
 
 
-/* ===== v28 bottom navigation fix ===== */
-.mobile-tabbar{
-  position:fixed !important;
-  left:10px;
-  right:10px;
-  bottom:calc(10px + env(safe-area-inset-bottom));
-  margin:0 !important;
-  z-index:5000 !important;
-  pointer-events:auto !important;
-}
-.mobile-tab{
-  position:relative;
-  z-index:1;
-  touch-action:manipulation;
-  -webkit-tap-highlight-color:transparent;
-  pointer-events:auto !important;
-}
-body{
-  padding-bottom:92px;
-}
+
 
 </style>
 
@@ -3596,7 +3544,6 @@ window.addEventListener("DOMContentLoaded",()=>{
 (() => {
   const targets=["days","map","spots","restaurants","savings","translate","expenses","traveldesk"];
   const tiles=[...document.querySelectorAll(".app-tile[data-target]")];
-  const tabs=[...document.querySelectorAll(".mobile-tab[data-target]")];
   const sections=targets.map(id=>document.getElementById(id)).filter(Boolean);
 
   function activateSection(id, shouldScroll=true){
@@ -3607,10 +3554,6 @@ window.addEventListener("DOMContentLoaded",()=>{
     });
 
     tiles.forEach(el=>{
-      el.classList.toggle("active",el.dataset.target===id);
-    });
-
-    tabs.forEach(el=>{
       el.classList.toggle("active",el.dataset.target===id);
     });
 
@@ -3638,25 +3581,11 @@ window.addEventListener("DOMContentLoaded",()=>{
     });
   });
 
-  tabs.forEach(btn=>{
-    btn.addEventListener("click",(e)=>{
-      e.preventDefault();
-      e.stopPropagation();
-      activateSection(btn.dataset.target,true);
-    },{passive:false});
-  });
-
   activateSection("days",false);
 })();
 </script>
 
 
-<div class="mobile-tabbar" id="mobileTabbar">
-  <button class="mobile-tab active" type="button" data-target="days"><span class="micon">📅</span>行程</button>
-  <button class="mobile-tab" type="button" data-target="map"><span class="micon">🗺️</span>地圖</button>
-  <button class="mobile-tab" type="button" data-target="expenses"><span class="micon">🧾</span>記帳</button>
-  <button class="mobile-tab" type="button" data-target="restaurants"><span class="micon">🍽️</span>餐廳</button>
-</div>
 
 </body>
 </html>
