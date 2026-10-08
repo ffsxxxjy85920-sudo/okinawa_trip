@@ -1144,6 +1144,23 @@ html[data-font-size="large"] .hero-grid{
   }
 }
 
+
+/* ===== Shared split bill v18 ===== */
+.sync-card{margin-top:12px;padding:13px;border:1px solid #e2eae9;border-radius:15px;background:#f8fbfa}
+.sync-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.sync-title{font-size:11px;font-weight:1000;color:#294b50}
+.sync-status{padding:5px 8px;border-radius:999px;font-size:8.5px;font-weight:1000;background:#edf3f2;color:#6b7e81;border:1px solid #e0e8e7}
+.sync-status.online{background:#eaf7f2;color:#26735d;border-color:#d0e9df}
+.sync-status.warn{background:#fff5e7;color:#87602b;border-color:#eedbb8}
+.sync-grid{display:grid;grid-template-columns:1fr;gap:8px;margin-top:10px}
+.sync-field label{display:block;font-size:9px;font-weight:900;color:#74878a;margin-bottom:4px}
+.sync-field input{width:100%;box-sizing:border-box;min-height:42px;border:1px solid #dce7e5;border-radius:11px;background:#fff;padding:8px 10px;font-size:16px;color:#29484d}
+.sync-actions{display:flex;gap:7px;margin-top:9px}
+.sync-actions button{flex:1;min-height:40px;border-radius:11px;border:1px solid #dbe7e5;background:#fff;color:#526e72;font-size:10px;font-weight:1000}
+.sync-actions button.primary{background:#087f8c;color:#fff;border-color:#087f8c}
+.sync-note{margin-top:8px;font-size:9px;line-height:1.6;color:#7e9194}
+.undo-last{flex:1;min-height:40px;border:1px solid #eed7d2;border-radius:11px;background:#fff7f5;color:#9a594e;font-size:10px;font-weight:1000;cursor:pointer}
+
 </style>
 
 <link rel="manifest" href="./manifest.webmanifest">
@@ -1872,6 +1889,29 @@ html[data-font-size="large"] .hero-grid{
 
   <div class="expense-card">
     
+    
+    <div class="sync-card">
+      <div class="sync-head">
+        <div class="sync-title">☁️ 多人同步分帳</div>
+        <span class="sync-status warn" id="syncStatus">連線中…</span>
+      </div>
+      <div class="sync-note">
+        已綁定沖繩 2026 共用雲端資料庫。同行者只要開啟同一個旅遊網站，就會使用同一份分帳資料。
+      </div>
+      <div class="sync-grid">
+        <div class="sync-field">
+          <label>共享房間</label>
+          <input id="syncRoom" value="okinawa-2026" readonly>
+        </div>
+      </div>
+      <div class="sync-actions">
+        <button class="primary" id="retrySync" type="button">重新同步</button>
+        <button id="syncNow" type="button">立即更新</button>
+      </div>
+      <div class="sync-note">
+        若顯示「同步失敗」，通常是 Firebase Realtime Database 的讀寫規則尚未開放。
+      </div>
+    </div>
     <div class="people-card">
       <div class="people-head">
         <b>👥 分帳成員</b>
@@ -1969,6 +2009,7 @@ html[data-font-size="large"] .hero-grid{
     </div>
 
     <div class="expense-actions">
+      <button class="undo-last" id="undoLastExpense" type="button">↶ 刪除上一筆</button>
       <button class="secondary-action" id="exportExpense" type="button">匯出 CSV</button>
       <button class="secondary-action danger" id="clearExpense" type="button">清除全部</button>
     </div>
@@ -2395,6 +2436,12 @@ window.addEventListener("DOMContentLoaded",()=>{
   const FX_CACHE_KEY = "okinawa2026_fx_jpy_twd";
   const EXPENSE_KEY = "okinawa2026_expenses_v2";
   const MEMBER_KEY = "okinawa2026_members_v1";
+  const SYNC_CFG_KEY = "okinawa2026_sync_config_v1";
+  const DEFAULT_FIREBASE_URL = "https://okinawa2026-537c9-default-rtdb.asia-southeast1.firebasedatabase.app";
+  const DEFAULT_SYNC_ROOM = "okinawa-2026";
+  let syncTimer = null;
+  let syncConfig = null;
+  let syncBusy = false;
 
   let fxRate = 0;
   let fxUpdatedText = "";
@@ -2420,6 +2467,7 @@ window.addEventListener("DOMContentLoaded",()=>{
 
   function saveMembers(items){
     localStorage.setItem(MEMBER_KEY, JSON.stringify(items));
+    pushCloudState();
   }
 
   function getExpenses(){
@@ -2431,7 +2479,95 @@ window.addEventListener("DOMContentLoaded",()=>{
 
   function saveExpenses(items){
     localStorage.setItem(EXPENSE_KEY, JSON.stringify(items));
+    pushCloudState();
   }
+
+
+  function sanitizeRoom(value){
+    return String(value||"").trim().replace(/[.#$\[\]\/]/g,"-").slice(0,40);
+  }
+
+  function normalizeFirebaseUrl(value){
+    return String(value||"").trim().replace(/\/+$/,"");
+  }
+
+  function getSyncState(){
+    return {members:getMembers(),expenses:getExpenses(),updatedAt:Date.now()};
+  }
+
+  function setSyncStatus(text, mode="warn"){
+    const el=document.getElementById("syncStatus");
+    if(!el) return;
+    el.textContent=text;
+    el.classList.remove("online","warn");
+    if(mode) el.classList.add(mode);
+  }
+
+  function cloudEndpoint(){
+    if(!syncConfig?.url || !syncConfig?.room) return null;
+    return `${syncConfig.url}/okinawaTripRooms/${encodeURIComponent(syncConfig.room)}.json`;
+  }
+
+  async function pushCloudState(){
+    const endpoint=cloudEndpoint();
+    if(!endpoint || syncBusy) return;
+    try{
+      syncBusy=true;
+      const res=await fetch(endpoint,{
+        method:"PUT",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(getSyncState())
+      });
+      if(!res.ok) throw new Error("sync write failed");
+      setSyncStatus("已同步","online");
+    }catch(e){
+      setSyncStatus("同步失敗","warn");
+    }finally{
+      syncBusy=false;
+    }
+  }
+
+  async function pullCloudState(){
+    const endpoint=cloudEndpoint();
+    if(!endpoint || syncBusy) return;
+    try{
+      syncBusy=true;
+      const res=await fetch(endpoint,{cache:"no-store"});
+      if(!res.ok) throw new Error("sync read failed");
+      const data=await res.json();
+      if(data && Array.isArray(data.members) && Array.isArray(data.expenses)){
+        localStorage.setItem(MEMBER_KEY, JSON.stringify(data.members));
+        localStorage.setItem(EXPENSE_KEY, JSON.stringify(data.expenses));
+        renderMembers();
+        renderExpenses();
+      }else{
+        localStorage.setItem(MEMBER_KEY, JSON.stringify(getMembers()));
+        localStorage.setItem(EXPENSE_KEY, JSON.stringify(getExpenses()));
+      }
+      setSyncStatus("已同步","online");
+    }catch(e){
+      setSyncStatus("同步失敗","warn");
+    }finally{
+      syncBusy=false;
+    }
+  }
+
+  async function connectSync(){
+    const room=sanitizeRoom(document.getElementById("syncRoom")?.value || DEFAULT_SYNC_ROOM);
+    syncConfig={url:DEFAULT_FIREBASE_URL,room};
+    localStorage.setItem(SYNC_CFG_KEY,JSON.stringify(syncConfig));
+    setSyncStatus("連線中…","warn");
+    await pullCloudState();
+    if(syncTimer) clearInterval(syncTimer);
+    syncTimer=setInterval(pullCloudState,4000);
+  }
+
+  function disconnectSync(){
+    if(syncTimer) clearInterval(syncTimer);
+    syncTimer=null;
+    setSyncStatus("同步已暫停","warn");
+  }
+
 
   function updateConverter(){
     const yen = Math.max(0, Number(document.getElementById("yenInput")?.value || 0));
@@ -2748,6 +2884,19 @@ window.addEventListener("DOMContentLoaded",()=>{
     updateSplitPreview();
   });
 
+
+  document.getElementById("undoLastExpense")?.addEventListener("click",()=>{
+    const items=getExpenses();
+    if(!items.length) return;
+    const last=items[items.length-1];
+    const label=last?.name || last?.category || "上一筆";
+    if(confirm(`刪除上一筆「${label}」？`)){
+      items.pop();
+      saveExpenses(items);
+      renderExpenses();
+    }
+  });
+
   document.getElementById("exportExpense")?.addEventListener("click",exportCSV);
 
   document.getElementById("clearExpense")?.addEventListener("click",()=>{
@@ -2757,6 +2906,18 @@ window.addEventListener("DOMContentLoaded",()=>{
       renderExpenses();
     }
   });
+
+
+  document.getElementById("retrySync")?.addEventListener("click",connectSync);
+  document.getElementById("syncNow")?.addEventListener("click",pullCloudState);
+
+  try{
+    syncConfig={url:DEFAULT_FIREBASE_URL,room:DEFAULT_SYNC_ROOM};
+    localStorage.setItem(SYNC_CFG_KEY,JSON.stringify(syncConfig));
+    const roomEl=document.getElementById("syncRoom");
+    if(roomEl) roomEl.value=DEFAULT_SYNC_ROOM;
+    setTimeout(connectSync,250);
+  }catch(e){}
 
   renderMembers();
   renderExpenses();
