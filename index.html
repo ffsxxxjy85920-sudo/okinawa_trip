@@ -1401,6 +1401,28 @@ html[data-font-size="large"] .hero-grid{
   .mobile-tabbar{max-width:640px;margin-left:auto;margin-right:auto}
 }
 
+
+/* ===== v28 bottom navigation fix ===== */
+.mobile-tabbar{
+  position:fixed !important;
+  left:10px;
+  right:10px;
+  bottom:calc(10px + env(safe-area-inset-bottom));
+  margin:0 !important;
+  z-index:5000 !important;
+  pointer-events:auto !important;
+}
+.mobile-tab{
+  position:relative;
+  z-index:1;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+  pointer-events:auto !important;
+}
+body{
+  padding-bottom:92px;
+}
+
 </style>
 
 <link rel="manifest" href="./manifest.webmanifest">
@@ -3573,29 +3595,58 @@ window.addEventListener("DOMContentLoaded",()=>{
 <script>
 (() => {
   const targets=["days","map","spots","restaurants","savings","translate","expenses","traveldesk"];
-  const launchers=[...document.querySelectorAll("[data-target]")].filter(el=>targets.includes(el.dataset.target));
+  const tiles=[...document.querySelectorAll(".app-tile[data-target]")];
+  const tabs=[...document.querySelectorAll(".mobile-tab[data-target]")];
   const sections=targets.map(id=>document.getElementById(id)).filter(Boolean);
 
-  function openDeck(id){
-    launchers.forEach(el=>el.classList.toggle("active", el.dataset.target===id));
-    sections.forEach(sec=>sec.classList.toggle("active", sec.id===id));
+  function activateSection(id, shouldScroll=true){
+    if(!targets.includes(id)) return;
+
+    sections.forEach(sec=>{
+      sec.classList.toggle("active",sec.id===id);
+    });
+
+    tiles.forEach(el=>{
+      el.classList.toggle("active",el.dataset.target===id);
+    });
+
+    tabs.forEach(el=>{
+      el.classList.toggle("active",el.dataset.target===id);
+    });
 
     if(id==="map" && window.tripMapInstance){
-      setTimeout(()=>window.tripMapInstance.invalidateSize(),180);
+      setTimeout(()=>{
+        try{ window.tripMapInstance.invalidateSize(); }catch(e){}
+      },220);
     }
 
-    const target=document.getElementById(id);
-    if(target){
-      const y=target.getBoundingClientRect().top + window.scrollY - 12;
-      window.scrollTo({top:y,behavior:"smooth"});
+    if(shouldScroll){
+      const target=document.getElementById(id);
+      if(target){
+        requestAnimationFrame(()=>{
+          const top=target.getBoundingClientRect().top + window.scrollY - 10;
+          window.scrollTo({top,behavior:"smooth"});
+        });
+      }
     }
   }
 
-  launchers.forEach(el=>{
-    el.addEventListener("click",()=>openDeck(el.dataset.target));
+  tiles.forEach(btn=>{
+    btn.addEventListener("click",(e)=>{
+      e.preventDefault();
+      activateSection(btn.dataset.target,true);
+    });
   });
 
-  openDeck("days");
+  tabs.forEach(btn=>{
+    btn.addEventListener("click",(e)=>{
+      e.preventDefault();
+      e.stopPropagation();
+      activateSection(btn.dataset.target,true);
+    },{passive:false});
+  });
+
+  activateSection("days",false);
 })();
 </script>
 
