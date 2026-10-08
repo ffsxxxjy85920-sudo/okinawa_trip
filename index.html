@@ -1162,20 +1162,40 @@ html[data-font-size="large"] .hero-grid{
 .undo-last{flex:1;min-height:40px;border:1px solid #eed7d2;border-radius:11px;background:#fff7f5;color:#9a594e;font-size:10px;font-weight:1000;cursor:pointer}
 
 
-/* ===== Compact UI v22 ===== */
-.result-toggle{width:100%;margin-top:10px;min-height:44px;border:1px solid #d7e6e4;border-radius:13px;background:#f7fbfa;color:#315d62;font-size:11px;font-weight:1000;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px}
-.result-toggle .chev{transition:transform .2s ease}
-.result-toggle[aria-expanded="true"] .chev{transform:rotate(180deg)}
-.result-panel{display:none;margin-top:8px;border-top:1px dashed #dfe8e7;padding-top:8px}
-.result-panel.open{display:block}
-.compact-details{margin-top:10px;border:1px solid #e3ecea;border-radius:13px;background:#fbfdfd;overflow:hidden}
-.compact-details summary{list-style:none;cursor:pointer;padding:11px 12px;font-size:10.5px;font-weight:1000;color:#49676b;display:flex;align-items:center;justify-content:space-between}
-.compact-details summary::-webkit-details-marker{display:none}
-.compact-details summary:after{content:"＋";font-size:14px;color:#799093}
-.compact-details[open] summary:after{content:"－"}
-.compact-body{padding:0 12px 12px}
-.sync-card{padding:11px!important}
+/* ===== v25: v21 baseline + settlement result toggle only ===== */
+.settlement-toggle{
+  width:100%;
+  margin-top:10px;
+  min-height:44px;
+  border:1px solid #d7e6e4;
+  border-radius:13px;
+  background:#f7fbfa;
+  color:#315d62;
+  font-size:11px;
+  font-weight:1000;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  padding:10px 12px;
+}
+.settlement-toggle .chev{
+  display:inline-block;
+  transition:transform .2s ease;
+}
+.settlement-toggle[aria-expanded="true"] .chev{
+  transform:rotate(180deg);
+}
+.settlement-panel{
+  display:none;
+  margin-top:8px;
+}
+.settlement-panel.open{
+  display:block;
+}
 
+</style>
 
 <link rel="manifest" href="./manifest.webmanifest">
 <meta name="mobile-web-app-capable" content="yes">
@@ -1387,7 +1407,7 @@ html[data-font-size="large"] .hero-grid{
   <div class="section-kicker">SPOT GUIDE</div>
   <div class="section-title clean-title">
     <h2>景點介紹</h2>
-    <small>摘要先看・需要再展開</small>
+    <small>先知道為什麼值得去</small>
   </div>
 
   <div class="spot-grid">
@@ -1517,7 +1537,7 @@ html[data-font-size="large"] .hero-grid{
 
 <section class="section" id="restaurants">
   <div class="section-kicker">FOOD GUIDE</div>
-  <div class="section-title clean-title"><h2>餐廳攻略</h2><small>店名先看・攻略再展開</small></div>
+  <div class="section-title clean-title"><h2>餐廳攻略</h2><small>必點・價位・預約</small></div>
   <div class="restaurant-grid">
 
     <article class="restaurant-card">
@@ -1719,7 +1739,7 @@ html[data-font-size="large"] .hero-grid{
   <div class="section-kicker">SAVE MORE</div>
   <div class="section-title clean-title">
     <h2>購物優惠與匯率</h2>
-    <small>優惠先看・條件再展開</small>
+    <small>出示前先看使用條件</small>
   </div>
   <div class="coupon-note" style="margin-bottom:12px">
     💡 <b>結帳順序：</b>先問免稅 → 再出示 Coupon／App → 最後付款。不同店家的「免稅＋折扣」能否併用不一樣，以收銀台實際判定為準。
@@ -1909,15 +1929,21 @@ html[data-font-size="large"] .hero-grid{
         <div class="sync-title">☁️ 多人同步分帳</div>
         <span class="sync-status warn" id="syncStatus">連線中…</span>
       </div>
-      <div class="sync-note">共用分帳會自動同步，不需要手動更新。</div>
-      <details class="compact-details">
-        <summary>同步設定</summary>
-        <div class="compact-body">
-          <div class="sync-grid"><div class="sync-field"><label>共享房間</label><input id="syncRoom" value="okinawa-2026" readonly></div></div>
-          <div class="sync-actions"><button class="primary" id="retrySync" type="button">重新連線</button></div>
-          <div class="sync-note">只有顯示同步失敗時才需要重新連線。</div>
+      <div class="sync-note">
+        已綁定沖繩 2026 共用雲端資料庫。新增、刪除或修改分帳資料時會自動同步，不需要另外按更新。
+      </div>
+      <div class="sync-grid">
+        <div class="sync-field">
+          <label>共享房間</label>
+          <input id="syncRoom" value="okinawa-2026" readonly>
         </div>
-      </details>
+      </div>
+      <div class="sync-actions">
+        <button class="primary" id="retrySync" type="button">重新連線</button>
+      </div>
+      <div class="sync-note">
+        新增／刪除支出或增減成員時會立即寫入雲端；其他同行者會自動取得最新資料。只有顯示「同步失敗」時才需要按「重新連線」。
+      </div>
     </div>
     <div class="people-card">
       <div class="people-head">
@@ -2012,17 +2038,20 @@ html[data-font-size="large"] .hero-grid{
     <div class="balance-card">
       <h3>最新分帳結果</h3>
       <div class="balance-grid" id="balanceGrid"></div>
-      <button class="result-toggle" id="toggleSettlementResult" type="button" aria-expanded="false">
-        <span>查看最終分帳結果</span><span class="chev">⌄</span>
+      <button class="settlement-toggle" id="toggleSettlementResult" type="button" aria-expanded="false">
+        <span>查看最終分帳結果</span>
+        <span class="chev">⌄</span>
       </button>
-      <div class="result-panel" id="settlementResultPanel">
-        <div class="sync-note" id="sharedResultStatus" style="margin-top:0">☁️ 顯示的是目前最新共用分帳結果。</div>
+      <div class="settlement-panel" id="settlementResultPanel">
+        <div class="sync-note" id="sharedResultStatus" style="margin-top:8px">
+          ☁️ 分帳結果會隨雲端資料自動更新，同行者看到的結果會一致。
+        </div>
         <div class="settle-list" id="settleList"></div>
       </div>
     </div>
 
     <div class="expense-actions">
-      <button class="undo-last" id="undoLastExpense" type="button">↶ 撤銷上一筆</button>
+      <button class="undo-last" id="undoLastExpense" type="button">↶ 刪除上一筆</button>
       <button class="secondary-action" id="exportExpense" type="button">匯出 CSV</button>
       <button class="secondary-action danger" id="clearExpense" type="button">清除全部</button>
     </div>
@@ -2948,12 +2977,13 @@ window.addEventListener("DOMContentLoaded",()=>{
 
   const settlementToggle=document.getElementById("toggleSettlementResult");
   const settlementPanel=document.getElementById("settlementResultPanel");
+
   settlementToggle?.addEventListener("click",()=>{
-    const willOpen=!settlementPanel?.classList.contains("open");
-    settlementPanel?.classList.toggle("open",willOpen);
-    settlementToggle.setAttribute("aria-expanded",String(willOpen));
+    const open=!settlementPanel?.classList.contains("open");
+    settlementPanel?.classList.toggle("open",open);
+    settlementToggle.setAttribute("aria-expanded",String(open));
     const label=settlementToggle.querySelector("span:first-child");
-    if(label) label.textContent=willOpen ? "隱藏最終分帳結果" : "查看最終分帳結果";
+    if(label) label.textContent=open ? "隱藏最終分帳結果" : "查看最終分帳結果";
   });
 
   document.getElementById("retrySync")?.addEventListener("click",connectSync);
@@ -3283,57 +3313,6 @@ window.addEventListener("DOMContentLoaded",()=>{
     btn.addEventListener("click",()=>applyFontSize(btn.dataset.fontSize));
   });
   applyFontSize(saved);
-})();
-</script>
-
-
-<script>
-(() => {
-  function makeBtn(labelClosed, labelOpen){
-    const btn=document.createElement("button");
-    btn.type="button";
-    btn.className="compact-toggle-btn";
-    btn.setAttribute("aria-expanded","false");
-    btn.innerHTML=`<span class="compact-label">${labelClosed}</span><span class="arrow">⌄</span>`;
-    btn.addEventListener("click",(e)=>{
-      e.preventDefault();
-      e.stopPropagation();
-      const card=btn.closest(".spot-card,.restaurant-card,.coupon-card");
-      if(!card) return;
-      const willOpen=card.classList.contains("compact-collapsed");
-      card.classList.toggle("compact-collapsed",!willOpen);
-      btn.setAttribute("aria-expanded",String(willOpen));
-      const label=btn.querySelector(".compact-label");
-      if(label) label.textContent=willOpen ? labelOpen : labelClosed;
-    });
-    return btn;
-  }
-
-  document.querySelectorAll("#spots .spot-card").forEach(card=>{
-    card.classList.add("compact-collapsed");
-    const body=card.querySelector(".spot-body");
-    const h3=body?.querySelector("h3");
-    if(!body || !h3 || body.querySelector(".spot-compact-row")) return;
-    const row=document.createElement("div");
-    row.className="spot-compact-row";
-    h3.parentNode.insertBefore(row,h3);
-    row.appendChild(h3);
-    row.appendChild(makeBtn("看詳細","收起"));
-  });
-
-  document.querySelectorAll("#restaurants .restaurant-card").forEach(card=>{
-    card.classList.add("compact-collapsed");
-    const head=card.querySelector(".restaurant-head");
-    if(!head || head.querySelector(".compact-toggle-btn")) return;
-    head.appendChild(makeBtn("看攻略","收起"));
-  });
-
-  document.querySelectorAll("#savings .coupon-card").forEach(card=>{
-    card.classList.add("compact-collapsed");
-    const top=card.querySelector(".coupon-top");
-    if(!top || top.querySelector(".compact-toggle-btn")) return;
-    top.appendChild(makeBtn("看條件","收起"));
-  });
 })();
 </script>
 
