@@ -2002,8 +2002,11 @@ html[data-font-size="large"] .hero-grid{
 
     
     <div class="balance-card">
-      <h3>分帳結果</h3>
+      <h3>最新分帳結果</h3>
       <div class="balance-grid" id="balanceGrid"></div>
+      <div class="sync-note" id="sharedResultStatus" style="margin-top:8px">
+        ☁️ 分帳結果會隨雲端資料自動更新，同行者看到的結果會一致。
+      </div>
       <div class="settle-list" id="settleList"></div>
     </div>
 
@@ -2490,8 +2493,23 @@ window.addEventListener("DOMContentLoaded",()=>{
     return String(value||"").trim().replace(/\/+$/,"");
   }
 
+  function getSettlementSnapshot(){
+    const balances=computeBalances(getExpenses());
+    return {
+      balances:Object.values(balances),
+      settlements:computeSettlements(balances)
+    };
+  }
+
   function getSyncState(){
-    return {members:getMembers(),expenses:getExpenses(),updatedAt:Date.now()};
+    const snapshot=getSettlementSnapshot();
+    return {
+      members:getMembers(),
+      expenses:getExpenses(),
+      balances:snapshot.balances,
+      settlements:snapshot.settlements,
+      updatedAt:Date.now()
+    };
   }
 
   function setSyncStatus(text, mode="warn"){
@@ -2520,6 +2538,9 @@ window.addEventListener("DOMContentLoaded",()=>{
       });
       if(!res.ok) throw new Error("sync write failed");
       setSyncStatus("已同步","online");
+      renderExpenses();
+      const rs=document.getElementById("sharedResultStatus");
+      if(rs) rs.textContent="☁️ 分帳結果已同步，同行者會看到同一份最新結果。";
     }catch(e){
       setSyncStatus("同步失敗","warn");
     }finally{
@@ -2540,6 +2561,11 @@ window.addEventListener("DOMContentLoaded",()=>{
         localStorage.setItem(EXPENSE_KEY, JSON.stringify(data.expenses));
         renderMembers();
         renderExpenses();
+        const rs=document.getElementById("sharedResultStatus");
+        if(rs){
+          const t=data.updatedAt ? new Date(data.updatedAt).toLocaleTimeString("zh-TW",{hour:"2-digit",minute:"2-digit"}) : "";
+          rs.textContent=`☁️ 已取得最新雲端分帳結果${t ? " · "+t : ""}`;
+        }
       }else{
         localStorage.setItem(MEMBER_KEY, JSON.stringify(getMembers()));
         localStorage.setItem(EXPENSE_KEY, JSON.stringify(getExpenses()));
@@ -2901,8 +2927,8 @@ window.addEventListener("DOMContentLoaded",()=>{
 
   document.getElementById("clearExpense")?.addEventListener("click",()=>{
     if(!getExpenses().length) return;
-    if(confirm("確定要清除全部旅行記帳資料嗎？")){
-      localStorage.removeItem(EXPENSE_KEY);
+    if(confirm("確定要清除全部旅行記帳資料嗎？這會同步清除同行者看到的共用記錄。")){
+      saveExpenses([]);
       renderExpenses();
     }
   });
