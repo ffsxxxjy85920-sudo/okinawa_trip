@@ -1161,7 +1161,21 @@ html[data-font-size="large"] .hero-grid{
 .sync-note{margin-top:8px;font-size:9px;line-height:1.6;color:#7e9194}
 .undo-last{flex:1;min-height:40px;border:1px solid #eed7d2;border-radius:11px;background:#fff7f5;color:#9a594e;font-size:10px;font-weight:1000;cursor:pointer}
 
-</style>
+
+/* ===== Compact UI v22 ===== */
+.result-toggle{width:100%;margin-top:10px;min-height:44px;border:1px solid #d7e6e4;border-radius:13px;background:#f7fbfa;color:#315d62;font-size:11px;font-weight:1000;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px}
+.result-toggle .chev{transition:transform .2s ease}
+.result-toggle[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.result-panel{display:none;margin-top:8px;border-top:1px dashed #dfe8e7;padding-top:8px}
+.result-panel.open{display:block}
+.compact-details{margin-top:10px;border:1px solid #e3ecea;border-radius:13px;background:#fbfdfd;overflow:hidden}
+.compact-details summary{list-style:none;cursor:pointer;padding:11px 12px;font-size:10.5px;font-weight:1000;color:#49676b;display:flex;align-items:center;justify-content:space-between}
+.compact-details summary::-webkit-details-marker{display:none}
+.compact-details summary:after{content:"＋";font-size:14px;color:#799093}
+.compact-details[open] summary:after{content:"－"}
+.compact-body{padding:0 12px 12px}
+.sync-card{padding:11px!important}
+
 
 <link rel="manifest" href="./manifest.webmanifest">
 <meta name="mobile-web-app-capable" content="yes">
@@ -1373,11 +1387,19 @@ html[data-font-size="large"] .hero-grid{
   <div class="section-kicker">SPOT GUIDE</div>
   <div class="section-title clean-title">
     <h2>景點介紹</h2>
-    <small>先知道為什麼值得去</small>
+    <small>點景點名稱展開詳細</small>
   </div>
 
   <div class="spot-grid">
-    <article class="spot-card">
+    <details class="compact-card">
+  <summary>
+    <div class="compact-summary-main">
+      <div class="compact-summary-title">沖繩美麗海水族館</div>
+      <div class="compact-summary-sub">DAY 2 · 🐠 海洋景點 · 點開看詳細</div>
+    </div>
+    <span class="compact-summary-icon">⌄</span>
+  </summary>
+  <div class="compact-card-body"><article class="spot-card">
       <div class="spot-photo">
         <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Okinawa%20Churaumi%20Aquarium%2020221229.jpg?width=1280" alt="沖繩美麗海水族館">
         <span class="spot-day">DAY 2</span>
@@ -1392,9 +1414,18 @@ html[data-font-size="large"] .hero-grid{
           <a href="https://churaumi.okinawa/tc/" target="_blank" rel="noopener">官方網站</a>
         </div>
       </div>
-    </article>
+    </article></div>
+</details>
 
-    <article class="spot-card">
+    <details class="compact-card">
+  <summary>
+    <div class="compact-summary-main">
+      <div class="compact-summary-title">古宇利島</div>
+      <div class="compact-summary-sub">DAY 2 · 🏝️ 海島景點 · 點開看詳細</div>
+    </div>
+    <span class="compact-summary-icon">⌄</span>
+  </summary>
+  <div class="compact-card-body"><article class="spot-card">
       <div class="spot-photo">
         <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/JP%20%E6%B2%96%E7%B9%A9%20Okinawa%20Nago%20Kouri%20Island%20n%20Road%20Bridge%20n%20Beach%20January%202026%20N13P%2010.jpg?width=1280" alt="古宇利島">
         <span class="spot-day">DAY 2</span>
@@ -1409,9 +1440,18 @@ html[data-font-size="large"] .hero-grid{
           <a href="https://visitokinawajapan.com/zh-hant/destinations/okinawa-main-island/northern-okinawa-main-island/kouri-island/" target="_blank" rel="noopener">官方介紹</a>
         </div>
       </div>
-    </article>
+    </article></div>
+</details>
 
-    <article class="spot-card">
+    <details class="compact-card">
+  <summary>
+    <div class="compact-summary-main">
+      <div class="compact-summary-title">玉泉洞</div>
+      <div class="compact-summary-sub">DAY 3 · 🪨 自然景點 · 點開看詳細</div>
+    </div>
+    <span class="compact-summary-icon">⌄</span>
+  </summary>
+  <div class="compact-card-body"><article class="spot-card">
       <div class="spot-photo">
         <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Gyokusendo%20Cave%20-%20panoramio.jpg?width=1280" alt="玉泉洞">
         <span class="spot-day">DAY 3</span>
@@ -1426,9 +1466,18 @@ html[data-font-size="large"] .hero-grid{
           <a href="https://www.gyokusendo.co.jp/okinawaworld/7recommendations/" target="_blank" rel="noopener">官方介紹</a>
         </div>
       </div>
-    </article>
+    </article></div>
+</details>
 
-    <article class="spot-card">
+    <details class="compact-card">
+  <summary>
+    <div class="compact-summary-main">
+      <div class="compact-summary-title">美濱美國村</div>
+      <div class="compact-summary-sub">DAY 3 · 🌊 街區景點 · 點開看詳細</div>
+    </div>
+    <span class="compact-summary-icon">⌄</span>
+  </summary>
+  <div class="compact-card-body"><article class="spot-card">
       <div class="spot-photo">
         <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/American%20Village%20in%20Okinawa.jpg?width=1280" alt="美濱美國村">
         <span class="spot-day">DAY 3</span>
@@ -1443,9 +1492,18 @@ html[data-font-size="large"] .hero-grid{
           <a href="https://www.okinawa-americanvillage.com/" target="_blank" rel="noopener">官方網站</a>
         </div>
       </div>
-    </article>
+    </article></div>
+</details>
 
-    <article class="spot-card">
+    <details class="compact-card">
+  <summary>
+    <div class="compact-summary-main">
+      <div class="compact-summary-title">瀨長島 Umikaji Terrace</div>
+      <div class="compact-summary-sub">DAY 4 · ✈️ 海景景點 · 點開看詳細</div>
+    </div>
+    <span class="compact-summary-icon">⌄</span>
+  </summary>
+  <div class="compact-card-body"><article class="spot-card">
       <div class="spot-photo">
         <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Umikaji%20Terrace%20Senagajima.jpg?width=1280" alt="瀨長島 Umikaji Terrace">
         <span class="spot-day">DAY 4</span>
@@ -1460,9 +1518,18 @@ html[data-font-size="large"] .hero-grid{
           <a href="https://www.umikajiterrace.com/" target="_blank" rel="noopener">官方網站</a>
         </div>
       </div>
-    </article>
+    </article></div>
+</details>
 
-    <article class="spot-card">
+    <details class="compact-card">
+  <summary>
+    <div class="compact-summary-main">
+      <div class="compact-summary-title">波上宮</div>
+      <div class="compact-summary-sub">DAY 4 · ⛩️ 文化景點 · 點開看詳細</div>
+    </div>
+    <span class="compact-summary-icon">⌄</span>
+  </summary>
+  <div class="compact-card-body"><article class="spot-card">
       <div class="spot-photo">
         <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Naha%20Naminoue-gu%202.jpg?width=1280" alt="波上宮">
         <span class="spot-day">DAY 4</span>
@@ -1477,9 +1544,18 @@ html[data-font-size="large"] .hero-grid{
           <a href="https://www.naminouegu.jp/" target="_blank" rel="noopener">官方網站</a>
         </div>
       </div>
-    </article>
+    </article></div>
+</details>
 
-    <article class="spot-card">
+    <details class="compact-card">
+  <summary>
+    <div class="compact-summary-main">
+      <div class="compact-summary-title">首里城公園</div>
+      <div class="compact-summary-sub">DAY 4 · 🏯 歷史景點 · 點開看詳細</div>
+    </div>
+    <span class="compact-summary-icon">⌄</span>
+  </summary>
+  <div class="compact-card-body"><article class="spot-card">
       <div class="spot-photo">
         <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Shuri%20castle.jpg?width=1280" alt="首里城">
         <span class="spot-day">DAY 4</span>
@@ -1495,7 +1571,8 @@ html[data-font-size="large"] .hero-grid{
           <a href="https://oki-park.jp/shurijo/" target="_blank" rel="noopener">官方網站</a>
         </div>
       </div>
-    </article>
+    </article></div>
+</details>
   </div>
 </section>
 
@@ -1503,10 +1580,18 @@ html[data-font-size="large"] .hero-grid{
 
 <section class="section" id="restaurants">
   <div class="section-kicker">FOOD GUIDE</div>
-  <div class="section-title clean-title"><h2>餐廳攻略</h2><small>必點・價位・預約</small></div>
+  <div class="section-title clean-title"><h2>餐廳攻略</h2><small>點餐廳名稱展開攻略</small></div>
   <div class="restaurant-grid">
 
-    <article class="restaurant-card">
+    <details class="compact-card">
+  <summary>
+    <div class="compact-summary-main">
+      <div class="compact-summary-title">🍲 お肉の一心</div>
+      <div class="compact-summary-sub">DAY 1・久茂地｜壽喜燒・涮涮鍋</div>
+    </div>
+    <span class="compact-summary-icon">⌄</span>
+  </summary>
+  <div class="compact-card-body"><article class="restaurant-card">
       <div class="restaurant-head">
         <div><div class="restaurant-name">🍲 お肉の一心</div><div class="restaurant-meta">DAY 1・久茂地｜壽喜燒・涮涮鍋</div></div>
         <span class="restaurant-status">建議預約</span>
@@ -1524,9 +1609,18 @@ html[data-font-size="large"] .hero-grid{
         <a href="https://www.isshin-okinawa.com/" target="_blank" rel="noopener">官方</a>
         <a href="https://www.tablecheck.com/ja/isshin-okinawa" target="_blank" rel="noopener">預約</a>
       </div>
-    </article>
+    </article></div>
+</details>
 
-    <article class="restaurant-card">
+    <details class="compact-card">
+  <summary>
+    <div class="compact-summary-main">
+      <div class="compact-summary-title">🍤 Kurumaebi Kitchen TAMAYA</div>
+      <div class="compact-summary-sub">DAY 2・屋我地島｜車海老專門店</div>
+    </div>
+    <span class="compact-summary-icon">⌄</span>
+  </summary>
+  <div class="compact-card-body"><article class="restaurant-card">
       <div class="restaurant-head">
         <div><div class="restaurant-name">🍤 Kurumaebi Kitchen TAMAYA</div><div class="restaurant-meta">DAY 2・屋我地島｜車海老專門店</div></div>
         <span class="restaurant-status no">不可預約</span>
@@ -1544,9 +1638,18 @@ html[data-font-size="large"] .hero-grid{
         <a href="https://tamayaab.com/" target="_blank" rel="noopener">官網</a>
         <a href="https://www.google.com/maps/search/?api=1&query=Kurumaebi+Kitchen+TAMAYA" target="_blank" rel="noopener">導航</a>
       </div>
-    </article>
+    </article></div>
+</details>
 
-    <article class="restaurant-card">
+    <details class="compact-card">
+  <summary>
+    <div class="compact-summary-main">
+      <div class="compact-summary-title">🥢 アグー豚しゃぶしゃぶ 翡翠</div>
+      <div class="compact-summary-sub">DAY 2・本部町｜阿古豬涮涮鍋</div>
+    </div>
+    <span class="compact-summary-icon">⌄</span>
+  </summary>
+  <div class="compact-card-body"><article class="restaurant-card">
       <div class="restaurant-head">
         <div><div class="restaurant-name">🥢 アグー豚しゃぶしゃぶ 翡翠</div><div class="restaurant-meta">DAY 2・本部町｜阿古豬涮涮鍋</div></div>
         <span class="restaurant-status">可預約</span>
@@ -1564,9 +1667,18 @@ html[data-font-size="large"] .hero-grid{
         <a href="https://shabushabu-hisui.com/" target="_blank" rel="noopener">官方</a>
         <a href="https://www.tablecheck.com/ja/shabushabu-hisui" target="_blank" rel="noopener">預約</a>
       </div>
-    </article>
+    </article></div>
+</details>
 
-    <article class="restaurant-card">
+    <details class="compact-card">
+  <summary>
+    <div class="compact-summary-main">
+      <div class="compact-summary-title">🍔 LITOR</div>
+      <div class="compact-summary-sub">DAY 4・久茂地｜漢堡・咖啡・酒吧</div>
+    </div>
+    <span class="compact-summary-icon">⌄</span>
+  </summary>
+  <div class="compact-card-body"><article class="restaurant-card">
       <div class="restaurant-head">
         <div><div class="restaurant-name">🍔 LITOR</div><div class="restaurant-meta">DAY 4・久茂地｜漢堡・咖啡・酒吧</div></div>
         <span class="restaurant-status">可預約</span>
@@ -1584,9 +1696,18 @@ html[data-font-size="large"] .hero-grid{
         <a href="https://www.instagram.com/litor_okinawa/" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.google.com/maps/search/?api=1&query=LITOR+沖縄県那覇市久茂地3-25-20" target="_blank" rel="noopener">Google Maps</a>
       </div>
-    </article>
+    </article></div>
+</details>
 
-    <article class="restaurant-card">
+    <details class="compact-card">
+  <summary>
+    <div class="compact-summary-main">
+      <div class="compact-summary-title">🥩 焼肉きんぐ 那覇新都心店</div>
+      <div class="compact-summary-sub">DAY 4・那霸新都心｜100 分燒肉吃到飽</div>
+    </div>
+    <span class="compact-summary-icon">⌄</span>
+  </summary>
+  <div class="compact-card-body"><article class="restaurant-card">
       <div class="restaurant-head">
         <div><div class="restaurant-name">🥩 焼肉きんぐ 那覇新都心店</div><div class="restaurant-meta">DAY 4・那霸新都心｜100 分燒肉吃到飽</div></div>
         <span class="restaurant-status">建議預約</span>
@@ -1604,10 +1725,19 @@ html[data-font-size="large"] .hero-grid{
         <a href="https://www.yakiniku-king.jp/shop/2107" target="_blank" rel="noopener">店舖／預約</a>
         <a href="https://www.google.com/maps/search/?api=1&query=焼肉きんぐ+那覇新都心店" target="_blank" rel="noopener">導航</a>
       </div>
-    </article>
+    </article></div>
+</details>
 
     
-    <article class="restaurant-card">
+    <details class="compact-card">
+  <summary>
+    <div class="compact-summary-main">
+      <div class="compact-summary-title">🥩 焼肉神社 うしいち</div>
+      <div class="compact-summary-sub">DAY 2・泉崎｜宮崎牛・黑毛和牛燒肉</div>
+    </div>
+    <span class="compact-summary-icon">⌄</span>
+  </summary>
+  <div class="compact-card-body"><article class="restaurant-card">
       <div class="restaurant-head">
         <div><div class="restaurant-name">🥩 焼肉神社 うしいち</div><div class="restaurant-meta">DAY 2・泉崎｜宮崎牛・黑毛和牛燒肉</div></div>
         <span class="restaurant-status">可預約</span>
@@ -1625,9 +1755,18 @@ html[data-font-size="large"] .hero-grid{
         <a href="https://yakinikuokinawa.com/" target="_blank" rel="noopener">官方</a>
         <a href="https://maps.app.goo.gl/2nnhC4MF4yBTwoSB7?g_st=ic" target="_blank" rel="noopener">Google Maps</a>
       </div>
-    </article>
+    </article></div>
+</details>
 
-    <article class="restaurant-card">
+    <details class="compact-card">
+  <summary>
+    <div class="compact-summary-main">
+      <div class="compact-summary-title">🍶 海の幸と山の幸 鶴亀合戦</div>
+      <div class="compact-summary-sub">DAY 3・久茂地｜海鮮・串燒・居酒屋</div>
+    </div>
+    <span class="compact-summary-icon">⌄</span>
+  </summary>
+  <div class="compact-card-body"><article class="restaurant-card">
       <div class="restaurant-head">
         <div><div class="restaurant-name">🍶 海の幸と山の幸 鶴亀合戦</div><div class="restaurant-meta">DAY 3・久茂地｜海鮮・串燒・居酒屋</div></div>
         <span class="restaurant-status">可預約</span>
@@ -1645,9 +1784,18 @@ html[data-font-size="large"] .hero-grid{
         <a href="https://turukamegassen.owst.jp/" target="_blank" rel="noopener">官方</a>
         <a href="https://maps.app.goo.gl/bUpDUrKaTN5q12PV8?g_st=ic" target="_blank" rel="noopener">Google Maps</a>
       </div>
-    </article>
+    </article></div>
+</details>
 
-    <article class="restaurant-card">
+    <details class="compact-card">
+  <summary>
+    <div class="compact-summary-main">
+      <div class="compact-summary-title">🍰 Coral Days</div>
+      <div class="compact-summary-sub">DAY 2・名護｜咖啡・甜點・刨冰</div>
+    </div>
+    <span class="compact-summary-icon">⌄</span>
+  </summary>
+  <div class="compact-card-body"><article class="restaurant-card">
       <div class="restaurant-head">
         <div><div class="restaurant-name">🍰 Coral Days</div><div class="restaurant-meta">DAY 2・名護｜咖啡・甜點・刨冰</div></div>
         <span class="restaurant-status no">休息站</span>
@@ -1664,7 +1812,8 @@ html[data-font-size="large"] .hero-grid{
         <a href="https://www.google.com/maps/search/?api=1&query=Coral+Days+Cafe+Okinawa" target="_blank" rel="noopener">導航</a>
         <a href="https://www.instagram.com/coraldays.okinawa" target="_blank" rel="noopener">Instagram</a>
       </div>
-    </article>
+    </article></div>
+</details>
 
   </div>
 </section>
@@ -1705,14 +1854,22 @@ html[data-font-size="large"] .hero-grid{
   <div class="section-kicker">SAVE MORE</div>
   <div class="section-title clean-title">
     <h2>購物優惠與匯率</h2>
-    <small>出示前先看使用條件</small>
+    <small>點品牌展開優惠條件</small>
   </div>
   <div class="coupon-note" style="margin-bottom:12px">
     💡 <b>結帳順序：</b>先問免稅 → 再出示 Coupon／App → 最後付款。不同店家的「免稅＋折扣」能否併用不一樣，以收銀台實際判定為準。
   </div>
 
   <div class="saver-grid">
-    <article class="coupon-card">
+    <details class="compact-card">
+  <summary>
+    <div class="compact-summary-main">
+      <div class="compact-summary-title">🛍️ ASHIBINAA Outlet</div>
+      <div class="compact-summary-sub">Coupon Sheet · 點開看使用條件</div>
+    </div>
+    <span class="compact-summary-icon">⌄</span>
+  </summary>
+  <div class="compact-card-body"><article class="coupon-card">
       <div class="coupon-top">
         <div class="coupon-brand">🛍️ ASHIBINAA Outlet</div>
         <div class="coupon-badge">Coupon Sheet</div>
@@ -1720,9 +1877,18 @@ html[data-font-size="large"] .hero-grid{
       <p>到 Information Center 出示優惠頁面，可換領館內適用店家的 Coupon Sheet。</p>
       <div class="coupon-note">有效期間目前標示至 2030/03/31；每次出發前仍建議重新確認頁面。</div>
       <a class="coupon-link" href="https://japanshopping.org/ja/search/coupons/detail/%E6%B2%96%E7%B8%84%E3%82%A2%E3%82%A6%E3%83%88%E3%83%AC%E3%83%83%E3%83%88%E3%83%A2%E3%83%BC%E3%83%AB-%E3%81%82%E3%81%97%E3%81%B3%E3%81%AA%E3%83%BC-%E3%82%AF%E3%83%BC%E3%83%9D%E3%83%B3%E3%82%B7%E3%83%BC%E3%83%88%E3%83%97%E3%83%AC%E3%82%BC%E3%83%B3%E3%83%88-%E3%82%A4%E3%83%B3%E3%83%95%E3%82%A9%E3%83%A1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%E3%81%AB%E3%81%A6%E5%BC%95%E6%8F%9B" target="_blank" rel="noopener">開啟優惠頁 <span>↗</span></a>
-    </article>
+    </article></div>
+</details>
 
-    <article class="coupon-card">
+    <details class="compact-card">
+  <summary>
+    <div class="compact-summary-main">
+      <div class="compact-summary-title">🏬 AEON Mall Rycom</div>
+      <div class="compact-summary-sub">Foreign Visitor · 點開看使用條件</div>
+    </div>
+    <span class="compact-summary-icon">⌄</span>
+  </summary>
+  <div class="compact-card-body"><article class="coupon-card">
       <div class="coupon-top">
         <div class="coupon-brand">🏬 AEON Mall Rycom</div>
         <div class="coupon-badge">Foreign Visitor</div>
@@ -1730,9 +1896,18 @@ html[data-font-size="large"] .hero-grid{
       <p>AEON Mall 官方提供訪日外國旅客專用優惠券，各品牌折扣不同，可直接在官方 Coupon 頁查看。</p>
       <div class="coupon-note">部分優惠需要現場用手機顯示，可能不能列印；使用期限依個別店舖頁面。</div>
       <a class="coupon-link" href="https://en.aeonmall.global/mall/okinawarycom/coupons" target="_blank" rel="noopener">查看 Rycom 優惠券 <span>↗</span></a>
-    </article>
+    </article></div>
+</details>
 
-    <article class="coupon-card">
+    <details class="compact-card">
+  <summary>
+    <div class="compact-summary-main">
+      <div class="compact-summary-title">🐧 Don Quijote｜唐吉訶德</div>
+      <div class="compact-summary-sub">Visa 5% OFF · 點開看使用條件</div>
+    </div>
+    <span class="compact-summary-icon">⌄</span>
+  </summary>
+  <div class="compact-card-body"><article class="coupon-card">
       <div class="coupon-top">
         <div class="coupon-brand">🐧 Don Quijote｜唐吉訶德</div>
         <div class="coupon-badge">Visa 5% OFF</div>
@@ -1740,8 +1915,17 @@ html[data-font-size="large"] .hero-grid{
       <p>符合日本免稅條件，且未稅消費滿 ¥10,000 時，目前 Visa 專屬優惠可在免稅之外再享額外 5% 折扣。</p>
       <div class="coupon-note">結帳前先出示 Coupon，再使用 Visa 付款；部分商品與服務排除，也不能與其他折扣併用。</div>
       <a class="coupon-link" href="https://www.visa.co.jp/pay-with-visa/donquijote-discounts-and-offers.html" target="_blank" rel="noopener">開啟 Donki Visa Coupon <span>↗</span></a>
-    </article>
-    <article class="coupon-card">
+    </article></div>
+</details>
+    <details class="compact-card">
+  <summary>
+    <div class="compact-summary-main">
+      <div class="compact-summary-title">📷 Bic Camera｜ビックカメラ</div>
+      <div class="compact-summary-sub">官方 Coupon · 點開看使用條件</div>
+    </div>
+    <span class="compact-summary-icon">⌄</span>
+  </summary>
+  <div class="compact-card-body"><article class="coupon-card">
       <div class="coupon-top">
         <div class="coupon-brand">📷 Bic Camera｜ビックカメラ</div>
         <div class="coupon-badge">官方 Coupon</div>
@@ -1750,9 +1934,18 @@ html[data-font-size="large"] .hero-grid{
       <div class="coupon-note">部分 Coupon 只適用 BicCamera.com，未必能直接在實體店使用；請先確認每張券的通路與期限。</div>
       <a class="coupon-link" href="https://www.biccamera.com/bc/c/service/coupon/" target="_blank" rel="noopener">查看官方 Coupon <span>↗</span></a>
       <a class="coupon-link" href="https://www.biccamera.com/bc/c/super/okaimono/oshiharai/taxfree/index.jsp" target="_blank" rel="noopener">查看免稅條件 <span>↗</span></a>
-    </article>
+    </article></div>
+</details>
 
-    <article class="coupon-card">
+    <details class="compact-card">
+  <summary>
+    <div class="compact-summary-main">
+      <div class="compact-summary-title">💊 松本清｜Matsumoto Kiyoshi</div>
+      <div class="compact-summary-sub">App 10% OFF · 點開看使用條件</div>
+    </div>
+    <span class="compact-summary-icon">⌄</span>
+  </summary>
+  <div class="compact-card-body"><article class="coupon-card">
       <div class="coupon-top">
         <div class="coupon-brand">💊 松本清｜Matsumoto Kiyoshi</div>
         <div class="coupon-badge">App 10% OFF</div>
@@ -1760,9 +1953,18 @@ html[data-font-size="large"] .hero-grid{
       <p>マツキヨココカラ官方 App 目前標示：首次下載／註冊可取得店內商品 10% OFF Coupon，食品類為 5% OFF。</p>
       <div class="coupon-note">部分品牌與特定商品可能排除；實際可用券請以 App「トクする」頁面與現場為準。</div>
       <a class="coupon-link" href="https://www.matsukiyococokara-online.com/point/mkappli_op" target="_blank" rel="noopener">官方 App／Coupon 說明 <span>↗</span></a>
-    </article>
+    </article></div>
+</details>
 
-    <article class="coupon-card">
+    <details class="compact-card">
+  <summary>
+    <div class="compact-summary-main">
+      <div class="compact-summary-title">🧴 大國藥妝｜Daikoku Drug</div>
+      <div class="compact-summary-sub">5% OFF / App · 點開看使用條件</div>
+    </div>
+    <span class="compact-summary-icon">⌄</span>
+  </summary>
+  <div class="compact-card-body"><article class="coupon-card">
       <div class="coupon-top">
         <div class="coupon-brand">🧴 大國藥妝｜Daikoku Drug</div>
         <div class="coupon-badge">5% OFF / App</div>
@@ -1771,9 +1973,18 @@ html[data-font-size="large"] .hero-grid{
       <div class="coupon-note">你 10/10 抵達沖繩，剛好是官方每月 10 日「全品 5% OFF Day」之一；部分門市／商品不適用，請以現場為準。</div>
       <a class="coupon-link" href="https://daikokudrug.com/service/ddapp/" target="_blank" rel="noopener">開啟官方 App 優惠 <span>↗</span></a>
       <a class="coupon-link" href="https://www.daikokudrug.com/service/sale/" target="_blank" rel="noopener">查看固定優惠日 <span>↗</span></a>
-    </article>
+    </article></div>
+</details>
 
-    <article class="coupon-card">
+    <details class="compact-card">
+  <summary>
+    <div class="compact-summary-main">
+      <div class="compact-summary-title">🌊 PARCO CITY</div>
+      <div class="compact-summary-sub">Rental Car Coupon · 點開看使用條件</div>
+    </div>
+    <span class="compact-summary-icon">⌄</span>
+  </summary>
+  <div class="compact-card-body"><article class="coupon-card">
       <div class="coupon-top">
         <div class="coupon-brand">🌊 PARCO CITY</div>
         <div class="coupon-badge">Rental Car Coupon</div>
@@ -1781,7 +1992,8 @@ html[data-font-size="large"] .hero-grid{
       <p>租車旅客可查看 PARCO CITY 的 Rental Car Coupon，部分餐飲與店舖提供 5–10% OFF 或贈品。</p>
       <div class="coupon-note">優惠可能變更或提前結束；需依頁面／現場 Coupon Card 的使用條件為準。</div>
       <a class="coupon-link" href="https://www.parcocity.jp/feature/?cd=000140" target="_blank" rel="noopener">查看租車優惠 <span>↗</span></a>
-    </article>
+    </article></div>
+</details>
   </div>
 
   <div class="tax-note">
@@ -1895,21 +2107,15 @@ html[data-font-size="large"] .hero-grid{
         <div class="sync-title">☁️ 多人同步分帳</div>
         <span class="sync-status warn" id="syncStatus">連線中…</span>
       </div>
-      <div class="sync-note">
-        已綁定沖繩 2026 共用雲端資料庫。新增、刪除或修改分帳資料時會自動同步，不需要另外按更新。
-      </div>
-      <div class="sync-grid">
-        <div class="sync-field">
-          <label>共享房間</label>
-          <input id="syncRoom" value="okinawa-2026" readonly>
+      <div class="sync-note">共用分帳會自動同步，不需要手動更新。</div>
+      <details class="compact-details">
+        <summary>同步設定</summary>
+        <div class="compact-body">
+          <div class="sync-grid"><div class="sync-field"><label>共享房間</label><input id="syncRoom" value="okinawa-2026" readonly></div></div>
+          <div class="sync-actions"><button class="primary" id="retrySync" type="button">重新連線</button></div>
+          <div class="sync-note">只有顯示同步失敗時才需要重新連線。</div>
         </div>
-      </div>
-      <div class="sync-actions">
-        <button class="primary" id="retrySync" type="button">重新連線</button>
-      </div>
-      <div class="sync-note">
-        新增／刪除支出或增減成員時會立即寫入雲端；其他同行者會自動取得最新資料。只有顯示「同步失敗」時才需要按「重新連線」。
-      </div>
+      </details>
     </div>
     <div class="people-card">
       <div class="people-head">
@@ -2004,14 +2210,17 @@ html[data-font-size="large"] .hero-grid{
     <div class="balance-card">
       <h3>最新分帳結果</h3>
       <div class="balance-grid" id="balanceGrid"></div>
-      <div class="sync-note" id="sharedResultStatus" style="margin-top:8px">
-        ☁️ 分帳結果會隨雲端資料自動更新，同行者看到的結果會一致。
+      <button class="result-toggle" id="toggleSettlementResult" type="button" aria-expanded="false">
+        <span>查看最終分帳結果</span><span class="chev">⌄</span>
+      </button>
+      <div class="result-panel" id="settlementResultPanel">
+        <div class="sync-note" id="sharedResultStatus" style="margin-top:0">☁️ 顯示的是目前最新共用分帳結果。</div>
+        <div class="settle-list" id="settleList"></div>
       </div>
-      <div class="settle-list" id="settleList"></div>
     </div>
 
     <div class="expense-actions">
-      <button class="undo-last" id="undoLastExpense" type="button">↶ 刪除上一筆</button>
+      <button class="undo-last" id="undoLastExpense" type="button">↶ 撤銷上一筆</button>
       <button class="secondary-action" id="exportExpense" type="button">匯出 CSV</button>
       <button class="secondary-action danger" id="clearExpense" type="button">清除全部</button>
     </div>
@@ -2933,6 +3142,17 @@ window.addEventListener("DOMContentLoaded",()=>{
     }
   });
 
+
+
+  const settlementToggle=document.getElementById("toggleSettlementResult");
+  const settlementPanel=document.getElementById("settlementResultPanel");
+  settlementToggle?.addEventListener("click",()=>{
+    const willOpen=!settlementPanel?.classList.contains("open");
+    settlementPanel?.classList.toggle("open",willOpen);
+    settlementToggle.setAttribute("aria-expanded",String(willOpen));
+    const label=settlementToggle.querySelector("span:first-child");
+    if(label) label.textContent=willOpen ? "隱藏最終分帳結果" : "查看最終分帳結果";
+  });
 
   document.getElementById("retrySync")?.addEventListener("click",connectSync);
 
