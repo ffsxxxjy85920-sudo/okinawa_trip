@@ -1365,6 +1365,7 @@ html[data-font-size="large"] .hero-grid{
 }
 .bottom-shortcut .icon{display:block;font-size:16px;margin-bottom:3px;line-height:1}
 .bottom-shortcut.active{background:#edf8f6;color:#1c747d}
+.bottom-shortcut{pointer-events:auto!important;position:relative;z-index:2}
 body{padding-bottom:86px}
 
 </style>
@@ -3527,20 +3528,34 @@ window.addEventListener("DOMContentLoaded",()=>{
 
 
 <script>
-(() => {
+document.addEventListener("DOMContentLoaded", () => {
   const targets=["days","map","spots","restaurants","savings","translate","expenses","traveldesk"];
   const tiles=[...document.querySelectorAll(".app-tile[data-target]")];
-  const shortcuts=[...document.querySelectorAll(".bottom-shortcut[data-target]")];
   const sections=targets.map(id=>document.getElementById(id)).filter(Boolean);
+
+  function getShortcuts(){
+    return [...document.querySelectorAll(".bottom-shortcut[data-target]")];
+  }
 
   function activateSection(id, shouldScroll=true){
     if(!targets.includes(id)) return;
-    sections.forEach(sec=>sec.classList.toggle("active",sec.id===id));
-    tiles.forEach(el=>el.classList.toggle("active",el.dataset.target===id));
-    shortcuts.forEach(el=>el.classList.toggle("active",el.dataset.target===id));
+
+    sections.forEach(sec=>{
+      sec.classList.toggle("active",sec.id===id);
+    });
+
+    tiles.forEach(el=>{
+      el.classList.toggle("active",el.dataset.target===id);
+    });
+
+    getShortcuts().forEach(el=>{
+      el.classList.toggle("active",el.dataset.target===id);
+    });
 
     if(id==="map" && window.tripMapInstance){
-      setTimeout(()=>{ try{ window.tripMapInstance.invalidateSize(); }catch(e){} },220);
+      setTimeout(()=>{
+        try{ window.tripMapInstance.invalidateSize(); }catch(e){}
+      },250);
     }
 
     if(shouldScroll){
@@ -3554,19 +3569,25 @@ window.addEventListener("DOMContentLoaded",()=>{
     }
   }
 
-  tiles.forEach(btn=>btn.addEventListener("click",(e)=>{
-    e.preventDefault();
-    activateSection(btn.dataset.target,true);
-  }));
+  tiles.forEach(btn=>{
+    btn.addEventListener("click",(e)=>{
+      e.preventDefault();
+      activateSection(btn.dataset.target,true);
+    });
+  });
 
-  shortcuts.forEach(btn=>btn.addEventListener("click",(e)=>{
+  // Event delegation keeps bottom shortcuts working even if markup loads later.
+  document.addEventListener("click",(e)=>{
+    const btn=e.target.closest(".bottom-shortcut[data-target]");
+    if(!btn) return;
     e.preventDefault();
     e.stopPropagation();
     activateSection(btn.dataset.target,true);
-  },{passive:false}));
+  },false);
 
+  window.activateTripSection=activateSection;
   activateSection("days",false);
-})();
+});
 </script>
 
 
