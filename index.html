@@ -1368,6 +1368,19 @@ html[data-font-size="large"] .hero-grid{
 .bottom-shortcut{pointer-events:auto!important;position:relative;z-index:2}
 body{padding-bottom:86px}
 
+
+/* ===== v34 direct shortcut interaction ===== */
+.bottom-shortcuts{
+  -webkit-user-select:none;
+  user-select:none;
+}
+.bottom-shortcut{
+  pointer-events:auto !important;
+  touch-action:manipulation !important;
+  -webkit-appearance:none;
+  appearance:none;
+}
+
 </style>
 
 <link rel="manifest" href="./manifest.webmanifest">
@@ -3527,78 +3540,79 @@ window.addEventListener("DOMContentLoaded",()=>{
 </script>
 
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const targets=["days","map","spots","restaurants","savings","translate","expenses","traveldesk"];
-  const tiles=[...document.querySelectorAll(".app-tile[data-target]")];
-  const sections=targets.map(id=>document.getElementById(id)).filter(Boolean);
 
-  function getShortcuts(){
-    return [...document.querySelectorAll(".bottom-shortcut[data-target]")];
-  }
 
-  function activateSection(id, shouldScroll=true){
-    if(!targets.includes(id)) return;
-
-    sections.forEach(sec=>{
-      sec.classList.toggle("active",sec.id===id);
-    });
-
-    tiles.forEach(el=>{
-      el.classList.toggle("active",el.dataset.target===id);
-    });
-
-    getShortcuts().forEach(el=>{
-      el.classList.toggle("active",el.dataset.target===id);
-    });
-
-    if(id==="map" && window.tripMapInstance){
-      setTimeout(()=>{
-        try{ window.tripMapInstance.invalidateSize(); }catch(e){}
-      },250);
-    }
-
-    if(shouldScroll){
-      const target=document.getElementById(id);
-      if(target){
-        requestAnimationFrame(()=>{
-          const top=target.getBoundingClientRect().top + window.scrollY - 10;
-          window.scrollTo({top,behavior:"smooth"});
-        });
-      }
-    }
-  }
-
-  tiles.forEach(btn=>{
-    btn.addEventListener("click",(e)=>{
-      e.preventDefault();
-      activateSection(btn.dataset.target,true);
-    });
-  });
-
-  // Event delegation keeps bottom shortcuts working even if markup loads later.
-  document.addEventListener("click",(e)=>{
-    const btn=e.target.closest(".bottom-shortcut[data-target]");
-    if(!btn) return;
-    e.preventDefault();
-    e.stopPropagation();
-    activateSection(btn.dataset.target,true);
-  },false);
-
-  window.activateTripSection=activateSection;
-  activateSection("days",false);
-});
-</script>
 
 
 
 
 <div class="bottom-shortcuts" id="bottomShortcuts" aria-label="快速導覽">
-  <button class="bottom-shortcut active" type="button" data-target="days"><span class="icon">📅</span>行程</button>
-  <button class="bottom-shortcut" type="button" data-target="map"><span class="icon">🗺️</span>地圖</button>
-  <button class="bottom-shortcut" type="button" data-target="expenses"><span class="icon">🧾</span>記帳</button>
-  <button class="bottom-shortcut" type="button" data-target="restaurants"><span class="icon">🍽️</span>餐廳</button>
+  <button class="bottom-shortcut active" type="button" data-target="days"
+    onclick="return window.tripQuickNav('days');"><span class="icon">📅</span>行程</button>
+  <button class="bottom-shortcut" type="button" data-target="map"
+    onclick="return window.tripQuickNav('map');"><span class="icon">🗺️</span>地圖</button>
+  <button class="bottom-shortcut" type="button" data-target="expenses"
+    onclick="return window.tripQuickNav('expenses');"><span class="icon">🧾</span>記帳</button>
+  <button class="bottom-shortcut" type="button" data-target="restaurants"
+    onclick="return window.tripQuickNav('restaurants');"><span class="icon">🍽️</span>餐廳</button>
 </div>
 
+<script>
+(function(){
+  const targets=["days","map","spots","restaurants","savings","translate","expenses","traveldesk"];
+
+  window.tripQuickNav=function(id){
+    if(!targets.includes(id)) return false;
+
+    targets.forEach(function(sectionId){
+      const sec=document.getElementById(sectionId);
+      if(sec) sec.classList.toggle("active",sectionId===id);
+    });
+
+    document.querySelectorAll(".app-tile[data-target]").forEach(function(el){
+      el.classList.toggle("active",el.getAttribute("data-target")===id);
+    });
+
+    document.querySelectorAll(".bottom-shortcut[data-target]").forEach(function(el){
+      el.classList.toggle("active",el.getAttribute("data-target")===id);
+    });
+
+    const target=document.getElementById(id);
+
+    if(id==="map"){
+      setTimeout(function(){
+        try{
+          if(window.tripMapInstance) window.tripMapInstance.invalidateSize();
+        }catch(e){}
+      },300);
+    }
+
+    if(target){
+      setTimeout(function(){
+        try{
+          const top=target.getBoundingClientRect().top + window.pageYOffset - 12;
+          window.scrollTo(0,top);
+        }catch(e){
+          try{ target.scrollIntoView(); }catch(_){}
+        }
+      },30);
+    }
+    return false;
+  };
+
+  // Re-bind the upper app cards to the same proven function.
+  document.querySelectorAll(".app-tile[data-target]").forEach(function(btn){
+    btn.onclick=function(){
+      return window.tripQuickNav(btn.getAttribute("data-target"));
+    };
+  });
+
+  // Ensure a valid default section is visible.
+  const active=document.querySelector(".deck-section.active");
+  if(!active){
+    window.tripQuickNav("days");
+  }
+})();
+</script>
 </body>
 </html>
