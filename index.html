@@ -1339,30 +1339,7 @@ html[data-font-size="large"] .hero-grid{
   margin-top:0;
 }
 
-.quick-status{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
-  margin:4px 0 14px;
-}
-.quick-pill{
-  padding:10px 8px;
-  border-radius:14px;
-  background:#f7faf9;
-  border:1px solid #e5edec;
-  text-align:center;
-}
-.quick-pill b{
-  display:block;
-  font-size:12px;
-  color:#31575c;
-}
-.quick-pill span{
-  display:block;
-  margin-top:3px;
-  font-size:8.5px;
-  color:#87979a;
-}
+
 @media(min-width:700px){
   .app-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
   
@@ -1370,6 +1347,25 @@ html[data-font-size="large"] .hero-grid{
 
 
 
+
+
+/* ===== v32 slim bottom shortcuts ===== */
+.bottom-shortcuts{
+  position:fixed;left:12px;right:12px;
+  bottom:calc(10px + env(safe-area-inset-bottom));
+  z-index:5000;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;
+  padding:7px;border:1px solid rgba(217,230,228,.96);border-radius:18px;
+  background:rgba(255,255,255,.95);backdrop-filter:blur(14px);
+  box-shadow:0 12px 30px rgba(21,61,67,.14);
+}
+.bottom-shortcut{
+  min-height:44px;border:0;border-radius:12px;background:transparent;
+  color:#71878a;font-size:8.5px;font-weight:1000;cursor:pointer;
+  touch-action:manipulation;-webkit-tap-highlight-color:transparent;
+}
+.bottom-shortcut .icon{display:block;font-size:16px;margin-bottom:3px;line-height:1}
+.bottom-shortcut.active{background:#edf8f6;color:#1c747d}
+body{padding-bottom:86px}
 
 </style>
 
@@ -1453,10 +1449,7 @@ html[data-font-size="large"] .hero-grid{
     <h2>旅行工具箱</h2>
     <small>需要什麼就點什麼</small>
   </div>
-
-  <div class="quick-status">
-    <div class="quick-pill"><b>5D4N</b><span>五天四夜</span></div>
-    <div class="quick-pill"><b>SELF DRIVE</b><span>自駕旅行</span></div>
+<div class="quick-pill"><b>SELF DRIVE</b><span>自駕旅行</span></div>
     <div class="quick-pill"><b>LIVE</b><span>雲端分帳</span></div>
   </div>
 
@@ -3537,23 +3530,17 @@ window.addEventListener("DOMContentLoaded",()=>{
 (() => {
   const targets=["days","map","spots","restaurants","savings","translate","expenses","traveldesk"];
   const tiles=[...document.querySelectorAll(".app-tile[data-target]")];
+  const shortcuts=[...document.querySelectorAll(".bottom-shortcut[data-target]")];
   const sections=targets.map(id=>document.getElementById(id)).filter(Boolean);
 
   function activateSection(id, shouldScroll=true){
     if(!targets.includes(id)) return;
-
-    sections.forEach(sec=>{
-      sec.classList.toggle("active",sec.id===id);
-    });
-
-    tiles.forEach(el=>{
-      el.classList.toggle("active",el.dataset.target===id);
-    });
+    sections.forEach(sec=>sec.classList.toggle("active",sec.id===id));
+    tiles.forEach(el=>el.classList.toggle("active",el.dataset.target===id));
+    shortcuts.forEach(el=>el.classList.toggle("active",el.dataset.target===id));
 
     if(id==="map" && window.tripMapInstance){
-      setTimeout(()=>{
-        try{ window.tripMapInstance.invalidateSize(); }catch(e){}
-      },220);
+      setTimeout(()=>{ try{ window.tripMapInstance.invalidateSize(); }catch(e){} },220);
     }
 
     if(shouldScroll){
@@ -3567,18 +3554,30 @@ window.addEventListener("DOMContentLoaded",()=>{
     }
   }
 
-  tiles.forEach(btn=>{
-    btn.addEventListener("click",(e)=>{
-      e.preventDefault();
-      activateSection(btn.dataset.target,true);
-    });
-  });
+  tiles.forEach(btn=>btn.addEventListener("click",(e)=>{
+    e.preventDefault();
+    activateSection(btn.dataset.target,true);
+  }));
+
+  shortcuts.forEach(btn=>btn.addEventListener("click",(e)=>{
+    e.preventDefault();
+    e.stopPropagation();
+    activateSection(btn.dataset.target,true);
+  },{passive:false}));
 
   activateSection("days",false);
 })();
 </script>
 
 
+
+
+<div class="bottom-shortcuts" id="bottomShortcuts" aria-label="快速導覽">
+  <button class="bottom-shortcut active" type="button" data-target="days"><span class="icon">📅</span>行程</button>
+  <button class="bottom-shortcut" type="button" data-target="map"><span class="icon">🗺️</span>地圖</button>
+  <button class="bottom-shortcut" type="button" data-target="expenses"><span class="icon">🧾</span>記帳</button>
+  <button class="bottom-shortcut" type="button" data-target="restaurants"><span class="icon">🍽️</span>餐廳</button>
+</div>
 
 </body>
 </html>
