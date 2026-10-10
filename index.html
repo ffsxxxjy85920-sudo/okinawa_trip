@@ -2267,7 +2267,7 @@ body{padding-bottom:86px}
       </div>
 
       <div class="split-box">
-        <div class="split-title">一起分這筆的人</div>
+        <div class="split-title">一起分這筆的人 <span style="font-weight:700;color:#94a4a6">（勾選會保留）</span></div>
         <div class="member-checks" id="splitMembers"></div>
         <div class="split-summary" id="splitPreview"></div>
       </div>
@@ -2708,6 +2708,10 @@ window.addEventListener("DOMContentLoaded",()=>{
   let syncConfig = null;
   let syncBusy = false;
 
+  // Current "一起分這筆的人" selection is local form state.
+  // Keep it across Firebase pulls / renderMembers() refreshes.
+  let splitSelection = null;
+
   let fxRate = 0;
   let fxUpdatedText = "";
 
@@ -2944,12 +2948,35 @@ window.addEventListener("DOMContentLoaded",()=>{
     }
 
     if(split){
+      // Capture current checkbox state before rebuilding the member list.
+      // On first render only, default to selecting everyone.
+      const existingInputs=[...split.querySelectorAll("input[type=checkbox]")];
+      if(existingInputs.length){
+        splitSelection=new Set(
+          existingInputs.filter(x=>x.checked).map(x=>x.value)
+        );
+      }
+      if(splitSelection===null){
+        splitSelection=new Set(members.map(m=>m.id));
+      }
+
+      // Drop removed members but do NOT auto-select newly added members.
+      const validIds=new Set(members.map(m=>m.id));
+      splitSelection=new Set([...splitSelection].filter(id=>validIds.has(id)));
+
       split.innerHTML=members.map(m=>`
         <label class="member-check">
-          <input type="checkbox" value="${m.id}" checked>
+          <input type="checkbox" value="${m.id}" ${splitSelection.has(m.id) ? "checked" : ""}>
           ${escapeHtml(m.name)}
         </label>`).join("");
-      split.querySelectorAll("input").forEach(x=>x.addEventListener("change",updateSplitPreview));
+
+      split.querySelectorAll("input").forEach(x=>{
+        x.addEventListener("change",()=>{
+          if(x.checked) splitSelection.add(x.value);
+          else splitSelection.delete(x.value);
+          updateSplitPreview();
+        });
+      });
     }
     updateSplitPreview();
   }
@@ -3151,6 +3178,7 @@ window.addEventListener("DOMContentLoaded",()=>{
     const amount=Number(document.getElementById("expenseAmount").value);
     const payerId=document.getElementById("expensePayer").value;
     const splitIds=[...document.querySelectorAll("#splitMembers input:checked")].map(x=>x.value);
+    splitSelection=new Set(splitIds);
 
     if(!Number.isFinite(amount) || amount<=0 || !payerId || !splitIds.length) return;
 
