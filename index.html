@@ -1381,6 +1381,13 @@ body{padding-bottom:86px}
   appearance:none;
 }
 
+
+/* ===== v37 split select all button ===== */
+.split-quick-actions{display:flex;gap:8px;margin:8px 0 10px}
+.split-select-all-btn,.split-clear-btn{min-height:38px;border-radius:10px;font-size:10px;font-weight:1000;cursor:pointer}
+.split-select-all-btn{flex:1.35;border:1px solid #bfe1dc;background:#eaf8f5;color:#176f73}
+.split-clear-btn{flex:1;border:1px solid #eadfdc;background:#faf6f5;color:#816c67}
+
 </style>
 
 <link rel="manifest" href="./manifest.webmanifest">
@@ -2267,7 +2274,13 @@ body{padding-bottom:86px}
       </div>
 
       <div class="split-box">
-        <div class="split-title" style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap"><span>一起分這筆的人 <span style="font-weight:700;color:#94a4a6">（勾選會保留）</span></span><button type="button" id="splitSelectAll" class="secondary-action" style="padding:7px 12px;font-size:13px">✓ 全選所有人</button></div>
+        <div class="split-title">
+      一起分這筆的人 <span style="font-weight:700;color:#94a4a6">（勾選會保留）</span>
+    </div>
+    <div class="split-quick-actions">
+      <button type="button" id="splitSelectAll" class="split-select-all-btn">✓ 全選所有人</button>
+      <button type="button" id="splitClearAll" class="split-clear-btn">清除選擇</button>
+    </div>
         <div class="member-checks" id="splitMembers"></div>
         <div class="split-summary" id="splitPreview"></div>
       </div>
@@ -2711,6 +2724,8 @@ window.addEventListener("DOMContentLoaded",()=>{
   // Current "一起分這筆的人" selection is local form state.
   // Keep it across Firebase pulls / renderMembers() refreshes.
   let splitSelection = null;
+  let splitMemberSignature = "";
+  const SPLIT_FORM_KEY = "okinawa2026_split_form_selection_v1";
 
   let fxRate = 0;
   let fxUpdatedText = "";
@@ -2919,6 +2934,23 @@ window.addEventListener("DOMContentLoaded",()=>{
     return Number(item.amount || 0) * rate;
   }
 
+  function saveSplitFormState(){
+    try{
+      localStorage.setItem(SPLIT_FORM_KEY, JSON.stringify([...splitSelection]));
+    }catch(e){}
+  }
+
+  function loadSplitFormState(members){
+    const validIds=new Set(members.map(m=>m.id));
+    try{
+      const saved=JSON.parse(localStorage.getItem(SPLIT_FORM_KEY)||"null");
+      if(Array.isArray(saved)){
+        return new Set(saved.filter(id=>validIds.has(id)));
+      }
+    }catch(e){}
+    return new Set(members.map(m=>m.id));
+  }
+
   function renderMembers(){
     const members=getMembers();
     const list=document.getElementById("peopleList");
@@ -2935,6 +2967,7 @@ window.addEventListener("DOMContentLoaded",()=>{
           const id=btn.dataset.removeMember;
           const next=getMembers().filter(m=>m.id!==id);
           saveMembers(next.length?next:[{id:"me",name:"我"}]);
+          splitMemberSignature="";
           renderMembers();
           renderExpenses();
         });
@@ -2948,43 +2981,37 @@ window.addEventListener("DOMContentLoaded",()=>{
     }
 
     if(split){
-      // Capture current checkbox state before rebuilding the member list.
-      // On first render only, default to selecting everyone.
-      const existingInputs=[...split.querySelectorAll("input[type=checkbox]")];
-      if(existingInputs.length){
-        splitSelection=new Set(
-          existingInputs.filter(x=>x.checked).map(x=>x.value)
-        );
-      }
+      const signature=members.map(m=>m.id).join("|");
+
+      // Initialize once from saved form state.
       if(splitSelection===null){
-        splitSelection=new Set(members.map(m=>m.id));
+        splitSelection=loadSplitFormState(members);
       }
 
-      // Drop removed members but do NOT auto-select newly added members.
-      const validIds=new Set(members.map(m=>m.id));
-      splitSelection=new Set([...splitSelection].filter(id=>validIds.has(id)));
+      // Rebuild checkboxes ONLY when the actual member list changes.
+      // Normal Firebase expense polling will not touch the user's selection.
+      if(signature!==splitMemberSignature){
+        const validIds=new Set(members.map(m=>m.id));
+        splitSelection=new Set([...splitSelection].filter(id=>validIds.has(id)));
 
-      split.innerHTML=members.map(m=>`
-        <label class="member-check">
-          <input type="checkbox" value="${m.id}" ${splitSelection.has(m.id) ? "checked" : ""}>
-          ${escapeHtml(m.name)}
-        </label>`).join("");
+        split.innerHTML=members.map(m=>`
+          <label class="member-check">
+            <input type="checkbox" value="${m.id}" ${splitSelection.has(m.id) ? "checked" : ""}>
+            ${escapeHtml(m.name)}
+          </label>`).join("");
 
-      split.querySelectorAll("input").forEach(x=>{
-        x.addEventListener("change",()=>{
-          if(x.checked) splitSelection.add(x.value);
-          else splitSelection.delete(x.value);
-          updateSplitPreview();
+        split.querySelectorAll("input").forEach(x=>{
+          x.addEventListener("change",()=>{
+            if(x.checked) splitSelection.add(x.value);
+            else splitSelection.delete(x.value);
+            saveSplitFormState();
+            updateSplitPreview();
+          });
         });
-      });
-    }
-    const selectAllBtn=document.getElementById("splitSelectAll");
-    if(selectAllBtn){
-      selectAllBtn.onclick=()=>{
-        splitSelection=new Set(getMembers().map(m=>m.id));
-        document.querySelectorAll("#splitMembers input[type=checkbox]").forEach(input=>{input.checked=true;});
-        updateSplitPreview();
-      };
+
+        splitMemberSignature=signature;
+        saveSplitFormState();
+      }
     }
     updateSplitPreview();
   }
@@ -3161,6 +3188,7 @@ window.addEventListener("DOMContentLoaded",()=>{
     members.push({id:"m"+Date.now(),name});
     saveMembers(members);
     if(input) input.value="";
+    splitMemberSignature="";
     renderMembers();
     renderExpenses();
   });
@@ -3177,6 +3205,22 @@ window.addEventListener("DOMContentLoaded",()=>{
   document.getElementById("expenseAmount")?.addEventListener("input",updateSplitPreview);
   document.getElementById("expenseCurrency")?.addEventListener("change",updateSplitPreview);
 
+  document.getElementById("splitSelectAll")?.addEventListener("click",()=>{
+    const inputs=[...document.querySelectorAll("#splitMembers input[type=checkbox]")];
+    splitSelection=new Set(inputs.map(x=>x.value));
+    inputs.forEach(x=>x.checked=true);
+    saveSplitFormState();
+    updateSplitPreview();
+  });
+
+  document.getElementById("splitClearAll")?.addEventListener("click",()=>{
+    const inputs=[...document.querySelectorAll("#splitMembers input[type=checkbox]")];
+    splitSelection=new Set();
+    inputs.forEach(x=>x.checked=false);
+    saveSplitFormState();
+    updateSplitPreview();
+  });
+
   document.getElementById("expenseForm")?.addEventListener("submit",e=>{
     e.preventDefault();
     const day=document.getElementById("expenseDay").value;
@@ -3187,6 +3231,7 @@ window.addEventListener("DOMContentLoaded",()=>{
     const payerId=document.getElementById("expensePayer").value;
     const splitIds=[...document.querySelectorAll("#splitMembers input:checked")].map(x=>x.value);
     splitSelection=new Set(splitIds);
+    saveSplitFormState();
 
     if(!Number.isFinite(amount) || amount<=0 || !payerId || !splitIds.length) return;
 
